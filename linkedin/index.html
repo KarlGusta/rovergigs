@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unrestricted Circular LinkedIn Banner Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #0077b5;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="color"],
+        input[type="file"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="color"] {
+            height: 40px;
+        }
+        button {
+            background-color: #0077b5;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #005e93;
+        }
+        #canvasContainer {
+            margin-top: 20px;
+            text-align: center;
+        }
+        canvas {
+            max-width: 100%;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unrestricted Circular LinkedIn Banner Generator</h1>
+        <div class="form-group">
+            <label for="profileImage">Profile Image:</label>
+            <input type="file" id="profileImage" accept="image/*">
+        </div>
+        <div class="form-group">
+            <label for="bannerText">Banner Text:</label>
+            <input type="text" id="bannerText" placeholder="Enter your banner text (e.g. #AppWriter)">
+        </div>
+        <div class="form-group">
+            <label for="textColor">Text Color:</label>
+            <input type="color" id="textColor" value="#ffffff">
+        </div>
+        <div class="form-group">
+            <label for="accentColor">Accent Color:</label>
+            <input type="color" id="accentColor" value="#ff1493">
+        </div>
+        <div class="form-group">
+            <label for="fontSize">Font Size (px):</label>
+            <input type="number" id="fontSize" value="40">
+        </div>
+        <div class="form-group">
+            <label for="arcStart">Arc Start (degrees):</label>
+            <input type="number" id="arcStart" value="90">
+        </div>
+        <div class="form-group">
+            <label for="arcEnd">Arc End (degrees):</label>
+            <input type="number" id="arcEnd" value="180">
+        </div>
+        <div class="form-group">
+            <label for="letterSpacing">Letter Spacing:</label>
+            <input type="number" id="letterSpacing" value="0" step="0.1">
+        </div>
+        <div class="form-group">
+            <label for="wordCentering">Word Centering:</label>
+            <input type="number" id="wordCentering" value="0.5" step="0.1">
+        </div>
+        <button onclick="generateBanner()">Generate Banner</button>
+        <button onclick="downloadBanner()">Download Banner</button>
+        <div id="canvasContainer">
+            <canvas id="bannerCanvas"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('bannerCanvas');
+        const ctx = canvas.getContext('2d');
+        let profileImage = null;
+
+        // Set canvas size
+        canvas.width = 1584;
+        canvas.height = 396;
+
+        // Add event listeners for number inputs
+        document.getElementById('fontSize').addEventListener('input', generateBanner);
+        document.getElementById('arcStart').addEventListener('input', generateBanner);
+        document.getElementById('arcEnd').addEventListener('input', generateBanner);
+        document.getElementById('letterSpacing').addEventListener('input', generateBanner);
+        document.getElementById('wordCentering').addEventListener('input', generateBanner);
+
+        document.getElementById('profileImage').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                profileImage = new Image();
+                profileImage.onload = function() {
+                    generateBanner();
+                }
+                profileImage.src = event.target.result;
+            }
+            reader.readAsDataURL(file);
+        });
+
+        function generateBanner() {
+            const text = document.getElementById('bannerText').value;
+            const textColor = document.getElementById('textColor').value;
+            const accentColor = document.getElementById('accentColor').value;
+            const fontSize = parseFloat(document.getElementById('fontSize').value) || 40;
+            const arcStart = (parseFloat(document.getElementById('arcStart').value) || 90) * Math.PI / 180;
+            const arcEnd = (parseFloat(document.getElementById('arcEnd').value) || 180) * Math.PI / 180;
+            const letterSpacing = parseFloat(document.getElementById('letterSpacing').value) || 0;
+            const wordCentering = parseFloat(document.getElementById('wordCentering').value) || 0.5;
+
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw background (dark gradient)
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#1a1a1a');
+            gradient.addColorStop(1, '#2a2a2a');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            if (profileImage) {
+                // Create circular clipping region
+                ctx.save();
+                ctx.beginPath();
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                const radius = canvas.height / 2 - 20; // Slightly smaller than half height
+                ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+                ctx.clip();
+
+                // Draw the profile image
+                const size = radius * 2;
+                ctx.drawImage(profileImage, centerX - radius, centerY - radius, size, size);
+
+                // Draw accent color arc
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, arcStart, arcEnd);
+                ctx.lineWidth = radius / 2;
+                ctx.strokeStyle = accentColor;
+                ctx.stroke();
+
+                // Draw curved text
+                ctx.font = `bold ${Math.min(fontSize, 1000)}px Arial`; // Limit font size to prevent crashes
+                ctx.fillStyle = textColor;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+
+                // Create curved path for text
+                const textRadius = radius * 0.75; // Adjust this value to position the text
+                const textArcLength = arcEnd - arcStart;
+                const totalLength = text.length + (text.length - 1) * letterSpacing;
+                const startAngle = arcStart + (textArcLength * wordCentering) - (textArcLength * totalLength / (2 * text.length));
+
+                ctx.save();
+                ctx.translate(centerX, centerY);
+                
+                for (let i = 0; i < text.length; i++) {
+                    const angle = startAngle + (textArcLength * i * (1 + letterSpacing) / totalLength);
+                    ctx.save();
+                    ctx.rotate(angle);
+                    ctx.translate(0, -textRadius);
+                    ctx.rotate(Math.PI / 2);
+                    ctx.fillText(text[i], 0, 0);
+                    ctx.restore();
+                }
+
+                ctx.restore();
+            }
+        }
+
+        function downloadBanner() {
+            const link = document.createElement('a');
+            link.download = 'linkedin-banner.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>
