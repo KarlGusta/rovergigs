@@ -13,14 +13,14 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVPMVGBZ4Q"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-SVPMVGBZ4Q');
+    gtag('config', 'G-SVPMVGBZ4Q');
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -38,134 +38,136 @@
     <title>RoverGigs - Home</title>
     <!-- Custom CSS -->
     <style>
-        .text-muted {
-            border: 1px solid #ccc;
-            /* Adjust the color and style as needed */
-            border-radius: 5px;
-            /* Adjust the radius for roundness */
-            display: inline-block;
-            /* Ensures the border fits the text */
-            padding: 2px 4px;
-            /* Optional: adds some padding for better appearance */
-            background-color: white;
-            /* Set background color to white */
-        }
+    .text-muted {
+        border: 1px solid #ccc;
+        /* Adjust the color and style as needed */
+        border-radius: 5px;
+        /* Adjust the radius for roundness */
+        display: inline-block;
+        /* Ensures the border fits the text */
+        padding: 2px 4px;
+        /* Optional: adds some padding for better appearance */
+        background-color: white;
+        /* Set background color to white */
+    }
 
-        .job-title {
-            /* Assuming the job title has this class */
-            font-weight: bold;
-            /* Make the font bold */
-            font-size: 18px;
-            /* Set font size to 12px */
-        }
+    .job-title {
+        /* Assuming the job title has this class */
+        font-weight: bold;
+        /* Make the font bold */
+        font-size: 18px;
+        /* Set font size to 12px */
+    }
 
-        .company-title {
+    .company-title {
 
-            /* Make the font bold */
-            font-size: 18px;
-            /* Set font size to 12px */
-        }
+        /* Make the font bold */
+        font-size: 18px;
+        /* Set font size to 12px */
+    }
 
-        .table {
-            border-collapse: separate;
-            /* Ensure spacing is applied */
-            border-spacing: 0 10px;
-            /* Adjust the vertical spacing as needed */
-            background-color: #F5F7FB;
-            /* Set the table background color to #F5F7FB */
-        }
+    .table {
+        border-collapse: separate;
+        /* Ensure spacing is applied */
+        border-spacing: 0 10px;
+        /* Adjust the vertical spacing as needed */
+        background-color: #F5F7FB;
+        /* Set the table background color to #F5F7FB */
+    }
 
-        .table tr {
-            border-radius: 10px;
-            /* Adjust the radius as needed */
-            overflow: hidden;
-            /* Ensures the rounded corners are visible */
-        }
+    .table tr {
+        border-radius: 10px;
+        /* Adjust the radius as needed */
+        overflow: hidden;
+        /* Ensures the rounded corners are visible */
+    }
 
-        /* ... existing styles ... */
-        .table tr:hover .apply-button {
-            visibility: visible;
-            /* Show button on hover */
-            transition-delay: 0s;
-            /* Remove delay on hover */
-        }
+    /* ... existing styles ... */
+    .table tr:hover .apply-button {
+        visibility: visible;
+        /* Show button on hover */
+        transition-delay: 0s;
+        /* Remove delay on hover */
+    }
 
-        .apply-button {
-            visibility: hidden;
-            /* Hide button by default */
-            background-color: #fe7470;
-            /* Button background color */
-            color: white;
-            /* Text color */
-            border: none;
-            /* Remove border */
-            border-radius: 5px;
-            /* Rounded corners */
-            padding: 12px 80px;
-            /* Padding for better appearance */
-            cursor: pointer;
-            /* Pointer cursor on hover */
-            transition: background-color 0.3s;
-            /* Smooth transition */
-        }
+    .apply-button {
+        visibility: hidden;
+        /* Hide button by default */
+        background-color: #fe7470;
+        /* Button background color */
+        color: white;
+        /* Text color */
+        border: none;
+        /* Remove border */
+        border-radius: 5px;
+        /* Rounded corners */
+        padding: 12px 80px;
+        /* Padding for better appearance */
+        cursor: pointer;
+        /* Pointer cursor on hover */
+        transition: background-color 0.3s;
+        /* Smooth transition */
+    }
 
-        .apply-button:hover {
-            background-color: #fe7470;
-            /* Darker shade on hover */
-        }
+    .apply-button:hover {
+        background-color: #fe7470;
+        /* Darker shade on hover */
+    }
 
-        /* Remove the blur effect */
-        .offcanvas-backdrop {
-            display: none !important;
-            /* Hide the dark overlay */
-        }
+    /* Remove the blur effect */
+    .offcanvas-backdrop {
+        display: none !important;
+        /* Hide the dark overlay */
+    }
 
-        .subscribe-button {
-            background-color: #fe7470;
-            /* Button background color */
-            color: white;
-            /* Ensure text color is white */
-            border: none;
-            /* Remove border */
-            border-radius: 5px;
-            /* Rounded corners */
-            padding: 10px 20px;
-            /* Adjust padding for better appearance */
-            cursor: pointer;
-            /* Pointer cursor on hover */
-        }
+    .subscribe-button {
+        background-color: #fe7470;
+        /* Button background color */
+        color: white;
+        /* Ensure text color is white */
+        border: none;
+        /* Remove border */
+        border-radius: 5px;
+        /* Rounded corners */
+        padding: 10px 20px;
+        /* Adjust padding for better appearance */
+        cursor: pointer;
+        /* Pointer cursor on hover */
+    }
 
-        .subscribe-button:hover {
-            color: white;
-            /* Keep text color white on hover */
-            text-decoration: none;
-            /* Ensure no underline on hover */
-            opacity: 0.9;
-            /* Optional: add a hover effect */
-        }
+    .subscribe-button:hover {
+        color: white;
+        /* Keep text color white on hover */
+        text-decoration: none;
+        /* Ensure no underline on hover */
+        opacity: 0.9;
+        /* Optional: add a hover effect */
+    }
 
-        .card-title {
-            font-weight: bold;
-            font-size: 24px;
-            /* Increased font size from 20px to 24px */
-        }
+    .card-title {
+        font-weight: bold;
+        font-size: 24px;
+        /* Increased font size from 20px to 24px */
+    }
 
-        .text-secondary {
-            font-size: 16px;
-            /* Increased font size for secondary text */
-        }
+    .text-secondary {
+        font-size: 16px;
+        /* Increased font size for secondary text */
+    }
 
-        label {
-            color: grey;
-            /* Set label text color to grey */
-        }
+    label {
+        color: grey;
+        /* Set label text color to grey */
+    }
 
-        body {
-            font-family: 'Mabry', sans-serif !important; /* Change font to Mabry */
-            font-size: 15px !important;
-            /* Adjust the font size as needed */
-        }
-        /* ... existing styles ... */
+    body {
+        font-family: 'Mabry', sans-serif !important;
+        /* Change font to Mabry */
+        font-size: 15px !important;
+        /* Adjust the font size as needed */
+    }
+
+    /* ... existing styles ... */
     </style>
     <!-- CSS files -->
     <link href="../dist/css/tabler.min.css" rel="stylesheet" />
@@ -186,7 +188,7 @@
         <header class="navbar navbar-expand-md navbar-light d-print-none">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href="/rovergigs/railsdevs/index.php">
+                    <a href=".">
                         <p>Rails Devs</p>
                     </a>
                 </h1>
@@ -194,10 +196,11 @@
                 <div class="navbar-nav flex-row order-md-last">
                     <div class="nav-item me-3">
                         <div class="btn-list">
-                            <a href="/rovergigs/post-a-job.php" class="btn" target="_blank" rel="noreferrer">
+                            <a href="/rovergigs/railsdevs/users/sign-in.php" class="btn" target="_blank"
+                                rel="noreferrer">
                                 Sign in
                             </a>
-                            <a href="/rovergigs/post-a-job.php" class="btn"
+                            <a href="/rovergigs/railsdevs/users/sign-up.php" class="btn"
                                 style="background-color: #fe7470; color: white; font-weight: bold;" target="_blank"
                                 rel="noreferrer">
                                 Register
@@ -244,14 +247,16 @@
                                                 <div class="mb-3 row">
                                                     <h4>Company name</h4>
                                                     <div class="input-group mb-2">
-                                                        <input type="text" name="company_name" class="form-control" autocomplete="off">
+                                                        <input type="text" name="company_name" class="form-control"
+                                                            autocomplete="off">
                                                     </div>
                                                     <h4>Website</h4>
                                                     <div class="input-group mb-2">
                                                         <span class="input-group-text">
                                                             https://
                                                         </span>
-                                                        <input type="text" name="website" class="form-control" autocomplete="off">
+                                                        <input type="text" name="website" class="form-control"
+                                                            autocomplete="off">
                                                     </div>
                                                     <h4>Bio</h4>
                                                     <div class="input-group mb-2">
@@ -294,11 +299,13 @@
                                                 <div class="mb-3 row">
                                                     <h4>Your name</h4>
                                                     <div class="input-group mb-2">
-                                                        <input type="text" name="personal_name" class="form-control" autocomplete="off">
+                                                        <input type="text" name="personal_name" class="form-control"
+                                                            autocomplete="off">
                                                     </div>
                                                     <h4>Your job title or role</h4>
                                                     <div class="input-group mb-2">
-                                                        <input type="text" name="job_title" class="form-control" autocomplete="off">
+                                                        <input type="text" name="job_title" class="form-control"
+                                                            autocomplete="off">
                                                     </div>
                                                 </div>
                                             </div>
@@ -352,7 +359,8 @@
                                                         </div>
                                                     </div>
                                                     <label class="form-check form-check-inline" style="color: inherit;">
-                                                        <input class="form-check-input" name="survey_requests" type="checkbox" checked>
+                                                        <input class="form-check-input" name="survey_requests"
+                                                            type="checkbox" checked>
                                                         <span class="form-check-label">Survey requests</span>
                                                         <small class="form-hint">Help RailsDevs by receiving short,
                                                             infrequent surveys about how you use the platform.</small>
@@ -366,7 +374,8 @@
                             <!-- Save button -->
                             <div>
                                 <div class="card-footer text-end">
-                                    <button type="submit" class="btn" style="background-color: #fe7470; color: white; font-weight: bold;">Save</button>
+                                    <button type="submit" class="btn"
+                                        style="background-color: #fe7470; color: white; font-weight: bold;">Save</button>
                                 </div>
                             </div>
                         </div>
@@ -419,7 +428,7 @@
                         <li class="list-inline-item">
                             Copyright &copy;
                             <script type="text/javascript">
-                                document.write(new Date().getFullYear());
+                            document.write(new Date().getFullYear());
                             </script>
                             <a href="www.rovergigs.com" class="link-secondary">Rover Gigs</a>.
                             All rights reserved.
@@ -442,16 +451,16 @@
 
     <!-- Custom Script for Subscribe Button -->
     <script>
-        // Check if the user has already subscribed
-        if (localStorage.getItem('subscribed')) {
-            document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
-        }
+    // Check if the user has already subscribed
+    if (localStorage.getItem('subscribed')) {
+        document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
+    }
 
-        // Add click event to the subscribe button
-        document.getElementById('subscribe-button').addEventListener('click', function () {
-            localStorage.setItem('subscribed', 'true'); // Set the subscribed flag
-            document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
-        });
+    // Add click event to the subscribe button
+    document.getElementById('subscribe-button').addEventListener('click', function() {
+        localStorage.setItem('subscribed', 'true'); // Set the subscribed flag
+        document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
+    });
     </script>
 </body>
 
