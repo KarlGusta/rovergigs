@@ -3,14 +3,11 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Connecting to the Database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "rovergigs";
+require_once 'config.php';
 
-// Create connection
-$connection = new mysqli($servername, $username, $password, $database);
+// Create connection to the database
+$connection = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+
 if ($connection->connect_error) {
     $errorMessage = "Connection failed: " . $connection->connect_error; // Set error message
 }
@@ -147,14 +144,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVPMVGBZ4Q"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-SVPMVGBZ4Q');
+    gtag('config', 'G-SVPMVGBZ4Q');
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -189,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href=".">
+                    <a href="." style="text-decoration: none;">
                         Rover Gigs
                     </a>
                 </h1>
@@ -959,80 +956,80 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <!--Check option for Job Type-->
     <script type="text/javascript">
-        $(document).ready(function () {
+    $(document).ready(function() {
 
-            $('.checkOptionJobType').click(function () {
-                $('.checkOptionJobType').not(this).prop('checked', false);
-            });
-
+        $('.checkOptionJobType').click(function() {
+            $('.checkOptionJobType').not(this).prop('checked', false);
         });
+
+    });
     </script>
     <!--Check option for worldwide roles-->
     <script type="text/javascript">
-        $(document).ready(function () {
+    $(document).ready(function() {
 
-            $('.checkOptionWorldwideRoles').click(function () {
-                $('.checkOptionWorldwideRoles').not(this).prop('checked', false);
-            });
-
+        $('.checkOptionWorldwideRoles').click(function() {
+            $('.checkOptionWorldwideRoles').not(this).prop('checked', false);
         });
+
+    });
     </script>
     <!-- For the select tags-->
     <script>
-        // @formatter:off
-        document.addEventListener("DOMContentLoaded", function () {
-            var el;
-            window.TomSelect && (new TomSelect(el = document.getElementById('job-tags'), {
-                copyClassesToDropdown: false,
-                dropdownParent: 'body',
-                controlInput: '<input>',
-                render: {
-                    item: function (data, escape) {
-                        if (data.customProperties) {
-                            return '<div><span class="dropdown-item-indicator">' + data
-                                .customProperties + '</span>' + escape(data.text) + '</div>';
-                        }
-                        return '<div>' + escape(data.text) + '</div>';
-                    },
-                    option: function (data, escape) {
-                        if (data.customProperties) {
-                            return '<div><span class="dropdown-item-indicator">' + data
-                                .customProperties + '</span>' + escape(data.text) + '</div>';
-                        }
-                        return '<div>' + escape(data.text) + '</div>';
-                    },
+    // @formatter:off
+    document.addEventListener("DOMContentLoaded", function() {
+        var el;
+        window.TomSelect && (new TomSelect(el = document.getElementById('job-tags'), {
+            copyClassesToDropdown: false,
+            dropdownParent: 'body',
+            controlInput: '<input>',
+            render: {
+                item: function(data, escape) {
+                    if (data.customProperties) {
+                        return '<div><span class="dropdown-item-indicator">' + data
+                            .customProperties + '</span>' + escape(data.text) + '</div>';
+                    }
+                    return '<div>' + escape(data.text) + '</div>';
                 },
-            }));
-        });
-        // @formatter:on
+                option: function(data, escape) {
+                    if (data.customProperties) {
+                        return '<div><span class="dropdown-item-indicator">' + data
+                            .customProperties + '</span>' + escape(data.text) + '</div>';
+                    }
+                    return '<div>' + escape(data.text) + '</div>';
+                },
+            },
+        }));
+    });
+    // @formatter:on
     </script>
     <!-- TinyMCE -->
     <script>
-        // @formatter:off
-        document.addEventListener("DOMContentLoaded", function () {
-            let options = {
-                selector: '#tinymce-mytextarea',
-                height: 300,
-                menubar: false,
-                statusbar: false,
-                plugins: [
-                    'advlist autolink lists link image charmap print preview anchor',
-                    'searchreplace visualblocks code fullscreen',
-                    'insertdatetime media table paste code help wordcount'
-                ],
-                toolbar: 'undo redo | formatselect | ' +
-                    'bold italic backcolor | alignleft aligncenter ' +
-                    'alignright alignjustify | bullist numlist outdent indent | ' +
-                    'removeformat',
-                content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif; font-size: 14px; -webkit-font-smoothing: antialiased; }'
-            }
-            if (localStorage.getItem("tablerTheme") === 'dark') {
-                options.skin = 'oxide-dark';
-                options.content_css = 'dark';
-            }
-            tinyMCE.init(options);
-        })
-        // @formatter:on
+    // @formatter:off
+    document.addEventListener("DOMContentLoaded", function() {
+        let options = {
+            selector: '#tinymce-mytextarea',
+            height: 300,
+            menubar: false,
+            statusbar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+            ],
+            toolbar: 'undo redo | formatselect | ' +
+                'bold italic backcolor | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'removeformat',
+            content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif; font-size: 14px; -webkit-font-smoothing: antialiased; }'
+        }
+        if (localStorage.getItem("tablerTheme") === 'dark') {
+            options.skin = 'oxide-dark';
+            options.content_css = 'dark';
+        }
+        tinyMCE.init(options);
+    })
+    // @formatter:on
     </script>
 </body>
 

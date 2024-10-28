@@ -98,25 +98,23 @@
                             <div class="card">
                                 <div class="table-responsive">
                                     <form>
-                                    <table class="table table-vcenter card-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Title</th>
-                                                <th>Category</th>
-                                                <th class="w-1"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!-- Connection to the database-->
-                                            <?php
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $database = "rovergigs";
+                                        <table class="table table-vcenter card-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Title</th>
+                                                    <th>Category</th>
+                                                    <th class="w-1"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- Connection to the database-->
+                                                <?php
+                                                // Connection to the database
+                            require_once 'config.php';
 
                         // Create connection to the database
-                        $connection = new mysqli($servername, $username, $password, $database);
+                        $connection = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
                         // Check if the connection is established correctly or not
                         if ($connection->connect_error) {
@@ -155,8 +153,8 @@
                     }
                         ?>
 
-                                        </tbody>
-                                    </table>
+                                            </tbody>
+                                        </table>
                                 </div>
                             </div>
                         </div>

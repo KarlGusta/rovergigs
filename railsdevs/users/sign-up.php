@@ -168,10 +168,10 @@
 
 <body>
     <div class="page">
-        <header class="navbar navbar-expand-md navbar-light d-print-none">
+    <header class="navbar navbar-expand-md navbar-light d-print-none">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href="/rovergigs/railsdevs/index.php">
+                    <a href="../index.php">
                         <p>Rails Devs</p>
                     </a>
                 </h1>
@@ -179,10 +179,11 @@
                 <div class="navbar-nav flex-row order-md-last">
                     <div class="nav-item me-3">
                         <div class="btn-list">
-                            <a href="/rovergigs/post-a-job.php" class="btn" target="_blank" rel="noreferrer">
+                            <a href="/rovergigs/railsdevs/users/sign-in.php" class="btn" target="_blank"
+                                rel="noreferrer">
                                 Sign in
                             </a>
-                            <a href="/rovergigs/post-a-job.php" class="btn"
+                            <a href="/rovergigs/railsdevs/users/sign-up.php" class="btn"
                                 style="background-color: #fe7470; color: white; font-weight: bold;" target="_blank"
                                 rel="noreferrer">
                                 Register
@@ -236,7 +237,7 @@
                                 </div>
                             </div>
                             <div class="text-center text-secondary mt-3">
-                                Have an account? <a href="./sign-in.html" tabindex="-1">Sign in</a>
+                                Have an account? <a href="sign-in.php" tabindex="-1">Sign in</a>
                             </div>
                         </div>
 

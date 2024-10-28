@@ -13,14 +13,14 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVPMVGBZ4Q"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-SVPMVGBZ4Q');
+    gtag('config', 'G-SVPMVGBZ4Q');
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -30,7 +30,8 @@
     <meta property="og:title" content="Rover Gigs" />
     <meta property="og:type" content="remote jobs" />
     <meta property="og:url" content="https://rovergigs.com" />
-    <meta property="og:image" content="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0p4eq5kustxxpk2mbe2t.png" />
+    <meta property="og:image"
+        content="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0p4eq5kustxxpk2mbe2t.png" />
     <meta property="og:description" content="A global community of remote workers." />
     <meta property="og:site_name" content="Rover Gigs" />
     <meta property="og:locale" content="en_US" />
@@ -38,134 +39,134 @@
     <title>RoverGigs - Home</title>
     <!-- Custom CSS -->
     <style>
-        .text-muted {
-            border: 1px solid #ccc;
-            /* Adjust the color and style as needed */
-            border-radius: 5px;
-            /* Adjust the radius for roundness */
-            display: inline-block;
-            /* Ensures the border fits the text */
-            padding: 2px 4px;
-            /* Optional: adds some padding for better appearance */
-            background-color: white;
-            /* Set background color to white */
-        }
+    .text-muted {
+        border: 1px solid #ccc;
+        /* Adjust the color and style as needed */
+        border-radius: 5px;
+        /* Adjust the radius for roundness */
+        display: inline-block;
+        /* Ensures the border fits the text */
+        padding: 2px 4px;
+        /* Optional: adds some padding for better appearance */
+        background-color: white;
+        /* Set background color to white */
+    }
 
-        .job-title {
-            /* Assuming the job title has this class */
-            font-weight: bold;
-            /* Make the font bold */
-            font-size: 18px;
-            /* Set font size to 12px */
-        }
+    .job-title {
+        /* Assuming the job title has this class */
+        font-weight: bold;
+        /* Make the font bold */
+        font-size: 18px;
+        /* Set font size to 12px */
+    }
 
-        .company-title {
+    .company-title {
 
-            /* Make the font bold */
-            font-size: 18px;
-            /* Set font size to 12px */
-        }
+        /* Make the font bold */
+        font-size: 18px;
+        /* Set font size to 12px */
+    }
 
-        .card:hover .apply-button {
-            visibility: visible;
-            /* Show button on card hover */
-        }
+    .card:hover .apply-button {
+        visibility: visible;
+        /* Show button on card hover */
+    }
 
-        .apply-button {
-            visibility: hidden;
-            /* Hide button by default */
-            background-color: #fe7470;
-            /* Button background color */
-            color: white;
-            /* Text color */
-            border: none;
-            /* Remove border */
-            border-radius: 5px;
-            /* Rounded corners */
-            padding: 12px 80px;
-            /* Padding for better appearance */
-            cursor: pointer;
-            /* Pointer cursor on hover */
-            transition: background-color 0.3s;
-            /* Smooth transition */
-        }
+    .apply-button {
+        visibility: hidden;
+        /* Hide button by default */
+        background-color: #fe7470;
+        /* Button background color */
+        color: white;
+        /* Text color */
+        border: none;
+        /* Remove border */
+        border-radius: 5px;
+        /* Rounded corners */
+        padding: 12px 80px;
+        /* Padding for better appearance */
+        cursor: pointer;
+        /* Pointer cursor on hover */
+        transition: background-color 0.3s;
+        /* Smooth transition */
+    }
 
-        .apply-button:hover {
-            background-color: #fe7470;
-            /* Darker shade on hover */
-        }
+    .apply-button:hover {
+        background-color: #fe7470;
+        /* Darker shade on hover */
+    }
 
-        /* Remove the blur effect */
-        .offcanvas-backdrop {
-            display: none !important;
-            /* Hide the dark overlay */
-        }
+    /* Remove the blur effect */
+    .offcanvas-backdrop {
+        display: none !important;
+        /* Hide the dark overlay */
+    }
 
-        .subscribe-button {
-            background-color: #fe7470;
-            /* Button background color */
-            color: white;
-            /* Ensure text color is white */
-            border: none;
-            /* Remove border */
-            border-radius: 5px;
-            /* Rounded corners */
-            padding: 10px 20px;
-            /* Adjust padding for better appearance */
-            cursor: pointer;
-            /* Pointer cursor on hover */
-        }
+    .subscribe-button {
+        background-color: #fe7470;
+        /* Button background color */
+        color: white;
+        /* Ensure text color is white */
+        border: none;
+        /* Remove border */
+        border-radius: 5px;
+        /* Rounded corners */
+        padding: 10px 20px;
+        /* Adjust padding for better appearance */
+        cursor: pointer;
+        /* Pointer cursor on hover */
+    }
 
-        .subscribe-button:hover {
-            color: white;
-            /* Keep text color white on hover */
-            text-decoration: none;
-            /* Ensure no underline on hover */
-            opacity: 0.9;
-            /* Optional: add a hover effect */
-        }
+    .subscribe-button:hover {
+        color: white;
+        /* Keep text color white on hover */
+        text-decoration: none;
+        /* Ensure no underline on hover */
+        opacity: 0.9;
+        /* Optional: add a hover effect */
+    }
 
-        .trusted-logo {
-            filter: grayscale(100%) opacity(0.5);
-            /* Adjusted opacity */
-            width: 90px;
-            /* Set a fixed width */
-            height: auto;
-            /* Maintain aspect ratio */
-            margin: 0 10px;
-            /* Added margin for spacing */
-        }
+    .trusted-logo {
+        filter: grayscale(100%) opacity(0.5);
+        /* Adjusted opacity */
+        width: 90px;
+        /* Set a fixed width */
+        height: auto;
+        /* Maintain aspect ratio */
+        margin: 0 10px;
+        /* Added margin for spacing */
+    }
 
-        .cloudflare-logo {
-            width: 50px;
-            /* Reduced size for Cloudflare logo */
-        }
+    .cloudflare-logo {
+        width: 50px;
+        /* Reduced size for Cloudflare logo */
+    }
 
-        .ibm-logo {
-            width: 70px;
-            /* Reduced size for IBM logo */
-        }
+    .ibm-logo {
+        width: 70px;
+        /* Reduced size for IBM logo */
+    }
 
-        .trusted-by-title {
-            color: grey;
-            /* Set text color to grey */
-            opacity: 0.7;
-            /* Match opacity with logos */
-            font-size: 10px;
-            /* Set font size to a very small value */
-        }
+    .trusted-by-title {
+        color: grey;
+        /* Set text color to grey */
+        opacity: 0.7;
+        /* Match opacity with logos */
+        font-size: 10px;
+        /* Set font size to a very small value */
+    }
 
+    .responsive-title {
+        font-size: 36px !important;
+        /* Default font size for mobile */
+    }
+
+    @media (min-width: 768px) {
         .responsive-title {
-            font-size: 36px !important;
-            /* Default font size for mobile */
+            font-size: 56px !important;
+            /* Font size for larger screens */
         }
-
-        @media (min-width: 768px) {
-            .responsive-title {
-                font-size: 56px !important;
-                /* Font size for larger screens */
-            }
-        }
+    }
     </style>
     <!-- CSS files -->
     <link href="./dist/css/tabler.min.css" rel="stylesheet" />
@@ -182,7 +183,7 @@
         <header class="navbar navbar-expand-md navbar-light d-print-none">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href=".">
+                    <a href="." style="text-decoration: none;">
                         Rover Gigs
                     </a>
                 </h1>
@@ -261,13 +262,10 @@
                                 <div class='space-y'>
                                     <!--Connection to the database-->
                                     <?php
-                                    $servername = "localhost";
-                                    $username = "root";
-                                    $password = "";
-                                    $database = "rovergigs";
+                                    require_once 'config.php';
 
                                     // Create connection to the database
-                                    $connection = new mysqli($servername, $username, $password, $database);
+                                    $connection = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
                                     // Check if the connection is established correctly or not
                                     if ($connection->connect_error) {
@@ -515,7 +513,7 @@
                         <li class="list-inline-item">
                             Copyright &copy;
                             <script type="text/javascript">
-                                document.write(new Date().getFullYear());
+                            document.write(new Date().getFullYear());
                             </script>
                             <a href="www.rovergigs.com" class="link-secondary">Rover Gigs</a>.
                             All rights reserved.
@@ -538,16 +536,16 @@
 
     <!-- Custom Script for Subscribe Button -->
     <script>
-        // Check if the user has already subscribed
-        if (localStorage.getItem('subscribed')) {
-            document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
-        }
+    // Check if the user has already subscribed
+    if (localStorage.getItem('subscribed')) {
+        document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
+    }
 
-        // Add click event to the subscribe button
-        document.getElementById('subscribe-button').addEventListener('click', function () {
-            localStorage.setItem('subscribed', 'true'); // Set the subscribed flag
-            document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
-        });
+    // Add click event to the subscribe button
+    document.getElementById('subscribe-button').addEventListener('click', function() {
+        localStorage.setItem('subscribed', 'true'); // Set the subscribed flag
+        document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
+    });
     </script>
 </body>
 

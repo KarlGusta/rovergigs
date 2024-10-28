@@ -13,14 +13,14 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVPMVGBZ4Q"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-SVPMVGBZ4Q');
+    gtag('config', 'G-SVPMVGBZ4Q');
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -30,7 +30,8 @@
     <meta property="og:title" content="Rover Gigs" />
     <meta property="og:type" content="remote jobs" />
     <meta property="og:url" content="https://rovergigs.com" />
-    <meta property="og:image" content="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0p4eq5kustxxpk2mbe2t.png" />
+    <meta property="og:image"
+        content="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0p4eq5kustxxpk2mbe2t.png" />
     <meta property="og:description" content="A global community of remote workers." />
     <meta property="og:site_name" content="Rover Gigs" />
     <meta property="og:locale" content="en_US" />
@@ -52,7 +53,7 @@
         <header class="navbar navbar-expand-md navbar-light d-print-none">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href=".">
+                    <a href="." style="text-decoration: none;">
                         Rover Gigs
                     </a>
                 </h1>
@@ -219,8 +220,9 @@
                                         </li>
                                     </ul>
                                     <div class="text-center mt-4">
-                                        <a href="https://rovergigs.gumroad.com/l/lhmdsv"
-                                            class="btn w-100" style="font-size: 1.25rem; background-color: #fe7470; color: white;">Choose plan</a>
+                                        <a href="https://rovergigs.gumroad.com/l/lhmdsv" class="btn w-100"
+                                            style="font-size: 1.25rem; background-color: #fe7470; color: white;">Choose
+                                            plan</a>
                                     </div>
                                 </div>
                             </div>
@@ -332,7 +334,7 @@
                     <ul class="list-inline list-inline-dots mb-0">
                         <li class="list-inline-item">
                             Copyright &copy; <script type="text/javascript">
-                                document.write(new Date().getFullYear());
+                            document.write(new Date().getFullYear());
                             </script>
                             <a href="www.weareremoteokay.com" class="link-secondary">We Are Remote Okay</a>.
                             All rights reserved.

@@ -13,14 +13,14 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVPMVGBZ4Q"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-SVPMVGBZ4Q');
+    gtag('config', 'G-SVPMVGBZ4Q');
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -53,7 +53,7 @@
         <header class="navbar navbar-expand-md navbar-light d-print-none">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href=".">
+                    <a href="." style="text-decoration: none;">
                         Rover Gigs
                     </a>
                 </h1>
@@ -153,17 +153,21 @@
                                                   </div>
                                                   <div class='mt-3'>
                                                       <!--<a href='/weareremoteokay/apply-for-the-job.php?JobId=$row[jobId]' class='btn btn-primary' target='_blank' rel='noopener'>Apply for the job</a>-->
-                                                      <input type='hidden' value='<?php $row[applicationLinkOrEmail] ?>' id='myInput'>
-                                                      <p id='emailFromDBToBeCopied' style='display:none'>$row[applicationLinkOrEmail]</p>
-                                                      <button type='button' class='btn btn-success' id='emailCopiedToClipboardButton' style='display:none;' data-bs-toggle='tooltip' data-bs-placement='right' title='Email Copied to clipboard'>Email copied!</button>
-                                                      <button type='button' id='buttonToBeClickedToCopyEmail' class='btn btn-danger' id='button1' onclick='copyContent()'>Apply for job</button>
-                                                  </div>
-                                              </div>
-                                           </div>
-                                      </div>
-                                   </div>
-                                </div>
-                                 <!-- Benefits -->
+                                                      <input type='hidden' value='<?php $row[applicationLinkOrEmail] ?>'
+                        id='myInput'>
+                        <p id='emailFromDBToBeCopied' style='display:none'>$row[applicationLinkOrEmail]</p>
+                        <button type='button' class='btn btn-success' id='emailCopiedToClipboardButton'
+                            style='display:none;' data-bs-toggle='tooltip' data-bs-placement='right'
+                            title='Email Copied to clipboard'>Email copied!</button>
+                        <button type='button' id='buttonToBeClickedToCopyEmail' class='btn btn-danger' id='button1'
+                            onclick='copyContent()'>Apply for job</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Benefits -->
     <div class='col-12'>
         <div class='card card-md'>
             <div class='card-body'>
@@ -253,10 +257,10 @@
             </div>
         </div>
     </div>
-    
+
     ";
-                            } else {
-                                echo "
+    } else {
+    echo "
     <!--Organization Description-->
     <div class='col-12'>
         <div class='card card-md'>
@@ -383,13 +387,13 @@
         </div>
     </div>
     ";
-                            }
-                        }
-                        ?>
-                    </div>
-                </div>
-            </div>
-        </div>
+    }
+    }
+    ?>
+    </div>
+    </div>
+    </div>
+    </div>
     </div>
     <!--This is where the footer should be-->
     <footer class="footer footer-transparent d-print-none">
@@ -435,7 +439,7 @@
                         <li class="list-inline-item">
                             Copyright &copy;
                             <script type="text/javascript">
-                                document.write(new Date().getFullYear());
+                            document.write(new Date().getFullYear());
                             </script>
                             <a href="www.weareremoteokay.com" class="link-secondary">Rover Gigs</a>.
                             All rights reserved.
@@ -457,16 +461,16 @@
     <script src="./dist/js/demo.min.js" defer></script>
     <!--Copy to Clipboard-->
     <script>
-        let emailFromDBToBeCopied = document.getElementById('emailFromDBToBeCopied').innerHTML;
-        const copyContent = async () => {
-            try {
-                await navigator.clipboard.writeText(emailFromDBToBeCopied);
-                document.getElementById('emailCopiedToClipboardButton').style.display = "block";
-                document.getElementById('buttonToBeClickedToCopyEmail').style.display = "none";
-            } catch (err) {
-                console.error('Failed to copy: ', err);
-            }
+    let emailFromDBToBeCopied = document.getElementById('emailFromDBToBeCopied').innerHTML;
+    const copyContent = async () => {
+        try {
+            await navigator.clipboard.writeText(emailFromDBToBeCopied);
+            document.getElementById('emailCopiedToClipboardButton').style.display = "block";
+            document.getElementById('buttonToBeClickedToCopyEmail').style.display = "none";
+        } catch (err) {
+            console.error('Failed to copy: ', err);
         }
+    }
     </script>
     <!--Share the job-->
     <script async src="https://static.addtoany.com/menu/page.js"></script>
