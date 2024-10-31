@@ -641,7 +641,7 @@ $developers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                                     <h3 class="card-title" style="font-weight: bold; font-size: 20px;">
                                                                         <?php echo htmlspecialchars($developer['hero']); ?>
                                                                     </h3>
-                                                                    <?php if (isset($developer['actively_looking']) && $developer['actively_looking']): ?>
+                                                                    <?php if ($developer['search_status == "Actively looking" ']): ?>
                                                                     <p>
                                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                                                              fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round"
