@@ -324,13 +324,11 @@ session_start();
                                 <div class="form-label">Role level</div>
                                 <div class="mb-4">
                                     <label class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="1"
-                                            checked>
+                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="1">
                                         <span class="form-check-label">Junior</span>
                                     </label>
                                     <label class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="2"
-                                            checked>
+                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="2">
                                         <span class="form-check-label">Mid-level</span>
                                     </label>
                                     <label class="form-check">
@@ -1137,10 +1135,12 @@ session_start();
                                                 <div class="card-body ps-0">
                                                     <div class="row">
                                                         <div class="col">
-                                                            <p class="mb-0 text-secondary">Showing <strong>1326</strong>
-                                                                of <strong>1300+ </strong>developers.<a href="#"
-                                                                    class="text-secondary"> <strong>Reset
-                                                                        filters</strong></a>
+                                                            <p class="mb-0 text-secondary">Showing <strong><?php echo $totalCount; ?></strong>
+                                                                of <strong>1300+ </strong>developers.
+                                                                <!-- If there are any filters applied, display the reset filters link  -->
+                                                                <?php if (!empty($_GET)): ?>
+                                                                <a href="more-devs.php" class="text-secondary"> <strong>Reset filters</strong></a>
+                                                                <?php endif; ?>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -1350,15 +1350,6 @@ session_start();
             timezoneContent.style.display = 'block';
             timezoneToggleIcon.textContent = '−'; // This is a minus sign (U+2212)
         }
-    });
-    </script>
-
-    <!-- Add JavaScript for form submission -->
-    <script>
-    document.querySelectorAll('input[name="role_level[]"]').forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            this.closest('form').submit();
-        });
     });
     </script>
 </body>
