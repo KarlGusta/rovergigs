@@ -1,57 +1,8 @@
 <?php
 // Start the session
-session_start(); 
-
-require_once('../config/db.php');
-
-// Initialize the WHERE clauses array
-$where_clauses = [];
-$params = [];
-
-// Handle role level filters
-if (!empty($_GET['role_level'])) {
-    $role_levels = $_GET['role_level'];
-    $placeholders = str_repeat('?,', count($role_levels) - 1) . '?';
-    $where_clauses[] = "role_level IN ($placeholders)";
-    $params = array_merge($params, $role_levels);
-}
-
-// Handle work preference filters
-if (!empty($_GET['work_preference'])) {
-    $work_preferences = $_GET['work_preference'];
-    $placeholders = str_repeat('?,', count($work_preferences) - 1) . '?';
-    $where_clauses[] = "work_preference IN ($placeholders)";
-    $params = array_merge($params, $work_preferences);
-}
-
-// Handle location filters
-if (!empty($_GET['location'])) {
-    $locations = $_GET['location'];
-    $placeholders = str_repeat('?,', count($locations) - 1) . '?';
-    $where_clauses[] = "location IN ($placeholders)";
-    $params = array_merge($params, $locations);
-}
-
-// Handle timezone filters
-if (!empty($_GET['timezone'])) {
-    $timezones = $_GET['timezone'];
-    $placeholders = str_repeat('?,', count($timezones) - 1) . '?';
-    $where_clauses[] = "timezone IN ($placeholders)";
-    $params = array_merge($params, $timezones);
-}
-
-// Build the final query
-$sql = "SELECT * FROM developer_profiles";
-if (!empty($where_clauses)) {
-    $sql .= " WHERE " . implode(' AND ', $where_clauses);
-}
-$sql .= " ORDER BY created_at DESC";
-
-// Prepare and execute the query
-$stmt = $pdo->prepare($sql);
-$stmt->execute($params);
-$developers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+session_start();
 ?>
+
 <!doctype html>
 <!--
 * Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
@@ -67,14 +18,14 @@ $developers = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVPMVGBZ4Q"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-SVPMVGBZ4Q');
+    gtag('config', 'G-SVPMVGBZ4Q');
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -92,169 +43,169 @@ $developers = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>RoverGigs - Home</title>
     <!-- Custom CSS -->
     <style>
-        .text-muted {
-            border: 1px solid #ccc;
-            /* Adjust the color and style as needed */
-            border-radius: 5px;
-            /* Adjust the radius for roundness */
-            display: inline-block;
-            /* Ensures the border fits the text */
-            padding: 2px 4px;
-            /* Optional: adds some padding for better appearance */
-            background-color: white;
-            /* Set background color to white */
-        }
+    .text-muted {
+        border: 1px solid #ccc;
+        /* Adjust the color and style as needed */
+        border-radius: 5px;
+        /* Adjust the radius for roundness */
+        display: inline-block;
+        /* Ensures the border fits the text */
+        padding: 2px 4px;
+        /* Optional: adds some padding for better appearance */
+        background-color: white;
+        /* Set background color to white */
+    }
 
-        .job-title {
-            /* Assuming the job title has this class */
-            font-weight: bold;
-            /* Make the font bold */
-            font-size: 18px;
-            /* Set font size to 12px */
-        }
+    .job-title {
+        /* Assuming the job title has this class */
+        font-weight: bold;
+        /* Make the font bold */
+        font-size: 18px;
+        /* Set font size to 12px */
+    }
 
-        .company-title {
+    .company-title {
 
-            /* Make the font bold */
-            font-size: 18px;
-            /* Set font size to 12px */
-        }
+        /* Make the font bold */
+        font-size: 18px;
+        /* Set font size to 12px */
+    }
 
-        .table {
-            border-collapse: separate;
-            /* Ensure spacing is applied */
-            border-spacing: 0 10px;
-            /* Adjust the vertical spacing as needed */
-            background-color: #F5F7FB;
-            /* Set the table background color to #F5F7FB */
-        }
+    .table {
+        border-collapse: separate;
+        /* Ensure spacing is applied */
+        border-spacing: 0 10px;
+        /* Adjust the vertical spacing as needed */
+        background-color: #F5F7FB;
+        /* Set the table background color to #F5F7FB */
+    }
 
-        .table tr {
-            border-radius: 10px;
-            /* Adjust the radius as needed */
-            overflow: hidden;
-            /* Ensures the rounded corners are visible */
-        }
+    .table tr {
+        border-radius: 10px;
+        /* Adjust the radius as needed */
+        overflow: hidden;
+        /* Ensures the rounded corners are visible */
+    }
 
-        /* ... existing styles ... */
-        .table tr:hover .apply-button {
-            visibility: visible;
-            /* Show button on hover */
-            transition-delay: 0s;
-            /* Remove delay on hover */
-        }
+    /* ... existing styles ... */
+    .table tr:hover .apply-button {
+        visibility: visible;
+        /* Show button on hover */
+        transition-delay: 0s;
+        /* Remove delay on hover */
+    }
 
-        .apply-button {
-            visibility: hidden;
-            /* Hide button by default */
-            background-color: #fe7470;
-            /* Button background color */
-            color: white;
-            /* Text color */
-            border: none;
-            /* Remove border */
-            border-radius: 5px;
-            /* Rounded corners */
-            padding: 12px 80px;
-            /* Padding for better appearance */
-            cursor: pointer;
-            /* Pointer cursor on hover */
-            transition: background-color 0.3s;
-            /* Smooth transition */
-        }
+    .apply-button {
+        visibility: hidden;
+        /* Hide button by default */
+        background-color: #fe7470;
+        /* Button background color */
+        color: white;
+        /* Text color */
+        border: none;
+        /* Remove border */
+        border-radius: 5px;
+        /* Rounded corners */
+        padding: 12px 80px;
+        /* Padding for better appearance */
+        cursor: pointer;
+        /* Pointer cursor on hover */
+        transition: background-color 0.3s;
+        /* Smooth transition */
+    }
 
-        .apply-button:hover {
-            background-color: #fe7470;
-            /* Darker shade on hover */
-        }
+    .apply-button:hover {
+        background-color: #fe7470;
+        /* Darker shade on hover */
+    }
 
-        /* Remove the blur effect */
-        .offcanvas-backdrop {
-            display: none !important;
-            /* Hide the dark overlay */
-        }
+    /* Remove the blur effect */
+    .offcanvas-backdrop {
+        display: none !important;
+        /* Hide the dark overlay */
+    }
 
-        .subscribe-button {
-            background-color: #fe7470;
-            /* Button background color */
-            color: white;
-            /* Ensure text color is white */
-            border: none;
-            /* Remove border */
-            border-radius: 5px;
-            /* Rounded corners */
-            padding: 10px 20px;
-            /* Adjust padding for better appearance */
-            cursor: pointer;
-            /* Pointer cursor on hover */
-        }
+    .subscribe-button {
+        background-color: #fe7470;
+        /* Button background color */
+        color: white;
+        /* Ensure text color is white */
+        border: none;
+        /* Remove border */
+        border-radius: 5px;
+        /* Rounded corners */
+        padding: 10px 20px;
+        /* Adjust padding for better appearance */
+        cursor: pointer;
+        /* Pointer cursor on hover */
+    }
 
-        .subscribe-button:hover {
-            color: white;
-            /* Keep text color white on hover */
-            text-decoration: none;
-            /* Ensure no underline on hover */
-            opacity: 0.9;
-            /* Optional: add a hover effect */
-        }
+    .subscribe-button:hover {
+        color: white;
+        /* Keep text color white on hover */
+        text-decoration: none;
+        /* Ensure no underline on hover */
+        opacity: 0.9;
+        /* Optional: add a hover effect */
+    }
 
-        .card-title {
-            font-weight: bold;
-            font-size: 24px;
-            /* Increased font size from 20px to 24px */
-        }
+    .card-title {
+        font-weight: bold;
+        font-size: 24px;
+        /* Increased font size from 20px to 24px */
+    }
 
-        .text-secondary {
-            font-size: 16px;
-            /* Increased font size for secondary text */
-        }
+    .text-secondary {
+        font-size: 16px;
+        /* Increased font size for secondary text */
+    }
 
-        label {
-            color: grey;
-            /* Set label text color to grey */
-        }
+    label {
+        color: grey;
+        /* Set label text color to grey */
+    }
 
-        body {
-            font-size: 15px !important;
-            /* Adjust the font size as needed */
-        }
+    body {
+        font-size: 15px !important;
+        /* Adjust the font size as needed */
+    }
 
-        .accordion-content {
-            display: none;
-            padding-bottom: 20px;
-            border-top: none;
-        }
+    .accordion-content {
+        display: none;
+        padding-bottom: 20px;
+        border-top: none;
+    }
 
-        .accordion-header {
-            padding-bottom: 20px;
-            cursor: pointer;
-        }
+    .accordion-header {
+        padding-bottom: 20px;
+        cursor: pointer;
+    }
 
-        .form-check {
-            margin-bottom: 5px;
-        }
+    .form-check {
+        margin-bottom: 5px;
+    }
 
-        .work-preference-toggle-icon {
-            font-size: 18px;
-            font-weight: bold;
-        }
+    .work-preference-toggle-icon {
+        font-size: 18px;
+        font-weight: bold;
+    }
 
-        .location-toggle-icon {
-            font-size: 18px;
-            font-weight: bold;
-        }
+    .location-toggle-icon {
+        font-size: 18px;
+        font-weight: bold;
+    }
 
-        .all-locations-toggle-icon {
-            font-size: 18px;
-            font-weight: bold;
-        }
+    .all-locations-toggle-icon {
+        font-size: 18px;
+        font-weight: bold;
+    }
 
-        .timezone-toggle-icon {
-            font-size: 18px;
-            font-weight: bold;
-        }
+    .timezone-toggle-icon {
+        font-size: 18px;
+        font-weight: bold;
+    }
 
-        /* ... existing styles ... */
+    /* ... existing styles ... */
     </style>
     <!-- CSS files -->
     <link href="../dist/css/tabler.min.css" rel="stylesheet" />
@@ -262,17 +213,17 @@ $developers = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link href="../dist/css/tabler-payments.min.css" rel="stylesheet" />
     <link href="../dist/css/tabler-vendors.min.css" rel="stylesheet" />
     <link href="../dist/css/demo.min.css" rel="stylesheet" />
-    
+
     <!--Favicon-->
     <link rel="icon" type="image/x-icon" href="../Images/rovergigs_logo.png">
 </head>
 
 <body>
     <div class="page">
-    <header class="navbar navbar-expand-md navbar-light d-print-none">
+        <header class="navbar navbar-expand-md navbar-light d-print-none">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href="/rovergigs/railsdevs">
+                    <a href="/rovergigs/railsdevs/index.php">
                         <p>Rails Devs</p>
                     </a>
                 </h1>
@@ -346,7 +297,8 @@ $developers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="container-xl">
                     <div class="row g-4">
                         <div class="col-md-3">
-                            <form action="./" method="get" autocomplete="off" novalidate class="sticky-top">
+                            <form action="./more-devs.php" method="get" autocomplete="off" novalidate
+                                class="sticky-top">
                                 <div class="form-label">Search profiles</div>
                                 <div class="mb-4">
                                     <div class="alert" role="alert">
@@ -372,28 +324,30 @@ $developers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-label">Role level</div>
                                 <div class="mb-4">
                                     <label class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="junior" <?php echo in_array('junior', $_GET['role_level'] ?? []) ? 'checked' : ''; ?>>
+                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="1"
+                                            checked>
                                         <span class="form-check-label">Junior</span>
                                     </label>
                                     <label class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="mid-level" <?php echo in_array('mid-level', $_GET['role_level'] ?? []) ? 'checked' : ''; ?>>
+                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="2"
+                                            checked>
                                         <span class="form-check-label">Mid-level</span>
                                     </label>
                                     <label class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="senior" <?php echo in_array('senior', $_GET['role_level'] ?? []) ? 'checked' : ''; ?>>
+                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="3">
                                         <span class="form-check-label">Senior</span>
                                     </label>
                                     <label class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="principal" <?php echo in_array('principal', $_GET['role_level'] ?? []) ? 'checked' : ''; ?>>
+                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="4">
                                         <span class="form-check-label">Principal / Staff</span>
                                     </label>
                                     <label class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="c-level" <?php echo in_array('c-level', $_GET['role_level'] ?? []) ? 'checked' : ''; ?>>
+                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="5">
                                         <span class="form-check-label">C - level</span>
                                     </label>
                                 </div>
                                 <!-- Work preference -->
-                                <div class="accordion">
+                                <!-- <div class="accordion">
                                     <div class="form-label accordion-header" id="workPreferenceHeader">
                                         <span>Work preference</span>
                                         <span class="work-preference-toggle-icon" style="margin-left: 130px;">+</span>
@@ -401,15 +355,18 @@ $developers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="accordion-content" id="workPreferenceContent">
                                         <div class="mb-4">
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="work_preference[]" value="part-time" <?php echo in_array('part-time', $_GET['work_preference'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="1" checked>
                                                 <span class="form-check-label">Part-time contract</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="work_preference[]" value="full-time" <?php echo in_array('full-time', $_GET['work_preference'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="2" checked>
                                                 <span class="form-check-label">Full-time contract</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="work_preference[]" value="full-time-employment" <?php echo in_array('full-time-employment', $_GET['work_preference'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">Full-time employment</span>
                                             </label>
                                             <hr>
@@ -424,9 +381,9 @@ $developers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- Location -->
-                                <div class="accordion">
+                                <!-- <div class="accordion">
                                     <div class="form-label accordion-header" id="locationHeader">
                                         <span>Location</span>
                                         <span class="location-toggle-icon" style="margin-left: 180px;">+</span>
@@ -434,28 +391,33 @@ $developers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="accordion-content" id="locationContent">
                                         <div class="mb-4">
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="location[]" value="united-states" <?php echo in_array('united-states', $_GET['location'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="1" checked>
                                                 <span class="form-check-label">United States</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="location[]" value="india" <?php echo in_array('india', $_GET['location'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="2" checked>
                                                 <span class="form-check-label">India</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="location[]" value="united-kingdom" <?php echo in_array('united-kingdom', $_GET['location'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">United Kingdom</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="location[]" value="canada" <?php echo in_array('canada', $_GET['location'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">Canada</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="location[]" value="brazil" <?php echo in_array('brazil', $_GET['location'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">Brazil</span>
-                                            </label>
+                                            </label> -->
 
-                                            <!-- All locations -->
-                                            <div class="accordion">
+                                <!-- All locations -->
+                                <!-- <div class="accordion">
                                                 <div class="form-label accordion-header" id="allLocationsHeader">
                                                     <span style="font-size: 13px;">All locations</span>
                                                     <span class="all-locations-toggle-icon"
@@ -464,26 +426,524 @@ $developers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 <div class="accordion-content" id="allLocationsContent">
                                                     <div class="mb-4">
                                                         <label class="form-check">
-                                                            <input type="checkbox" class="form-check-input" 
-                                                                name="location[]" value="albania" 
-                                                                <?php echo in_array('albania', $_GET['location'] ?? []) ? 'checked' : ''; ?>>
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="1" checked>
                                                             <span class="form-check-label">Albania</span>
                                                         </label>
                                                         <label class="form-check">
-                                                            <input type="checkbox" class="form-check-input" 
-                                                                name="location[]" value="algeria"
-                                                                <?php echo in_array('algeria', $_GET['location'] ?? []) ? 'checked' : ''; ?>>
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="2" checked>
                                                             <span class="form-check-label">Algeria</span>
                                                         </label>
-                                                        <!-- Continue this pattern for other countries -->
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Andorra</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Angola</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Argentina</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Armenia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Australia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Austria</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Azerbaijan</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Bahamas</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Bangladesh</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Belgium</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Bhutan</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Bolivia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Bosnia and Herzegovina</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Bulgaria</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Cambodia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Cameroon</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Chile</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">China</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Colombia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Costa Rica</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Croatia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Cyprus</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Czechia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Democratic Republic of
+                                                                Congo</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Denmark</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Dominican Republic</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Ecuador</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Egypt</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">El Salvador</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Estonia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Ethiopia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Finland</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">France</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Georgia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Germany</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Ghana</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Greece</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Guatemala</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Haiti</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Honduras</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Hungary</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Iceland</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Indonesia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Iran</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Ireland</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Israel</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Italy</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Jamaica</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Japan</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Kazakhstan</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Kenya</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Latvia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Lithuania</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Malaysia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Mauritius</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Mexico</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Morocco</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Myanmar</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Nepal</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Netherlands</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">New Zealand</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Nigeria</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">North Macedonia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Norway</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Oman</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Pakistan</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Paraguay</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Peru</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Philippines</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Poland</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Portugal</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Romania</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Russia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Rwanda</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Senegal</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Serbia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Singapore</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Slovakia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Slovenia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Somalia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">South Africa</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Spain</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Sri Lanka</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Sweden</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Switzerland</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Taiwan</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Thailand</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">The Gambia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Trinidad and Tobago</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Tunisia</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Turkey</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Uganda</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Ukraine</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">United Arab Emirates</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Uruguay</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Uzbekistan</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Venezuela</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Vietnam</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Yemen</span>
+                                                        </label>
+                                                        <label class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                name="form-type[]" value="3">
+                                                            <span class="form-check-label">Zambia</span>
+                                                        </label>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            </div> -->
+                                <!-- </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- Timezone -->
-                                <div class="accordion">
+                                <!-- <div class="accordion">
                                     <div class="form-label accordion-header" id="timezoneHeader">
                                         <span>Timezone</span>
                                         <span class="timezone-toggle-icon" style="margin-left: 170px;">+</span>
@@ -491,113 +951,139 @@ $developers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="accordion-content" id="timezoneContent">
                                         <div class="mb-4">
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT-10" <?php echo in_array('GMT-10', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="1" checked>
                                                 <span class="form-check-label">GMT-10</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT-8" <?php echo in_array('GMT-8', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="2" checked>
                                                 <span class="form-check-label">GMT-8</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT-7" <?php echo in_array('GMT-7', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT-7</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT-6" <?php echo in_array('GMT-6', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT-6</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT-5" <?php echo in_array('GMT-5', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT-5</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT-4" <?php echo in_array('GMT-4', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT-4</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT-3" <?php echo in_array('GMT-3', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT-3</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT-1" <?php echo in_array('GMT-1', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT-1</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT" <?php echo in_array('GMT', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT+1" <?php echo in_array('GMT+1', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT+1</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT+2" <?php echo in_array('GMT+2', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT+2</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT+3" <?php echo in_array('GMT+3', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT+3</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT+3.5" <?php echo in_array('GMT+3.5', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT+3.5</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT+4" <?php echo in_array('GMT+4', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT+4</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT+5" <?php echo in_array('GMT+5', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT+5</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT+5.5" <?php echo in_array('GMT+5.5', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT+5.5</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT+5.8" <?php echo in_array('GMT+5.8', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT+5.8</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT+6" <?php echo in_array('GMT+6', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT+6</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT+6.5" <?php echo in_array('GMT+6.5', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT+6.5</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT+7" <?php echo in_array('GMT+7', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT+7</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT+8" <?php echo in_array('GMT+8', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT+8</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT+9" <?php echo in_array('GMT+9', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT+9</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT+9.5" <?php echo in_array('GMT+9.5', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT+9.5</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT+10" <?php echo in_array('GMT+10', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT+10</span>
                                             </label>
                                             <label class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="timezone[]" value="GMT+12" <?php echo in_array('GMT+12', $_GET['timezone'] ?? []) ? 'checked' : ''; ?>>
+                                                <input type="checkbox" class="form-check-input" name="form-type[]"
+                                                    value="3">
                                                 <span class="form-check-label">GMT+12</span>
                                             </label>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
+                                <!-- Update the buttons -->
                                 <div class="row mt-5">
-                                    <a href="#" class="col btn w-100">
+                                    <a href="more-devs.php" class="col btn w-100">
                                         Clear
                                     </a>
-                                    <button class="col btn w-100"
+                                    <button type="submit" class="col btn w-100"
                                         style="background-color: #fe7470; color: white; font-weight: bold;">
                                         Apply
                                     </button>
@@ -607,17 +1093,54 @@ $developers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div class="col-md-9">
                             <div class="row row-cards">
                                 <div class="space-y">
+                                    <?php
+                                    // Database connection
+                                    $conn = new mysqli("localhost", "root", "", "railsdevs");
+
+                                    // Check connection
+                                    if ($conn->connect_error) {
+                                        die("Connection failed: " . $conn->connect_error);
+                                    }
+
+                                    // Build the query based on selected filters
+                                    $query = "SELECT * FROM developer_profiles WHERE 1=1";
+
+                                    // Array to hold the query parameters
+                                    $params = array();
+
+                                    // Add the role_level filter to the query if it is set
+                                    if(isset($_GET['role_levels']) && !empty($_GET['role_levels'])) {
+                                        // Map the role_level array to a string of comma separated values
+                                        $roles = array_map(function($role) use ($conn) {
+                                            // Escape the role value to prevent SQL injection
+                                            return "'" . $conn->real_escape_string($role) . "'";
+                                        }, $_GET['role_level']);
+                                        
+                                        // Add the role_level filter to the query
+                                        $query .= " AND role_level IN (" . implode(',', $roles) . ")";
+                                    }
+
+                                    // Execute the query
+                                    $result = $conn->query($query);
+
+                                    // Display results count
+                                    $totalCount = $result->num_rows;
+
+                                    // Display the results
+                                    if($result->num_rows > 0) {
+                                        while($row = $result->fetch_assoc()) {
+                                            // Display the developer card
+                                            ?>
                                     <div>
                                         <div class="row g-0">
                                             <div class="col-auto">
                                                 <div class="card-body ps-0">
                                                     <div class="row">
                                                         <div class="col">
-                                                            <p class="mb-0 text-secondary">
-                                                                Showing <strong><?php echo count($developers); ?></strong> developers
-                                                                <?php if (!empty($_GET)): ?>
-                                                                    <a href="./" class="text-secondary"> <strong>Reset filters</strong></a>
-                                                                <?php endif; ?>
+                                                            <p class="mb-0 text-secondary">Showing <strong>1326</strong>
+                                                                of <strong>1300+ </strong>developers.<a href="#"
+                                                                    class="text-secondary"> <strong>Reset
+                                                                        filters</strong></a>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -626,50 +1149,70 @@ $developers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                     </div>
                                     <!-- Developer cards -->
-                                    <?php foreach ($developers as $developer): ?>
                                     <div class="card">
                                         <div class="row g-0">
-                                            <div class="col-12" style='cursor: pointer;' onclick="window.location='/rovergigs/railsdevs/Developers/hire.php?id=<?php echo $developer['id']; ?>';">
+                                            <!-- Developer cards -->
+                                            <div class="col-12" style='cursor: pointer;'
+                                                onclick="window.location='/rovergigs/railsdevs/Developers/hire.php';">
                                                 <div class="card">
+                                                    <!-- Card with image -->
                                                     <div class="row row-0 mb-2">
-                                                        <div class="col-3 me-3 d-flex justify-content-center align-items-center">
-                                                            <img src="<?php echo htmlspecialchars($developer['avatar_path']); ?>" 
-                                                                 class="card-img-start" 
-                                                                 alt="Developer image"
-                                                                 style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;" />
+                                                        <div
+                                                            class="col-3 me-3 d-flex justify-content-center align-items-center">
+                                                            <!-- Photo -->
+                                                            <img src="../Images/dev-images/Harsh.jpeg"
+                                                                class="card-img-start" alt="Developer image"
+                                                                style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;" />
                                                         </div>
                                                         <div class="col">
                                                             <div class="card-body">
-                                                                <div class="d-flex justify-content-between align-items-center">
-                                                                    <h3 class="card-title" style="font-weight: bold; font-size: 20px;">
-                                                                        <?php echo htmlspecialchars($developer['hero']); ?>
+                                                                <div
+                                                                    class="d-flex justify-content-between align-items-center">
+                                                                    <h3 class="card-title"
+                                                                        style="font-weight: bold; font-size: 20px;">
+                                                                        <?php echo htmlspecialchars($row['hero']); ?>
                                                                     </h3>
-                                                                    <?php if ($developer['search_status == "Actively looking" ']): ?>
-                                                                    <p>
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                                                             fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round"
-                                                                             stroke-linejoin="round"
-                                                                             class="icon icon-tabler icons-tabler-outline icon-tabler-checkbox">
-                                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                                    <p><svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="24" height="24" viewBox="0 0 24 24"
+                                                                            fill="none" stroke="#22C55E"
+                                                                            stroke-width="2" stroke-linecap="round"
+                                                                            stroke-linejoin="round"
+                                                                            class="icon icon-tabler icons-tabler-outline icon-tabler-checkbox">
+                                                                            <path stroke="none" d="M0 0h24v24H0z"
+                                                                                fill="none" />
                                                                             <path d="M9 11l3 3l8 -8" />
-                                                                            <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
-                                                                        </svg>
-                                                                        <span style="color: #22C55E;">Actively looking</span>
+                                                                            <path
+                                                                                d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
+                                                                        </svg><span style="color: #22C55E;">Actively
+                                                                            looking</span>
+                                                                        <!-- Changed text color to green -->
                                                                     </p>
-                                                                    <?php endif; ?>
                                                                 </div>
-                                                                <?php if ($developer['feature_announcements']): ?>
-                                                                <p><span class="badge bg-green-lt">New profile</span></p>
-                                                                <?php endif; ?>
-                                                                <p class="text-secondary"><?php echo htmlspecialchars($developer['bio']); ?></p>
+                                                                <p><span class="badge bg-green-lt">New profile</span>
+                                                                </p>
+                                                                <p class="text-secondary">I have been doing full stack
+                                                                    Rails with
+                                                                    Angular/React/Vue for over 14 years now. I have had
+                                                                    a part time client
+                                                                    for the last 8 years and looking to find a new
+                                                                    client for part time
+                                                                    developer role. I have ...</p>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <!-- End of card with image -->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <?php endforeach; ?>
+                                    <?php
+                                        }
+                                    } else {
+                                        echo "<p>No developers matching your criteria.</p>";
+                                    }
+                                    // Close the database connection
+                                    $conn->close();
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -685,8 +1228,7 @@ $developers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="col-lg-auto ms-lg-auto">
                     <ul class="list-inline list-inline-dots mb-0">
                         <li class="list-inline-item">
-                            <a href="https://x.com/thekarlesi" target="_blank" class="link-secondary"
-                                rel="noopener">
+                            <a href="https://x.com/thekarlesi" target="_blank" class="link-secondary" rel="noopener">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-twitter -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -699,8 +1241,8 @@ $developers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="https://www.linkedin.com/in/thekarlesi/" target="_blank"
-                                class="link-secondary" rel="noopener">
+                            <a href="https://www.linkedin.com/in/thekarlesi/" target="_blank" class="link-secondary"
+                                rel="noopener">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-linkedin -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -745,70 +1287,79 @@ $developers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <!-- For the work preference accordion -->
     <script>
-        const workPreferenceHeader = document.getElementById('workPreferenceHeader');
-        const workPrefenceContent = document.getElementById('workPreferenceContent');
-        const workPreferenceToggleIcon = workPreferenceHeader.querySelector('.work-preference-toggle-icon');
+    const workPreferenceHeader = document.getElementById('workPreferenceHeader');
+    const workPrefenceContent = document.getElementById('workPreferenceContent');
+    const workPreferenceToggleIcon = workPreferenceHeader.querySelector('.work-preference-toggle-icon');
 
-        workPreferenceHeader.addEventListener('click', function () {
-            if (workPreferenceContent.style.display === 'block') {
-                workPreferenceContent.style.display = 'none';
-                workPreferenceToggleIcon.textContent = '+';
-            } else {
-                workPreferenceContent.style.display = 'block';
-                workPreferenceToggleIcon.textContent = '−'; // This is a minus sign (U+2212)
-            }
-        });
+    workPreferenceHeader.addEventListener('click', function() {
+        if (workPreferenceContent.style.display === 'block') {
+            workPreferenceContent.style.display = 'none';
+            workPreferenceToggleIcon.textContent = '+';
+        } else {
+            workPreferenceContent.style.display = 'block';
+            workPreferenceToggleIcon.textContent = '−'; // This is a minus sign (U+2212)
+        }
+    });
     </script>
 
     <!-- For the location accordion -->
     <script>
-        const locationHeader = document.getElementById('locationHeader');
-        const locationContent = document.getElementById('locationContent');
-        const locationToggleIcon = locationHeader.querySelector('.location-toggle-icon');
+    const locationHeader = document.getElementById('locationHeader');
+    const locationContent = document.getElementById('locationContent');
+    const locationToggleIcon = locationHeader.querySelector('.location-toggle-icon');
 
-        locationHeader.addEventListener('click', function () {
-            if (locationContent.style.display === 'block') {
-                locationContent.style.display = 'none';
-                locationToggleIcon.textContent = '+';
-            } else {
-                locationContent.style.display = 'block';
-                locationToggleIcon.textContent = '−'; // This is a minus sign (U+2212)
-            }
-        });
+    locationHeader.addEventListener('click', function() {
+        if (locationContent.style.display === 'block') {
+            locationContent.style.display = 'none';
+            locationToggleIcon.textContent = '+';
+        } else {
+            locationContent.style.display = 'block';
+            locationToggleIcon.textContent = '−'; // This is a minus sign (U+2212)
+        }
+    });
     </script>
 
     <!-- For the all locations accordion -->
     <script>
-        const allLocationsHeader = document.getElementById('allLocationsHeader');
-        const allLocationsContent = document.getElementById('allLocationsContent');
-        const allLocationsToggleIcon = allLocationsHeader.querySelector('.all-locations-toggle-icon');
+    const allLocationsHeader = document.getElementById('allLocationsHeader');
+    const allLocationsContent = document.getElementById('allLocationsContent');
+    const allLocationsToggleIcon = allLocationsHeader.querySelector('.all-locations-toggle-icon');
 
-        allLocationsHeader.addEventListener('click', function () {
-            if (allLocationsContent.style.display === 'block') {
-                allLocationsContent.style.display = 'none';
-                allLocationsToggleIcon.textContent = '+';
-            } else {
-                allLocationsContent.style.display = 'block';
-                allLocationsToggleIcon.textContent = '−'; // This is a minus sign (U+2212)
-            }
-        });
+    allLocationsHeader.addEventListener('click', function() {
+        if (allLocationsContent.style.display === 'block') {
+            allLocationsContent.style.display = 'none';
+            allLocationsToggleIcon.textContent = '+';
+        } else {
+            allLocationsContent.style.display = 'block';
+            allLocationsToggleIcon.textContent = '−'; // This is a minus sign (U+2212)
+        }
+    });
     </script>
 
     <!-- For the timezone accordion -->
     <script>
-        const timezoneHeader = document.getElementById('timezoneHeader');
-        const timezoneContent = document.getElementById('timezoneContent');
-        const timezoneToggleIcon = timezoneHeader.querySelector('.timezone-toggle-icon');
+    const timezoneHeader = document.getElementById('timezoneHeader');
+    const timezoneContent = document.getElementById('timezoneContent');
+    const timezoneToggleIcon = timezoneHeader.querySelector('.timezone-toggle-icon');
 
-        timezoneHeader.addEventListener('click', function () {
-            if (timezoneContent.style.display === 'block') {
-                timezoneContent.style.display = 'none';
-                timezoneToggleIcon.textContent = '+';
-            } else {
-                timezoneContent.style.display = 'block';
-                timezoneToggleIcon.textContent = '−'; // This is a minus sign (U+2212)
-            }
+    timezoneHeader.addEventListener('click', function() {
+        if (timezoneContent.style.display === 'block') {
+            timezoneContent.style.display = 'none';
+            timezoneToggleIcon.textContent = '+';
+        } else {
+            timezoneContent.style.display = 'block';
+            timezoneToggleIcon.textContent = '−'; // This is a minus sign (U+2212)
+        }
+    });
+    </script>
+
+    <!-- Add JavaScript for form submission -->
+    <script>
+    document.querySelectorAll('input[name="role_level[]"]').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            this.closest('form').submit();
         });
+    });
     </script>
 </body>
 
