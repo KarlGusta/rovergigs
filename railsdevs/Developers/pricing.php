@@ -190,12 +190,14 @@
     <header class="navbar navbar-expand-md navbar-light d-print-none">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href=".">
+                    <a href="/rovergigs/railsdevs">
                         <p>Rails Devs</p>
                     </a>
                 </h1>
                 <!-- Sign in and register buttons -->
                 <div class="navbar-nav flex-row order-md-last">
+                    <!-- Only show sign in and register buttons if the user is not logged in -->
+                    <?php if (!isset($_SESSION['user_id'])): ?>
                     <div class="nav-item me-3">
                         <div class="btn-list">
                             <a href="/rovergigs/railsdevs/users/sign-in.php" class="btn" target="_blank"
@@ -209,6 +211,12 @@
                             </a>
                         </div>
                     </div>
+                    <!-- If the user is logged in, show the log out button -->
+                    <?php else: ?>
+                    <div class="nav-item me-3">
+                        <a href="/rovergigs/railsdevs/users/logout.php" class="btn">Log out</a>
+                    </div>
+                    <?php endif; ?>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
                     <span class="navbar-toggler-icon"></span>
@@ -395,7 +403,7 @@
                 <div class="col-lg-auto ms-lg-auto">
                     <ul class="list-inline list-inline-dots mb-0">
                         <li class="list-inline-item">
-                            <a href="https://twitter.com/weareremoteokay" target="_blank" class="link-secondary"
+                            <a href="https://x.com/thekarlesi" target="_blank" class="link-secondary"
                                 rel="noopener">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-twitter -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -409,7 +417,7 @@
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="https://www.linkedin.com/company/we-are-remote-okay/" target="_blank"
+                            <a href="https://www.linkedin.com/in/thekarlesi/" target="_blank"
                                 class="link-secondary" rel="noopener">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-linkedin -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -430,10 +438,11 @@
                 <div class="col-12 col-lg-auto mt-3 mt-lg-0">
                     <ul class="list-inline list-inline-dots mb-0">
                         <li class="list-inline-item">
-                            Copyright &copy; <script type="text/javascript">
+                            Copyright &copy;
+                            <script type="text/javascript">
                             document.write(new Date().getFullYear());
                             </script>
-                            <a href="www.rovergigs.com" class="link-secondary">Rover Gigs</a>.
+                            <a href="www.rovergigs.com/railshub" class="link-secondary">Rails Hub</a>.
                             All rights reserved.
                         </li>
                     </ul>

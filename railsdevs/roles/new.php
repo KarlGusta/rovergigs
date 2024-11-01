@@ -343,7 +343,7 @@ session_start();
                 <div class="col-lg-auto ms-lg-auto">
                     <ul class="list-inline list-inline-dots mb-0">
                         <li class="list-inline-item">
-                            <a href="https://twitter.com/weareremoteokay" target="_blank" class="link-secondary"
+                            <a href="https://x.com/thekarlesi" target="_blank" class="link-secondary"
                                 rel="noopener">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-twitter -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -357,7 +357,7 @@ session_start();
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="https://www.linkedin.com/company/we-are-remote-okay/" target="_blank"
+                            <a href="https://www.linkedin.com/in/thekarlesi/" target="_blank"
                                 class="link-secondary" rel="noopener">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-linkedin -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -380,9 +380,9 @@ session_start();
                         <li class="list-inline-item">
                             Copyright &copy;
                             <script type="text/javascript">
-                                document.write(new Date().getFullYear());
+                            document.write(new Date().getFullYear());
                             </script>
-                            <a href="www.rovergigs.com" class="link-secondary">Rover Gigs</a>.
+                            <a href="www.rovergigs.com/railshub" class="link-secondary">Rails Hub</a>.
                             All rights reserved.
                         </li>
                     </ul>
