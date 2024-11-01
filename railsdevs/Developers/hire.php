@@ -1,4 +1,7 @@
 <?php
+// Start the session
+session_start();
+
 // Enable error reporting
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -255,12 +258,14 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
     <header class="navbar navbar-expand-md navbar-light d-print-none">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href=".">
+                    <a href="/rovergigs/railsdevs">
                         <p>Rails Devs</p>
                     </a>
                 </h1>
                 <!-- Sign in and register buttons -->
                 <div class="navbar-nav flex-row order-md-last">
+                    <!-- Only show sign in and register buttons if the user is not logged in -->
+                     <?php if (!isset($_SESSION['user_id'])): ?>
                     <div class="nav-item me-3">
                         <div class="btn-list">
                             <a href="/rovergigs/railsdevs/users/sign-in.php" class="btn" target="_blank"
@@ -274,6 +279,12 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
                             </a>
                         </div>
                     </div>
+                    <!-- If the user is logged in, show the log out button -->
+                     <?php else: ?>
+                     <div class="nav-item me-3">
+                        <a href="/rovergigs/railsdevs/users/logout.php" class="btn">Log out</a>
+                     </div>
+                     <?php endif; ?>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
                     <span class="navbar-toggler-icon"></span>
