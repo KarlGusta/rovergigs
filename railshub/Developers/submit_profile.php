@@ -7,7 +7,7 @@ ini_set('display_errors', 1); // Display errors on the screen
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "railsdevs";
+$dbname = "railshub";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

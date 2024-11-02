@@ -194,7 +194,7 @@ session_start();
     <header class="navbar navbar-expand-md navbar-light d-print-none">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href="/rovergigs/railsdevs">
+                    <a href="/rovergigs/railshub">
                         <p>Rails Devs</p>
                     </a>
                 </h1>
@@ -204,11 +204,11 @@ session_start();
                     <?php if (!isset($_SESSION['user_id'])): ?>
                     <div class="nav-item me-3">
                         <div class="btn-list">
-                            <a href="/rovergigs/railsdevs/users/sign-in.php" class="btn" target="_blank"
+                            <a href="/rovergigs/railshub/users/sign-in.php" class="btn" target="_blank"
                                 rel="noreferrer">
                                 Sign in
                             </a>
-                            <a href="/rovergigs/railsdevs/users/sign-up.php" class="btn"
+                            <a href="/rovergigs/railshub/users/sign-up.php" class="btn"
                                 style="background-color: #fe7470; color: white; font-weight: bold;" target="_blank"
                                 rel="noreferrer">
                                 Register
@@ -218,7 +218,7 @@ session_start();
                     <!-- If the user is logged in, show the log out button -->
                     <?php else: ?>
                     <div class="nav-item me-3">
-                        <a href="/rovergigs/railsdevs/users/logout.php" class="btn">Log out</a>
+                        <a href="/rovergigs/railshub/users/logout.php" class="btn">Log out</a>
                     </div>
                     <?php endif; ?>
                 </div>

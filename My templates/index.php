@@ -216,13 +216,13 @@
                                             <!-- Changed to col-12 for full width -->
                                             <h3 class="h1" style="font-size: 3rem;">The ultimate job board for Rails
                                                 developers</h3> <!-- Increased font size -->
-                                            <p class="h3" style="font-size: 1.5rem; color: grey;">RailsDevs puts
+                                            <p class="h3" style="font-size: 1.5rem; color: grey;">railshub puts
                                                 freelance developers
                                                 in the spotlight for their next opportunity.
                                                 Forget hunting through endless listings—let companies come to you
                                                 directly.</p> <!-- Increased font size -->
                                             <div class="mt-4">
-                                                <a href="/rovergigs/railsdevs/get-started.php" class="btn btn-lg"
+                                                <a href="/rovergigs/railshub/get-started.php" class="btn btn-lg"
                                                     style="background-color: #fe7470; color: white;" target="_blank"
                                                     rel="noopener">Get
                                                     Started</a> <!-- Added btn-lg for larger button -->
@@ -238,7 +238,7 @@
                                 <div class="row g-2 align-items-center">
                                     <div class="col">
                                         <h2 class="page-title" style="margin-left: -15px;">
-                                            New Rails developers on RailsDevs
+                                            New Rails developers on railshub
                                         </h2>
                                     </div>
                                 </div>

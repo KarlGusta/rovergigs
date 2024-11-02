@@ -7,7 +7,7 @@ ini_set('display_errors', 1);
 
 // Database connection details
 $host = "localhost";
-$dbname = "railsdevs";
+$dbname = "railshub";
 $username = "root";
 $password = "";
 
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "New user registered successfully";
 
             // Redirect to the dashboard
-            header("Location: /rovergigs/railsdevs/index.php");
+            header("Location: /rovergigs/railshub/index.php");
             exit; // Terminate the script after redirecting
         } else {
             echo "Error: " . $stmt->error;

@@ -5,7 +5,7 @@ session_start();
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
     // Redirect to the login page if not logged in
-    header("Location: /rovergigs/railsdevs/users/sign-in.php");
+    header("Location: /rovergigs/railshub/users/sign-in.php");
     exit();
 }
 ?>
@@ -210,8 +210,8 @@ if (!isset($_SESSION['user_id'])) {
         <header class="navbar navbar-expand-md navbar-light d-print-none">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href="/rovergigs/railsdevs">
-                        <p>Rails Devs</p>
+                    <a href="/rovergigs/railshub" style="text-decoration: none;">
+                        <p>Rails Hub</p>
                     </a>
                 </h1>
                 <!-- Sign in and register buttons -->
@@ -220,11 +220,11 @@ if (!isset($_SESSION['user_id'])) {
                     <?php if (!isset($_SESSION['user_id'])): ?>
                     <div class="nav-item me-3">
                         <div class="btn-list">
-                            <a href="/rovergigs/railsdevs/users/sign-in.php" class="btn" target="_blank"
+                            <a href="/rovergigs/railshub/users/sign-in.php" class="btn" target="_blank"
                                 rel="noreferrer">
                                 Sign in
                             </a>
-                            <a href="/rovergigs/railsdevs/users/sign-up.php" class="btn"
+                            <a href="/rovergigs/railshub/users/sign-up.php" class="btn"
                                 style="background-color: #fe7470; color: white; font-weight: bold;" target="_blank"
                                 rel="noreferrer">
                                 Register
@@ -234,7 +234,7 @@ if (!isset($_SESSION['user_id'])) {
                     <!-- If the user is logged in, show the log out button -->
                     <?php else: ?>
                     <div class="nav-item me-3">
-                        <a href="/rovergigs/railsdevs/users/logout.php" class="btn">Log out</a>
+                        <a href="/rovergigs/railshub/users/logout.php" class="btn">Log out</a>
                     </div>
                     <?php endif; ?>
                 </div>
@@ -876,8 +876,7 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="col-lg-auto ms-lg-auto">
                     <ul class="list-inline list-inline-dots mb-0">
                         <li class="list-inline-item">
-                            <a href="https://x.com/thekarlesi" target="_blank" class="link-secondary"
-                                rel="noopener">
+                            <a href="https://x.com/thekarlesi" target="_blank" class="link-secondary" rel="noopener">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-twitter -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -890,8 +889,8 @@ if (!isset($_SESSION['user_id'])) {
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="https://www.linkedin.com/in/thekarlesi/" target="_blank"
-                                class="link-secondary" rel="noopener">
+                            <a href="https://www.linkedin.com/in/thekarlesi/" target="_blank" class="link-secondary"
+                                rel="noopener">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-linkedin -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"

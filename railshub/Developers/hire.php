@@ -10,7 +10,7 @@ ini_set('display_errors', 1);
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "railsdevs";
+$dbname = "railshub";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -213,14 +213,14 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVPMVGBZ4Q"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-SVPMVGBZ4Q');
+    gtag('config', 'G-SVPMVGBZ4Q');
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -238,9 +238,9 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
     <title>Rails Devs - Hire</title>
     <!-- Custom CSS -->
     <style>
-        /* ... existing styles ... */
+    /* ... existing styles ... */
 
-        /* ... !existing styles ... */
+    /* ... !existing styles ... */
     </style>
     <!-- CSS files -->
     <link href="../../dist/css/tabler.min.css" rel="stylesheet" />
@@ -255,24 +255,24 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
 
 <body>
     <div class="page">
-    <header class="navbar navbar-expand-md navbar-light d-print-none">
+        <header class="navbar navbar-expand-md navbar-light d-print-none">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href="/rovergigs/railsdevs">
-                        <p>Rails Devs</p>
+                    <a href="/rovergigs/railshub" style="text-decoration: none;">
+                        <p>Rails Hub</p>
                     </a>
                 </h1>
                 <!-- Sign in and register buttons -->
                 <div class="navbar-nav flex-row order-md-last">
                     <!-- Only show sign in and register buttons if the user is not logged in -->
-                     <?php if (!isset($_SESSION['user_id'])): ?>
+                    <?php if (!isset($_SESSION['user_id'])): ?>
                     <div class="nav-item me-3">
                         <div class="btn-list">
-                            <a href="/rovergigs/railsdevs/users/sign-in.php" class="btn" target="_blank"
+                            <a href="/rovergigs/railshub/users/sign-in.php" class="btn" target="_blank"
                                 rel="noreferrer">
                                 Sign in
                             </a>
-                            <a href="/rovergigs/railsdevs/users/sign-up.php" class="btn"
+                            <a href="/rovergigs/railshub/users/sign-up.php" class="btn"
                                 style="background-color: #fe7470; color: white; font-weight: bold;" target="_blank"
                                 rel="noreferrer">
                                 Register
@@ -280,11 +280,11 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
                         </div>
                     </div>
                     <!-- If the user is logged in, show the log out button -->
-                     <?php else: ?>
-                     <div class="nav-item me-3">
-                        <a href="/rovergigs/railsdevs/users/logout.php" class="btn">Log out</a>
-                     </div>
-                     <?php endif; ?>
+                    <?php else: ?>
+                    <div class="nav-item me-3">
+                        <a href="/rovergigs/railshub/users/logout.php" class="btn">Log out</a>
+                    </div>
+                    <?php endif; ?>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
                     <span class="navbar-toggler-icon"></span>
@@ -347,7 +347,7 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
                                         </div>
                                     </div>
                                     <div class="card-actions">
-                                        <a href="/rovergigs/railsdevs/Businesses/new.php"
+                                        <a href="/rovergigs/railshub/Businesses/new.php"
                                             class="btn .btn-outline-secondary"
                                             style="font-weight: bold; font-size: 16px; margin-top: -45px;">
                                             <!-- Download SVG icon from http://tabler-icons.io/i/briefcase -->
@@ -401,24 +401,25 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
 
                                     foreach ($rolesArray as $role) {
                                         ?>
-                                        <h4>Interested in roles</h4>
-                                        <ul class="list-unstyled space-y-1">
-                                            <li>
-                                                <!-- Download SVG icon from http://tabler-icons.io/i/check -->
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon text-grey" width="24"
-                                                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M5 12l5 5l10 -10" />
-                                                </svg>
-                                                <?php echo nl2br(e(trim($role))); ?> <!-- Trim whitespace from each role -->
-                                            </li>
-                                        </ul>
+                                    <h4>Interested in roles</h4>
+                                    <ul class="list-unstyled space-y-1">
+                                        <li>
+                                            <!-- Download SVG icon from http://tabler-icons.io/i/check -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon text-grey" width="24"
+                                                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M5 12l5 5l10 -10" />
+                                            </svg>
+                                            <?php echo nl2br(e(trim($role))); ?>
+                                            <!-- Trim whitespace from each role -->
+                                        </li>
+                                    </ul>
                                     <?php } ?>
                                     <ul class="list-unstyled space-y-1">
                                         <li>
                                             <div class="card bg-primary-lt" style='cursor: pointer;'
-                                                onclick="window.location='/rovergigs/railsdevs/Developers/pricing.php';">
+                                                onclick="window.location='/rovergigs/railshub/Developers/pricing.php';">
                                                 <div class="card-body">
                                                     <!-- Download SVG icon from http://tabler-icons.io/i/lock -->
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -436,7 +437,7 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
                                                         subscription.</p>
                                                 </div>
                                             </div>
-                                        </li>                                        
+                                        </li>
                                         <li>
                                             <!-- Download SVG icon from http://tabler-icons.io/i/check -->
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon text-grey" width="24"
@@ -455,7 +456,8 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M5 12l5 5l10 -10" />
                                             </svg>
-                                            <?php echo $timezone; ?> <!-- Display the timezone -->
+                                            <?php echo $timezone; ?>
+                                            <!-- Display the timezone -->
                                         </li>
                                     </ul>
                                 </div>
@@ -474,8 +476,7 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
                 <div class="col-lg-auto ms-lg-auto">
                     <ul class="list-inline list-inline-dots mb-0">
                         <li class="list-inline-item">
-                            <a href="https://x.com/thekarlesi" target="_blank" class="link-secondary"
-                                rel="noopener">
+                            <a href="https://x.com/thekarlesi" target="_blank" class="link-secondary" rel="noopener">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-twitter -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -488,8 +489,8 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="https://www.linkedin.com/in/thekarlesi/" target="_blank"
-                                class="link-secondary" rel="noopener">
+                            <a href="https://www.linkedin.com/in/thekarlesi/" target="_blank" class="link-secondary"
+                                rel="noopener">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-linkedin -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -534,16 +535,16 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
 
     <!-- Custom Script for Subscribe Button -->
     <script>
-        // Check if the user has already subscribed
-        if (localStorage.getItem('subscribed')) {
-            document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
-        }
+    // Check if the user has already subscribed
+    if (localStorage.getItem('subscribed')) {
+        document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
+    }
 
-        // Add click event to the subscribe button
-        document.getElementById('subscribe-button').addEventListener('click', function () {
-            localStorage.setItem('subscribed', 'true'); // Set the subscribed flag
-            document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
-        });
+    // Add click event to the subscribe button
+    document.getElementById('subscribe-button').addEventListener('click', function() {
+        localStorage.setItem('subscribed', 'true'); // Set the subscribed flag
+        document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
+    });
     </script>
 </body>
 

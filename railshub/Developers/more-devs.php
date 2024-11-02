@@ -223,8 +223,8 @@ session_start();
         <header class="navbar navbar-expand-md navbar-light d-print-none">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href="/rovergigs/railsdevs/index.php">
-                        <p>Rails Devs</p>
+                    <a href="/rovergigs/railshub" style="text-decoration: none;">
+                        <p>Rails Hub</p>
                     </a>
                 </h1>
                 <!-- Sign in and register buttons -->
@@ -233,11 +233,11 @@ session_start();
                     <?php if (!isset($_SESSION['user_id'])): ?>
                     <div class="nav-item me-3">
                         <div class="btn-list">
-                            <a href="/rovergigs/railsdevs/users/sign-in.php" class="btn" target="_blank"
+                            <a href="/rovergigs/railshub/users/sign-in.php" class="btn" target="_blank"
                                 rel="noreferrer">
                                 Sign in
                             </a>
-                            <a href="/rovergigs/railsdevs/users/sign-up.php" class="btn"
+                            <a href="/rovergigs/railshub/users/sign-up.php" class="btn"
                                 style="background-color: #fe7470; color: white; font-weight: bold;" target="_blank"
                                 rel="noreferrer">
                                 Register
@@ -247,7 +247,7 @@ session_start();
                     <!-- If the user is logged in, show the log out button -->
                     <?php else: ?>
                     <div class="nav-item me-3">
-                        <a href="/rovergigs/railsdevs/users/logout.php" class="btn">Log out</a>
+                        <a href="/rovergigs/railshub/users/logout.php" class="btn">Log out</a>
                     </div>
                     <?php endif; ?>
                 </div>
@@ -273,7 +273,7 @@ session_start();
                                             to seniors and everyone in between, you'll find them all here.</p>
                                     </div>
                                     <div class="col-auto">
-                                        <a href="/rovergigs/railsdevs/Developers/new.php" class="btn"
+                                        <a href="/rovergigs/railshub/Developers/new.php" class="btn"
                                             style="background-color: #fe7470; color: white; font-weight: bold;">
                                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -1093,7 +1093,7 @@ session_start();
                                 <div class="space-y">
                                     <?php
                                     // Database connection
-                                    $conn = new mysqli("localhost", "root", "", "railsdevs");
+                                    $conn = new mysqli("localhost", "root", "", "railshub");
 
                                     // Check connection
                                     if ($conn->connect_error) {
@@ -1135,11 +1135,13 @@ session_start();
                                                 <div class="card-body ps-0">
                                                     <div class="row">
                                                         <div class="col">
-                                                            <p class="mb-0 text-secondary">Showing <strong><?php echo $totalCount; ?></strong>
+                                                            <p class="mb-0 text-secondary">Showing
+                                                                <strong><?php echo $totalCount; ?></strong>
                                                                 of <strong>1300+ </strong>developers.
                                                                 <!-- If there are any filters applied, display the reset filters link  -->
                                                                 <?php if (!empty($_GET)): ?>
-                                                                <a href="more-devs.php" class="text-secondary"> <strong>Reset filters</strong></a>
+                                                                <a href="more-devs.php" class="text-secondary">
+                                                                    <strong>Reset filters</strong></a>
                                                                 <?php endif; ?>
                                                             </p>
                                                         </div>
@@ -1153,7 +1155,7 @@ session_start();
                                         <div class="row g-0">
                                             <!-- Developer cards -->
                                             <div class="col-12" style='cursor: pointer;'
-                                                onclick="window.location='/rovergigs/railsdevs/Developers/hire.php';">
+                                                onclick="window.location='/rovergigs/railshub/Developers/hire.php';">
                                                 <div class="card">
                                                     <!-- Card with image -->
                                                     <div class="row row-0 mb-2">

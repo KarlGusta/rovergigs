@@ -10,7 +10,7 @@ session_start();
 
 // Database connection details
 $host = "localhost";
-$dbname = "railsdevs";
+$dbname = "railshub";
 $username = "root";
 $password = "";
 
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "Sign in successful. Welcome, " . htmlspecialchars($user['email']) . "!";
                 
                 // Redirect to a welcome page or dashboard here 
-                header("Location: /rovergigs/railsdevs/index.php");
+                header("Location: /rovergigs/railshub/index.php");
                 exit(); // Ensure the script stops after the redirect
             } else {
                 echo "Incorrect password.";

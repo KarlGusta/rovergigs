@@ -17,14 +17,14 @@ session_start();
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVPMVGBZ4Q"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-        gtag('config', 'G-SVPMVGBZ4Q');
+    gtag('config', 'G-SVPMVGBZ4Q');
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -42,135 +42,135 @@ session_start();
     <title>RoverGigs - Home</title>
     <!-- Custom CSS -->
     <style>
-        .text-muted {
-            border: 1px solid #ccc;
-            /* Adjust the color and style as needed */
-            border-radius: 5px;
-            /* Adjust the radius for roundness */
-            display: inline-block;
-            /* Ensures the border fits the text */
-            padding: 2px 4px;
-            /* Optional: adds some padding for better appearance */
-            background-color: white;
-            /* Set background color to white */
-        }
+    .text-muted {
+        border: 1px solid #ccc;
+        /* Adjust the color and style as needed */
+        border-radius: 5px;
+        /* Adjust the radius for roundness */
+        display: inline-block;
+        /* Ensures the border fits the text */
+        padding: 2px 4px;
+        /* Optional: adds some padding for better appearance */
+        background-color: white;
+        /* Set background color to white */
+    }
 
-        .job-title {
-            /* Assuming the job title has this class */
-            font-weight: bold;
-            /* Make the font bold */
-            font-size: 18px;
-            /* Set font size to 12px */
-        }
+    .job-title {
+        /* Assuming the job title has this class */
+        font-weight: bold;
+        /* Make the font bold */
+        font-size: 18px;
+        /* Set font size to 12px */
+    }
 
-        .company-title {
+    .company-title {
 
-            /* Make the font bold */
-            font-size: 18px;
-            /* Set font size to 12px */
-        }
+        /* Make the font bold */
+        font-size: 18px;
+        /* Set font size to 12px */
+    }
 
-        .table {
-            border-collapse: separate;
-            /* Ensure spacing is applied */
-            border-spacing: 0 10px;
-            /* Adjust the vertical spacing as needed */
-            background-color: #F5F7FB;
-            /* Set the table background color to #F5F7FB */
-        }
+    .table {
+        border-collapse: separate;
+        /* Ensure spacing is applied */
+        border-spacing: 0 10px;
+        /* Adjust the vertical spacing as needed */
+        background-color: #F5F7FB;
+        /* Set the table background color to #F5F7FB */
+    }
 
-        .table tr {
-            border-radius: 10px;
-            /* Adjust the radius as needed */
-            overflow: hidden;
-            /* Ensures the rounded corners are visible */
-        }
+    .table tr {
+        border-radius: 10px;
+        /* Adjust the radius as needed */
+        overflow: hidden;
+        /* Ensures the rounded corners are visible */
+    }
 
-        /* ... existing styles ... */
-        .table tr:hover .apply-button {
-            visibility: visible;
-            /* Show button on hover */
-            transition-delay: 0s;
-            /* Remove delay on hover */
-        }
+    /* ... existing styles ... */
+    .table tr:hover .apply-button {
+        visibility: visible;
+        /* Show button on hover */
+        transition-delay: 0s;
+        /* Remove delay on hover */
+    }
 
-        .apply-button {
-            visibility: hidden;
-            /* Hide button by default */
-            background-color: #fe7470;
-            /* Button background color */
-            color: white;
-            /* Text color */
-            border: none;
-            /* Remove border */
-            border-radius: 5px;
-            /* Rounded corners */
-            padding: 12px 80px;
-            /* Padding for better appearance */
-            cursor: pointer;
-            /* Pointer cursor on hover */
-            transition: background-color 0.3s;
-            /* Smooth transition */
-        }
+    .apply-button {
+        visibility: hidden;
+        /* Hide button by default */
+        background-color: #fe7470;
+        /* Button background color */
+        color: white;
+        /* Text color */
+        border: none;
+        /* Remove border */
+        border-radius: 5px;
+        /* Rounded corners */
+        padding: 12px 80px;
+        /* Padding for better appearance */
+        cursor: pointer;
+        /* Pointer cursor on hover */
+        transition: background-color 0.3s;
+        /* Smooth transition */
+    }
 
-        .apply-button:hover {
-            background-color: #fe7470;
-            /* Darker shade on hover */
-        }
+    .apply-button:hover {
+        background-color: #fe7470;
+        /* Darker shade on hover */
+    }
 
-        /* Remove the blur effect */
-        .offcanvas-backdrop {
-            display: none !important;
-            /* Hide the dark overlay */
-        }
+    /* Remove the blur effect */
+    .offcanvas-backdrop {
+        display: none !important;
+        /* Hide the dark overlay */
+    }
 
-        .subscribe-button {
-            background-color: #fe7470;
-            /* Button background color */
-            color: white;
-            /* Ensure text color is white */
-            border: none;
-            /* Remove border */
-            border-radius: 5px;
-            /* Rounded corners */
-            padding: 10px 20px;
-            /* Adjust padding for better appearance */
-            cursor: pointer;
-            /* Pointer cursor on hover */
-        }
+    .subscribe-button {
+        background-color: #fe7470;
+        /* Button background color */
+        color: white;
+        /* Ensure text color is white */
+        border: none;
+        /* Remove border */
+        border-radius: 5px;
+        /* Rounded corners */
+        padding: 10px 20px;
+        /* Adjust padding for better appearance */
+        cursor: pointer;
+        /* Pointer cursor on hover */
+    }
 
-        .subscribe-button:hover {
-            color: white;
-            /* Keep text color white on hover */
-            text-decoration: none;
-            /* Ensure no underline on hover */
-            opacity: 0.9;
-            /* Optional: add a hover effect */
-        }
+    .subscribe-button:hover {
+        color: white;
+        /* Keep text color white on hover */
+        text-decoration: none;
+        /* Ensure no underline on hover */
+        opacity: 0.9;
+        /* Optional: add a hover effect */
+    }
 
-        .card-title {
-            font-weight: bold;
-            font-size: 24px;
-            /* Increased font size from 20px to 24px */
-        }
+    .card-title {
+        font-weight: bold;
+        font-size: 24px;
+        /* Increased font size from 20px to 24px */
+    }
 
-        .text-secondary {
-            font-size: 16px;
-            /* Increased font size for secondary text */
-        }
+    .text-secondary {
+        font-size: 16px;
+        /* Increased font size for secondary text */
+    }
 
-        .card {
-            /* Existing styles */
-            transition: transform 0.3s, box-shadow 0.3s;
-            /* Smooth transition for hover effect */
-        }
+    .card {
+        /* Existing styles */
+        transition: transform 0.3s, box-shadow 0.3s;
+        /* Smooth transition for hover effect */
+    }
 
-        .card:hover {
-            transform: scale(1.05);
-            /* Slightly enlarge the card */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            /* Add shadow for depth */
-        }
+    .card:hover {
+        transform: scale(1.05);
+        /* Slightly enlarge the card */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        /* Add shadow for depth */
+    }
     </style>
     <!-- CSS files -->
     <link href="../../dist/css/tabler.min.css" rel="stylesheet" />
@@ -178,31 +178,31 @@ session_start();
     <link href="../../dist/css/tabler-payments.min.css" rel="stylesheet" />
     <link href="../../dist/css/tabler-vendors.min.css" rel="stylesheet" />
     <link href="../../dist/css/demo.min.css" rel="stylesheet" />
-    
+
     <!--Favicon-->
     <link rel="icon" type="image/x-icon" href="../Images/rovergigs_logo.png">
 </head>
 
 <body>
     <div class="page">
-    <header class="navbar navbar-expand-md navbar-light d-print-none">
+        <header class="navbar navbar-expand-md navbar-light d-print-none">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href="/rovergigs/railsdevs">
-                        <p>Rails Devs</p>
+                    <a href="/rovergigs/railshub" style="text-decoration: none;">
+                        <p>Rails Hub</p>
                     </a>
                 </h1>
                 <!-- Sign in and register buttons -->
                 <div class="navbar-nav flex-row order-md-last">
                     <!-- Only show sign in and register buttons if the user is not logged in -->
-                     <?php if (!isset($_SESSION['user_id'])): ?>
+                    <?php if (!isset($_SESSION['user_id'])): ?>
                     <div class="nav-item me-3">
                         <div class="btn-list">
-                            <a href="/rovergigs/railsdevs/users/sign-in.php" class="btn" target="_blank"
+                            <a href="/rovergigs/railshub/users/sign-in.php" class="btn" target="_blank"
                                 rel="noreferrer">
                                 Sign in
                             </a>
-                            <a href="/rovergigs/railsdevs/users/sign-up.php" class="btn"
+                            <a href="/rovergigs/railshub/users/sign-up.php" class="btn"
                                 style="background-color: #fe7470; color: white; font-weight: bold;" target="_blank"
                                 rel="noreferrer">
                                 Register
@@ -210,11 +210,11 @@ session_start();
                         </div>
                     </div>
                     <!-- If the user is logged in, show the log out button -->
-                     <?php else: ?>
-                     <div class="nav-item me-3">
-                        <a href="/rovergigs/railsdevs/users/logout.php" class="btn">Log out</a>
-                     </div>
-                     <?php endif; ?>
+                    <?php else: ?>
+                    <div class="nav-item me-3">
+                        <a href="/rovergigs/railshub/users/logout.php" class="btn">Log out</a>
+                    </div>
+                    <?php endif; ?>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
                     <span class="navbar-toggler-icon"></span>
@@ -238,7 +238,7 @@ session_start();
                         <div class="row row-cards row-deck">
                             <!-- Card for a new developer -->
                             <div class="col" style='cursor: pointer;'
-                                onclick="window.location='/rovergigs/railsdevs/Developers/new.php';">
+                                onclick="window.location='/rovergigs/railshub/Developers/new.php';">
                                 <div class="card">
                                     <div class="card-header">
                                         <ul class="nav nav-pills card-header-pills">
@@ -285,7 +285,7 @@ session_start();
 
                             <!-- Card for employer searching -->
                             <div class="col" style='cursor: pointer;'
-                                onclick="window.location='/rovergigs/railsdevs/Businesses/new.php';">
+                                onclick="window.location='/rovergigs/railshub/Businesses/new.php';">
                                 <div class="card">
                                     <div class="card-header">
                                         <ul class="nav nav-pills card-header-pills">
@@ -343,8 +343,7 @@ session_start();
                 <div class="col-lg-auto ms-lg-auto">
                     <ul class="list-inline list-inline-dots mb-0">
                         <li class="list-inline-item">
-                            <a href="https://x.com/thekarlesi" target="_blank" class="link-secondary"
-                                rel="noopener">
+                            <a href="https://x.com/thekarlesi" target="_blank" class="link-secondary" rel="noopener">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-twitter -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -357,8 +356,8 @@ session_start();
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="https://www.linkedin.com/in/thekarlesi/" target="_blank"
-                                class="link-secondary" rel="noopener">
+                            <a href="https://www.linkedin.com/in/thekarlesi/" target="_blank" class="link-secondary"
+                                rel="noopener">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-linkedin -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -403,16 +402,16 @@ session_start();
 
     <!-- Custom Script for Subscribe Button -->
     <script>
-        // Check if the user has already subscribed
-        if (localStorage.getItem('subscribed')) {
-            document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
-        }
+    // Check if the user has already subscribed
+    if (localStorage.getItem('subscribed')) {
+        document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
+    }
 
-        // Add click event to the subscribe button
-        document.getElementById('subscribe-button').addEventListener('click', function () {
-            localStorage.setItem('subscribed', 'true'); // Set the subscribed flag
-            document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
-        });
+    // Add click event to the subscribe button
+    document.getElementById('subscribe-button').addEventListener('click', function() {
+        localStorage.setItem('subscribed', 'true'); // Set the subscribed flag
+        document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
+    });
     </script>
 </body>
 

@@ -4,10 +4,10 @@ require_once '../config.php';
 require_once 'logout_functions.php';
 
 if (performLogout()) {
-    header("Location: /rovergigs/railsdevs/index.php");
+    header("Location: /rovergigs/railshub/index.php");
     exit();
 } else {
-    header("Location: /rovergigs/railsdevs/index.php?error=not_logged_in");
+    header("Location: /rovergigs/railshub/index.php?error=not_logged_in");
     exit();
 }
 ?>

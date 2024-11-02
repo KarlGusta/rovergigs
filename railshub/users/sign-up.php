@@ -179,11 +179,11 @@
                 <div class="navbar-nav flex-row order-md-last">
                     <div class="nav-item me-3">
                         <div class="btn-list">
-                            <a href="/rovergigs/railsdevs/users/sign-in.php" class="btn" target="_blank"
+                            <a href="/rovergigs/railshub/users/sign-in.php" class="btn" target="_blank"
                                 rel="noreferrer">
                                 Sign in
                             </a>
-                            <a href="/rovergigs/railsdevs/users/sign-up.php" class="btn"
+                            <a href="/rovergigs/railshub/users/sign-up.php" class="btn"
                                 style="background-color: #fe7470; color: white; font-weight: bold;" target="_blank"
                                 rel="noreferrer">
                                 Register
@@ -214,11 +214,11 @@
                         <div class="container container-tight py-4">
                             <div class="card card-md">
                                 <div class="card-body">
-                                    <h2 class="h2 text-center mb-4">Sign into your account</h2>
-                                    <form action="process_signin.php" method="post" autocomplete="off" novalidate>
+                                    <h2 class="h2 text-center mb-4">Create your account</h2>
+                                    <form action="process_signup.php" method="post" autocomplete="off" novalidate>
                                         <div class="mb-3">
                                             <label class="form-label">Email address</label>
-                                            <input type="email" name="email" class="form-control" placeholder="your@email.com"
+                                            <input type="email" id="email" name="email" class="form-control" placeholder="your@email.com"
                                                 autocomplete="off">
                                         </div>
                                         <div class="mb-2">
@@ -226,18 +226,18 @@
                                                 Password
                                             </label>
                                             <div class="input-group input-group-flat">
-                                                <input type="password" name="password" class="form-control" placeholder="Your password"
+                                                <input type="password" id="password" name="password" class="form-control" placeholder="Your password"
                                                     autocomplete="off">                                                
                                             </div>
                                         </div>
                                         <div class="form-footer">
-                                            <button type="submit" class="btn w-100" style="background-color: #fe7470; color: white; font-weight: bold;">Sign in</button>
+                                            <button type="submit" class="btn w-100" style="background-color: #fe7470; color: white; font-weight: bold;">Sign up</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                             <div class="text-center text-secondary mt-3">
-                                Don't have account yet? <a href="sign-up.php" tabindex="-1">Sign up</a>
+                                Have an account? <a href="sign-in.php" tabindex="-1">Sign in</a>
                             </div>
                         </div>
 
