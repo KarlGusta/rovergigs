@@ -322,9 +322,9 @@ $conn->close();
                                 </div>
                             </div>
                         </div>
-                        <!-- Developer cards -->
+                        <!-- Developer cards for desktop-->
                         <?php foreach ($developers as $developer): ?>
-                        <div class="col-12" style='cursor: pointer;'
+                        <div class="col-12 d-none d-md-block" style='cursor: pointer;'
                             onclick="window.location='/rovergigs/railshub/Developers/hire.php?id=<?php echo $developer['id']; ?>';">
                             <div class="card">
                                 <!-- Card with image -->
@@ -361,6 +361,42 @@ $conn->close();
                                                     <!-- Changed text color to green -->
                                                 </p>
                                             </div>
+                                            <p><span class="badge bg-green-lt">New profile</span></p>
+                                            <p class="text-secondary"><?php echo htmlspecialchars($developer['bio']); ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End of card with image -->
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                        <!-- Developer cards for mobile-->
+                        <?php foreach ($developers as $developer): ?>
+                        <div class="col-12 d-md-none" style='cursor: pointer;'
+                            onclick="window.location='/rovergigs/railshub/Developers/hire.php?id=<?php echo $developer['id']; ?>';">
+                            <div class="card">
+                                <!-- Card with image -->
+                                <div class="row row-0 mb-2">
+                                    <div class="col-3 me-3 d-flex justify-content-center align-items-center">
+                                        <!-- Photo -->
+                                        <?php
+                                            $imageUrl = htmlspecialchars($developer['avatar_path']);
+                                            // Check if the image URL is valid
+                                            if (!empty($imageUrl) && @getimagesize("Developers/" . $imageUrl)): ?>
+                                        <img src="Developers/<?php echo $imageUrl; ?>" class="card-img-start"
+                                            alt="Developer image"
+                                            style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" />
+                                        <?php else: ?>
+                                        <img src="Images/image.png" class="card-img-start" alt="Default image"
+                                            style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;" />
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card-body">
+                                                <h3 class="card-title" style="font-weight: bold; font-size: 20px;">
+                                                    <?php echo htmlspecialchars($developer['hero']); ?>
+                                                </h3>
                                             <p><span class="badge bg-green-lt">New profile</span></p>
                                             <p class="text-secondary"><?php echo htmlspecialchars($developer['bio']); ?>
                                             </p>
