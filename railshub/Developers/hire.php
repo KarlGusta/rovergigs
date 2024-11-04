@@ -329,7 +329,15 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
                             <div class="card card-lg">
                                 <div class="card-header">
                                     <div class="col">
-                                        <div class="card-title" style="font-weight: bold; font-size: 1.5rem;">Full stack
+                                        <div class="card-title" style="font-weight: bold; font-size: 1.5rem;">
+                                            <!-- Only show a few words -->
+                                                    <?php 
+                                                      $hero = htmlspecialchars($developer['hero']);
+                                                      $words = explode(" ", $hero);
+                                                      $truncated = array_slice($words, 0, 10);
+                                                      echo implode(" ", $truncated);
+                                                      if (count($words) > 10) echo '...';
+                                                    ?>
                                         </div>
                                         <div class="card-subtitle mt-3">
                                             <!-- Download SVG icon from http://tabler-icons.io/i/lock -->

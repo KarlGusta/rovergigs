@@ -705,7 +705,7 @@ if (!isset($_SESSION['user_id'])) {
                                                     </label>
                                                     <label class="form-check form-check-inline" style="color: inherit;">
                                                         <input class="form-check-input" type="checkbox"
-                                                            name="role_levels[]" value="Principal / staff">
+                                                            name="role_levels[]" value="Principal/staff">
                                                         <span class="form-check-label">Principal / staff</span>
                                                     </label>
                                                     <label class="form-check form-check-inline" style="color: inherit;">

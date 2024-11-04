@@ -1,6 +1,64 @@
 <?php
 // Start the session
 session_start();
+
+// Include the path config
+require_once '../config/paths.php';
+
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Database config file
+require_once '../config/db.php';
+
+// Define helper function for checking selected role levels
+function isRoleLevelSelected($roleLevel, $selectedLevels)
+{
+    if (empty($selectedLevels)) return false;
+    return in_array($roleLevel, $selectedLevels);
+}
+
+// To enable database connection
+$db = new Database();
+
+// Get the selected role levels from GET parameter
+$selectedRoleLevels = isset($_GET['role_levels']) ? $_GET['role_levels'] : array();
+
+// Validate that all selected values are numeric to prevent SQL injection
+$validRoleLevels = array_filter($selectedRoleLevels, function ($value) {
+    return in_array($value, ['Junior', 'Mid-level', 'Senior', 'Principal/staff', 'C-level']);
+});
+
+// Base query
+$sql = "SELECT id, hero, search_status, bio, avatar_path, role_levels 
+        FROM developer_profiles";
+
+// Add role level filter if any roles are selected
+if (!empty($validRoleLevels)) {
+    $roleConditions = array_map(function ($level) use ($db) {
+        // Escape the string to prevent SQL injection
+        $safeLevel = $db->escape_string($level);
+        return "FIND_IN_SET('$safeLevel', role_levels)";
+    }, $validRoleLevels);
+    $sql .= " WHERE " . implode(' OR ', $roleConditions);
+}
+
+$sql .= " ORDER BY created_at ASC LIMIT 50"; // Added LIMIT and changed to ASC
+
+
+// Execute query
+$result = $db->query($sql);
+$developers = array();
+
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $developers[] = $row;
+    }
+}
+
+// Close the database connection
+$db->closeConnection();
 ?>
 
 <!doctype html>
@@ -18,14 +76,14 @@ session_start();
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVPMVGBZ4Q"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-SVPMVGBZ4Q');
+        gtag('config', 'G-SVPMVGBZ4Q');
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -43,169 +101,185 @@ session_start();
     <title>RoverGigs - Home</title>
     <!-- Custom CSS -->
     <style>
-    .text-muted {
-        border: 1px solid #ccc;
-        /* Adjust the color and style as needed */
-        border-radius: 5px;
-        /* Adjust the radius for roundness */
-        display: inline-block;
-        /* Ensures the border fits the text */
-        padding: 2px 4px;
-        /* Optional: adds some padding for better appearance */
-        background-color: white;
-        /* Set background color to white */
-    }
+        .text-muted {
+            border: 1px solid #ccc;
+            /* Adjust the color and style as needed */
+            border-radius: 5px;
+            /* Adjust the radius for roundness */
+            display: inline-block;
+            /* Ensures the border fits the text */
+            padding: 2px 4px;
+            /* Optional: adds some padding for better appearance */
+            background-color: white;
+            /* Set background color to white */
+        }
 
-    .job-title {
-        /* Assuming the job title has this class */
-        font-weight: bold;
-        /* Make the font bold */
-        font-size: 18px;
-        /* Set font size to 12px */
-    }
+        .job-title {
+            /* Assuming the job title has this class */
+            font-weight: bold;
+            /* Make the font bold */
+            font-size: 18px;
+            /* Set font size to 12px */
+        }
 
-    .company-title {
+        .company-title {
 
-        /* Make the font bold */
-        font-size: 18px;
-        /* Set font size to 12px */
-    }
+            /* Make the font bold */
+            font-size: 18px;
+            /* Set font size to 12px */
+        }
 
-    .table {
-        border-collapse: separate;
-        /* Ensure spacing is applied */
-        border-spacing: 0 10px;
-        /* Adjust the vertical spacing as needed */
-        background-color: #F5F7FB;
-        /* Set the table background color to #F5F7FB */
-    }
+        .table {
+            border-collapse: separate;
+            /* Ensure spacing is applied */
+            border-spacing: 0 10px;
+            /* Adjust the vertical spacing as needed */
+            background-color: #F5F7FB;
+            /* Set the table background color to #F5F7FB */
+        }
 
-    .table tr {
-        border-radius: 10px;
-        /* Adjust the radius as needed */
-        overflow: hidden;
-        /* Ensures the rounded corners are visible */
-    }
+        .table tr {
+            border-radius: 10px;
+            /* Adjust the radius as needed */
+            overflow: hidden;
+            /* Ensures the rounded corners are visible */
+        }
 
-    /* ... existing styles ... */
-    .table tr:hover .apply-button {
-        visibility: visible;
-        /* Show button on hover */
-        transition-delay: 0s;
-        /* Remove delay on hover */
-    }
+        /* ... existing styles ... */
+        .table tr:hover .apply-button {
+            visibility: visible;
+            /* Show button on hover */
+            transition-delay: 0s;
+            /* Remove delay on hover */
+        }
 
-    .apply-button {
-        visibility: hidden;
-        /* Hide button by default */
-        background-color: #fe7470;
-        /* Button background color */
-        color: white;
-        /* Text color */
-        border: none;
-        /* Remove border */
-        border-radius: 5px;
-        /* Rounded corners */
-        padding: 12px 80px;
-        /* Padding for better appearance */
-        cursor: pointer;
-        /* Pointer cursor on hover */
-        transition: background-color 0.3s;
-        /* Smooth transition */
-    }
+        .apply-button {
+            visibility: hidden;
+            /* Hide button by default */
+            background-color: #fe7470;
+            /* Button background color */
+            color: white;
+            /* Text color */
+            border: none;
+            /* Remove border */
+            border-radius: 5px;
+            /* Rounded corners */
+            padding: 12px 80px;
+            /* Padding for better appearance */
+            cursor: pointer;
+            /* Pointer cursor on hover */
+            transition: background-color 0.3s;
+            /* Smooth transition */
+        }
 
-    .apply-button:hover {
-        background-color: #fe7470;
-        /* Darker shade on hover */
-    }
+        .apply-button:hover {
+            background-color: #fe7470;
+            /* Darker shade on hover */
+        }
 
-    /* Remove the blur effect */
-    .offcanvas-backdrop {
-        display: none !important;
-        /* Hide the dark overlay */
-    }
+        /* Remove the blur effect */
+        .offcanvas-backdrop {
+            display: none !important;
+            /* Hide the dark overlay */
+        }
 
-    .subscribe-button {
-        background-color: #fe7470;
-        /* Button background color */
-        color: white;
-        /* Ensure text color is white */
-        border: none;
-        /* Remove border */
-        border-radius: 5px;
-        /* Rounded corners */
-        padding: 10px 20px;
-        /* Adjust padding for better appearance */
-        cursor: pointer;
-        /* Pointer cursor on hover */
-    }
+        .subscribe-button {
+            background-color: #fe7470;
+            /* Button background color */
+            color: white;
+            /* Ensure text color is white */
+            border: none;
+            /* Remove border */
+            border-radius: 5px;
+            /* Rounded corners */
+            padding: 10px 20px;
+            /* Adjust padding for better appearance */
+            cursor: pointer;
+            /* Pointer cursor on hover */
+        }
 
-    .subscribe-button:hover {
-        color: white;
-        /* Keep text color white on hover */
-        text-decoration: none;
-        /* Ensure no underline on hover */
-        opacity: 0.9;
-        /* Optional: add a hover effect */
-    }
+        .subscribe-button:hover {
+            color: white;
+            /* Keep text color white on hover */
+            text-decoration: none;
+            /* Ensure no underline on hover */
+            opacity: 0.9;
+            /* Optional: add a hover effect */
+        }
 
-    .card-title {
-        font-weight: bold;
-        font-size: 24px;
-        /* Increased font size from 20px to 24px */
-    }
+        .card-title {
+            font-weight: bold;
+            font-size: 24px;
+            /* Increased font size from 20px to 24px */
+        }
 
-    .text-secondary {
-        font-size: 16px;
-        /* Increased font size for secondary text */
-    }
+        .text-secondary {
+            font-size: 16px;
+            /* Increased font size for secondary text */
+        }
 
-    label {
-        color: grey;
-        /* Set label text color to grey */
-    }
+        label {
+            color: grey;
+            /* Set label text color to grey */
+        }
 
-    body {
-        font-size: 15px !important;
-        /* Adjust the font size as needed */
-    }
+        body {
+            font-size: 15px !important;
+            /* Adjust the font size as needed */
+        }
 
-    .accordion-content {
-        display: none;
-        padding-bottom: 20px;
-        border-top: none;
-    }
+        .accordion-content {
+            display: none;
+            padding-bottom: 20px;
+            border-top: none;
+        }
 
-    .accordion-header {
-        padding-bottom: 20px;
-        cursor: pointer;
-    }
+        .accordion-header {
+            padding-bottom: 20px;
+            cursor: pointer;
+        }
 
-    .form-check {
-        margin-bottom: 5px;
-    }
+        .form-check {
+            margin-bottom: 5px;
+        }
 
-    .work-preference-toggle-icon {
-        font-size: 18px;
-        font-weight: bold;
-    }
+        .work-preference-toggle-icon {
+            font-size: 18px;
+            font-weight: bold;
+        }
 
-    .location-toggle-icon {
-        font-size: 18px;
-        font-weight: bold;
-    }
+        .location-toggle-icon {
+            font-size: 18px;
+            font-weight: bold;
+        }
 
-    .all-locations-toggle-icon {
-        font-size: 18px;
-        font-weight: bold;
-    }
+        .all-locations-toggle-icon {
+            font-size: 18px;
+            font-weight: bold;
+        }
 
-    .timezone-toggle-icon {
-        font-size: 18px;
-        font-weight: bold;
-    }
+        .timezone-toggle-icon {
+            font-size: 18px;
+            font-weight: bold;
+        }
 
-    /* ... existing styles ... */
+        .blur-content {
+            filter: blur(5px);
+            pointer-events: none;
+            transition: filter 0.3s ease;
+        }
+
+        /* Remove the previous backdrop hiding style */
+        .offcanvas-backdrop {
+            /* Remove or comment out the display: none !important; */
+        }
+
+        /* Style for the modal backdrop */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* ... existing styles ... */
     </style>
     <!-- CSS files -->
     <link href="../dist/css/tabler.min.css" rel="stylesheet" />
@@ -216,9 +290,38 @@ session_start();
 
     <!--Favicon-->
     <link rel="icon" type="image/x-icon" href="../Images/rovergigs_logo.png">
+
+    <!-- Add these lines for modal paywall pop-up-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </head>
 
 <body>
+    <!-- Pop-up for the requiring a paid account -->
+    <!-- Add this right after the opening <body> tag -->
+
+    <!-- Our own modal -->
+    <div class="modal modal-blur fade" id="paywall-popup" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-status bg-primary"></div>
+                <div class="modal-body text-center py-4">
+                    <h2>Sign up now to see more profiles</h2>
+                    <div class="text-muted">Gain access to 1400+ Ruby on Rails developers.</div>
+                </div>
+                <div class="modal-footer">
+                    <div class="w-100">
+                        <div class="row">
+                            <div class="col"><a href="<?php echo path('pricing'); ?>" class="btn btn-primary w-100" onclick="window.location.href=this.href;" data-bs-dismiss="modal">
+                                    Start hiring
+                                </a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of the pop-up requiring a paid account -->
     <div class="page">
         <header class="navbar navbar-expand-md navbar-light d-print-none">
             <div class="container-xl">
@@ -231,24 +334,24 @@ session_start();
                 <div class="navbar-nav flex-row order-md-last">
                     <!-- Only show sign in and register buttons if the user is not logged in -->
                     <?php if (!isset($_SESSION['user_id'])): ?>
-                    <div class="nav-item me-3">
-                        <div class="btn-list">
-                            <a href="/rovergigs/railshub/users/sign-in.php" class="btn" target="_blank"
-                                rel="noreferrer">
-                                Sign in
-                            </a>
-                            <a href="/rovergigs/railshub/users/sign-up.php" class="btn"
-                                style="background-color: #fe7470; color: white; font-weight: bold;" target="_blank"
-                                rel="noreferrer">
-                                Register
-                            </a>
+                        <div class="nav-item me-3">
+                            <div class="btn-list">
+                                <a href="/rovergigs/railshub/users/sign-in.php" class="btn" target="_blank"
+                                    rel="noreferrer">
+                                    Sign in
+                                </a>
+                                <a href="/rovergigs/railshub/users/sign-up.php" class="btn"
+                                    style="background-color: #fe7470; color: white; font-weight: bold;" target="_blank"
+                                    rel="noreferrer">
+                                    Register
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <!-- If the user is logged in, show the log out button -->
+                        <!-- If the user is logged in, show the log out button -->
                     <?php else: ?>
-                    <div class="nav-item me-3">
-                        <a href="/rovergigs/railshub/users/logout.php" class="btn">Log out</a>
-                    </div>
+                        <div class="nav-item me-3">
+                            <a href="/rovergigs/railshub/users/logout.php" class="btn">Log out</a>
+                        </div>
                     <?php endif; ?>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
@@ -297,7 +400,7 @@ session_start();
                 <div class="container-xl">
                     <div class="row g-4">
                         <div class="col-md-3">
-                            <form action="./more-devs.php" method="get" autocomplete="off" novalidate
+                            <form action="" method="get" id="filterForm" autocomplete="off" novalidate
                                 class="sticky-top">
                                 <div class="form-label">Search profiles</div>
                                 <div class="mb-4">
@@ -324,23 +427,28 @@ session_start();
                                 <div class="form-label">Role level</div>
                                 <div class="mb-4">
                                     <label class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="1">
+                                        <input type="checkbox" class="form-check-input" name="role_levels[]" value="Junior"
+                                            <?php echo isRoleLevelSelected("1", $selectedRoleLevels) ? 'checked' : ''; ?>>
                                         <span class="form-check-label">Junior</span>
                                     </label>
                                     <label class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="2">
+                                        <input type="checkbox" class="form-check-input" name="role_levels[]" value="Mid-level"
+                                            <?php echo isRoleLevelSelected("2", $selectedRoleLevels) ? 'checked' : ''; ?>>
                                         <span class="form-check-label">Mid-level</span>
                                     </label>
                                     <label class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="3">
+                                        <input type="checkbox" class="form-check-input" name="role_levels[]" value="Senior"
+                                            <?php echo isRoleLevelSelected("3", $selectedRoleLevels) ? 'checked' : ''; ?>>
                                         <span class="form-check-label">Senior</span>
                                     </label>
                                     <label class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="4">
+                                        <input type="checkbox" class="form-check-input" name="role_levels[]" value="Principal/staff"
+                                            <?php echo isRoleLevelSelected("4", $selectedRoleLevels) ? 'checked' : ''; ?>>
                                         <span class="form-check-label">Principal / Staff</span>
                                     </label>
                                     <label class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="role_level[]" value="5">
+                                        <input type="checkbox" class="form-check-input" name="role_levels[]" value="C-level"
+                                            <?php echo isRoleLevelSelected("5", $selectedRoleLevels) ? 'checked' : ''; ?>>
                                         <span class="form-check-label">C - level</span>
                                     </label>
                                 </div>
@@ -1091,44 +1199,6 @@ session_start();
                         <div class="col-md-9">
                             <div class="row row-cards">
                                 <div class="space-y">
-                                    <?php
-                                    // Database connection
-                                    $conn = new mysqli("localhost", "root", "", "railshub");
-
-                                    // Check connection
-                                    if ($conn->connect_error) {
-                                        die("Connection failed: " . $conn->connect_error);
-                                    }
-
-                                    // Build the query based on selected filters
-                                    $query = "SELECT * FROM developer_profiles WHERE 1=1";
-
-                                    // Array to hold the query parameters
-                                    $params = array();
-
-                                    // Add the role_level filter to the query if it is set
-                                    if(isset($_GET['role_levels']) && !empty($_GET['role_levels'])) {
-                                        // Map the role_level array to a string of comma separated values
-                                        $roles = array_map(function($role) use ($conn) {
-                                            // Escape the role value to prevent SQL injection
-                                            return "'" . $conn->real_escape_string($role) . "'";
-                                        }, $_GET['role_level']);
-                                        
-                                        // Add the role_level filter to the query
-                                        $query .= " AND role_level IN (" . implode(',', $roles) . ")";
-                                    }
-
-                                    // Execute the query
-                                    $result = $conn->query($query);
-
-                                    // Display results count
-                                    $totalCount = $result->num_rows;
-
-                                    // Display the results
-                                    if($result->num_rows > 0) {
-                                        while($row = $result->fetch_assoc()) {
-                                            // Display the developer card
-                                            ?>
                                     <div>
                                         <div class="row g-0">
                                             <div class="col-auto">
@@ -1136,12 +1206,12 @@ session_start();
                                                     <div class="row">
                                                         <div class="col">
                                                             <p class="mb-0 text-secondary">Showing
-                                                                <strong><?php echo $totalCount; ?></strong>
+                                                                <strong><?php echo count($developers); ?></strong>
                                                                 of <strong>1300+ </strong>developers.
                                                                 <!-- If there are any filters applied, display the reset filters link  -->
                                                                 <?php if (!empty($_GET)): ?>
-                                                                <a href="more-devs.php" class="text-secondary">
-                                                                    <strong>Reset filters</strong></a>
+                                                                    <a href="more-devs.php" class="text-secondary">
+                                                                        <strong>Reset filters</strong></a>
                                                                 <?php endif; ?>
                                                             </p>
                                                         </div>
@@ -1150,71 +1220,74 @@ session_start();
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Developer cards -->
-                                    <div class="card">
-                                        <div class="row g-0">
-                                            <!-- Developer cards -->
-                                            <div class="col-12" style='cursor: pointer;'
-                                                onclick="window.location='/rovergigs/railshub/Developers/hire.php';">
+                                    <!-- Developer cards for desktop-->
+                                    <?php if (empty($developers)): ?>
+                                        <p>No developers found for the selected criteria.</p>
+                                    <?php else: ?>
+                                        <?php foreach ($developers as $developer): ?>
+                                            <div class="col-12 d-none d-md-block" style='cursor: pointer;'
+                                                onclick="window.location='/rovergigs/railshub/Developers/hire.php?id=<?php echo $developer['id']; ?>';">
                                                 <div class="card">
                                                     <!-- Card with image -->
                                                     <div class="row row-0 mb-2">
-                                                        <div
-                                                            class="col-3 me-3 d-flex justify-content-center align-items-center">
+                                                        <div class="col-3 me-3 d-flex justify-content-center align-items-center">
                                                             <!-- Photo -->
-                                                            <img src="../Images/dev-images/Harsh.jpeg"
-                                                                class="card-img-start" alt="Developer image"
-                                                                style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;" />
+                                                            <?php
+                                                            $imageUrl = htmlspecialchars($developer['avatar_path']);
+                                                            // Check if the image URL is valid
+                                                            if (!empty($imageUrl)): ?>
+                                                                <img src="<?php echo $imageUrl; ?>" class="card-img-start"
+                                                                    alt="Developer image"
+                                                                    style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;" />
+                                                            <?php else: ?>
+                                                                <img src="../Images/image.png" class="card-img-start" alt="Default image"
+                                                                    style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;" />
+                                                            <?php endif; ?>
                                                         </div>
                                                         <div class="col">
                                                             <div class="card-body">
-                                                                <div
-                                                                    class="d-flex justify-content-between align-items-center">
-                                                                    <h3 class="card-title"
-                                                                        style="font-weight: bold; font-size: 20px;">
-                                                                        <?php echo htmlspecialchars($row['hero']); ?>
+                                                                <div class="d-flex justify-content-between align-items-center">
+                                                                    <h3 class="card-title" style="font-weight: bold; font-size: 20px;">
+                                                                        <!-- Only show a few words -->
+                                                                        <?php
+                                                                        $hero = htmlspecialchars($developer['hero']);
+                                                                        $words = explode(" ", $hero);
+                                                                        $truncated = array_slice($words, 0, 10);
+                                                                        echo implode(" ", $truncated);
+                                                                        if (count($words) > 10) echo '...';
+                                                                        ?>
                                                                     </h3>
-                                                                    <p><svg xmlns="http://www.w3.org/2000/svg"
-                                                                            width="24" height="24" viewBox="0 0 24 24"
-                                                                            fill="none" stroke="#22C55E"
-                                                                            stroke-width="2" stroke-linecap="round"
-                                                                            stroke-linejoin="round"
+                                                                    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                            viewBox="0 0 24 24" fill="none" stroke="#22C55E"
+                                                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                                                             class="icon icon-tabler icons-tabler-outline icon-tabler-checkbox">
-                                                                            <path stroke="none" d="M0 0h24v24H0z"
-                                                                                fill="none" />
+                                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                                             <path d="M9 11l3 3l8 -8" />
                                                                             <path
                                                                                 d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
-                                                                        </svg><span style="color: #22C55E;">Actively
-                                                                            looking</span>
+                                                                        </svg><span style="color: #22C55E;">Actively looking</span>
                                                                         <!-- Changed text color to green -->
                                                                     </p>
                                                                 </div>
-                                                                <p><span class="badge bg-green-lt">New profile</span>
+                                                                <p><span class="badge bg-green-lt">New profile</span></p>
+                                                                <p class="text-secondary">
+                                                                    <!-- Only show a few words -->
+                                                                    <?php
+                                                                    $bio = htmlspecialchars($developer['bio']);
+                                                                    $words = explode(" ", $bio);
+                                                                    $truncated = array_slice($words, 0, 30);
+                                                                    echo implode(" ", $truncated);
+                                                                    if (count($words) > 30) echo '...';
+                                                                    ?>
                                                                 </p>
-                                                                <p class="text-secondary">I have been doing full stack
-                                                                    Rails with
-                                                                    Angular/React/Vue for over 14 years now. I have had
-                                                                    a part time client
-                                                                    for the last 8 years and looking to find a new
-                                                                    client for part time
-                                                                    developer role. I have ...</p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <!-- End of card with image -->
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <?php
-                                        }
-                                    } else {
-                                        echo "<p>No developers matching your criteria.</p>";
-                                    }
-                                    // Close the database connection
-                                    $conn->close();
-                                    ?>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -1266,7 +1339,7 @@ session_start();
                         <li class="list-inline-item">
                             Copyright &copy;
                             <script type="text/javascript">
-                            document.write(new Date().getFullYear());
+                                document.write(new Date().getFullYear());
                             </script>
                             <a href="www.rovergigs.com/railshub" class="link-secondary">Rails Hub</a>.
                             All rights reserved.
@@ -1289,70 +1362,104 @@ session_start();
 
     <!-- For the work preference accordion -->
     <script>
-    const workPreferenceHeader = document.getElementById('workPreferenceHeader');
-    const workPrefenceContent = document.getElementById('workPreferenceContent');
-    const workPreferenceToggleIcon = workPreferenceHeader.querySelector('.work-preference-toggle-icon');
+        const workPreferenceHeader = document.getElementById('workPreferenceHeader');
+        const workPrefenceContent = document.getElementById('workPreferenceContent');
+        const workPreferenceToggleIcon = workPreferenceHeader.querySelector('.work-preference-toggle-icon');
 
-    workPreferenceHeader.addEventListener('click', function() {
-        if (workPreferenceContent.style.display === 'block') {
-            workPreferenceContent.style.display = 'none';
-            workPreferenceToggleIcon.textContent = '+';
-        } else {
-            workPreferenceContent.style.display = 'block';
-            workPreferenceToggleIcon.textContent = '−'; // This is a minus sign (U+2212)
-        }
-    });
+        workPreferenceHeader.addEventListener('click', function() {
+            if (workPreferenceContent.style.display === 'block') {
+                workPreferenceContent.style.display = 'none';
+                workPreferenceToggleIcon.textContent = '+';
+            } else {
+                workPreferenceContent.style.display = 'block';
+                workPreferenceToggleIcon.textContent = '−'; // This is a minus sign (U+2212)
+            }
+        });
     </script>
 
     <!-- For the location accordion -->
     <script>
-    const locationHeader = document.getElementById('locationHeader');
-    const locationContent = document.getElementById('locationContent');
-    const locationToggleIcon = locationHeader.querySelector('.location-toggle-icon');
+        const locationHeader = document.getElementById('locationHeader');
+        const locationContent = document.getElementById('locationContent');
+        const locationToggleIcon = locationHeader.querySelector('.location-toggle-icon');
 
-    locationHeader.addEventListener('click', function() {
-        if (locationContent.style.display === 'block') {
-            locationContent.style.display = 'none';
-            locationToggleIcon.textContent = '+';
-        } else {
-            locationContent.style.display = 'block';
-            locationToggleIcon.textContent = '−'; // This is a minus sign (U+2212)
-        }
-    });
+        locationHeader.addEventListener('click', function() {
+            if (locationContent.style.display === 'block') {
+                locationContent.style.display = 'none';
+                locationToggleIcon.textContent = '+';
+            } else {
+                locationContent.style.display = 'block';
+                locationToggleIcon.textContent = '−'; // This is a minus sign (U+2212)
+            }
+        });
     </script>
 
     <!-- For the all locations accordion -->
     <script>
-    const allLocationsHeader = document.getElementById('allLocationsHeader');
-    const allLocationsContent = document.getElementById('allLocationsContent');
-    const allLocationsToggleIcon = allLocationsHeader.querySelector('.all-locations-toggle-icon');
+        const allLocationsHeader = document.getElementById('allLocationsHeader');
+        const allLocationsContent = document.getElementById('allLocationsContent');
+        const allLocationsToggleIcon = allLocationsHeader.querySelector('.all-locations-toggle-icon');
 
-    allLocationsHeader.addEventListener('click', function() {
-        if (allLocationsContent.style.display === 'block') {
-            allLocationsContent.style.display = 'none';
-            allLocationsToggleIcon.textContent = '+';
-        } else {
-            allLocationsContent.style.display = 'block';
-            allLocationsToggleIcon.textContent = '−'; // This is a minus sign (U+2212)
-        }
-    });
+        allLocationsHeader.addEventListener('click', function() {
+            if (allLocationsContent.style.display === 'block') {
+                allLocationsContent.style.display = 'none';
+                allLocationsToggleIcon.textContent = '+';
+            } else {
+                allLocationsContent.style.display = 'block';
+                allLocationsToggleIcon.textContent = '−'; // This is a minus sign (U+2212)
+            }
+        });
     </script>
 
     <!-- For the timezone accordion -->
     <script>
-    const timezoneHeader = document.getElementById('timezoneHeader');
-    const timezoneContent = document.getElementById('timezoneContent');
-    const timezoneToggleIcon = timezoneHeader.querySelector('.timezone-toggle-icon');
+        const timezoneHeader = document.getElementById('timezoneHeader');
+        const timezoneContent = document.getElementById('timezoneContent');
+        const timezoneToggleIcon = timezoneHeader.querySelector('.timezone-toggle-icon');
 
-    timezoneHeader.addEventListener('click', function() {
-        if (timezoneContent.style.display === 'block') {
-            timezoneContent.style.display = 'none';
-            timezoneToggleIcon.textContent = '+';
-        } else {
-            timezoneContent.style.display = 'block';
-            timezoneToggleIcon.textContent = '−'; // This is a minus sign (U+2212)
-        }
-    });
+        timezoneHeader.addEventListener('click', function() {
+            if (timezoneContent.style.display === 'block') {
+                timezoneContent.style.display = 'none';
+                timezoneToggleIcon.textContent = '+';
+            } else {
+                timezoneContent.style.display = 'block';
+                timezoneToggleIcon.textContent = '−'; // This is a minus sign (U+2212)
+            }
+        });
+    </script>
+
+    <!-- JavaScript for the pop-up requiring a paid account to see more devs -->
+    <script>
+        let hasScrolled = false;
+
+        window.addEventListener('scroll', function() {
+            if (!hasScrolled && window.scrollY > 300) {
+                hasScrolled = true;
+                const modal = new bootstrap.Modal(document.getElementById('paywall-popup'));
+                const pageContent = document.querySelector('.page');
+
+                // Add blur when showing modal
+                modal._element.addEventListener('show.bs.modal', function() {
+                    pageContent.classList.add('blur-content');
+                });
+
+                // Remove blur when hiding modal
+                modal._element.addEventListener('hide.bs.modal', function() {
+                    pageContent.classList.remove('blur-content');
+                });
+
+                modal.show();
+            }
+        });
+    </script>
+
+    <!-- Optional: Add JavaScript for auto-submit on checkbox change -->
+    <script>
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                document.getElementById('filterForm').submit();
+            });
+        });
     </script>
 </body>
 
