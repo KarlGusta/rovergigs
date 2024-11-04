@@ -310,7 +310,7 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
                     <div class="row row-cards">
                         <div class="col-lg-12 mb-2">
                             <div class="card"
-                                style="background-image: url(../Images/background-img.png); position: relative; overflow: visible;">
+                                style="background-image: url(../Images/background-img.png); position: relative; overflow: visible; background-size: cover; background-position: center;">
                                 <div class="d-flex" style="position: relative; top: -50px;">
                                     <!-- Adjusted position -->
                                     <div class="card-body p-4">

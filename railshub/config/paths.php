@@ -20,7 +20,11 @@ class PathConfig {
                     'developers' => [
                         'more' => '/developers/more-devs.php',
                         'hire' => '/developers/hire.php',
+                        'new' => '/developers/new.php',
                         'avatar' => '/developers/'  // For avatar images
+                    ],
+                    'businesses' => [
+                        'new' => '/businesses/new.php'
                     ],
                     'roles' => [
                         'new' => '/roles/new.php'
@@ -45,6 +49,7 @@ class PathConfig {
                     'developers' => [
                         'more' => '/developers/more-devs.php',
                         'hire' => '/developers/hire.php',
+                        'new' => '/developers/new.php',
                         'avatar' => '/developers/'  // For avatar images
                     ],
                     'roles' => [

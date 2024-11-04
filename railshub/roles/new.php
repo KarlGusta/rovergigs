@@ -1,6 +1,9 @@
 <?php
 // Start the session
-session_start(); 
+session_start();
+
+// Include the path config. This is to make it easy to manage my URLs when I upload to production, that is cpanel
+require_once '../config/paths.php';
 ?>
 <!doctype html>
 <!--
@@ -173,47 +176,48 @@ session_start();
     }
     </style>
     <!-- CSS files -->
-    <link href="../../dist/css/tabler.min.css" rel="stylesheet" />
-    <link href="../../dist/css/tabler-flags.min.css" rel="stylesheet" />
-    <link href="../../dist/css/tabler-payments.min.css" rel="stylesheet" />
-    <link href="../../dist/css/tabler-vendors.min.css" rel="stylesheet" />
-    <link href="../../dist/css/demo.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/tabler.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/tabler-flags.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/tabler-payments.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/demo.min.css" rel="stylesheet" />
 
     <!--Favicon-->
-    <link rel="icon" type="image/x-icon" href="../Images/rovergigs_logo.png">
+    <link rel="icon" type="image/x-icon" href="<?php echo path('assets', 'images'); ?>rovergigs_logo.png">
 </head>
 
 <body>
     <div class="page">
-        <header class="navbar navbar-expand-md navbar-light d-print-none">
+    <header class="navbar navbar-expand-md navbar-light d-print-none">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href="/rovergigs/railshub" style="text-decoration: none;">
+                    <a href="<?php echo path('home'); ?>" style="text-decoration: none;">
                         <p>Rails Hub</p>
                     </a>
                 </h1>
                 <!-- Sign in and register buttons -->
-                <div class="navbar-nav flex-row order-md-last">
+                <div class="navbar-nav flex-row order-md-last d-none d-md-flex">
                     <!-- Only show sign in and register buttons if the user is not logged in -->
                     <?php if (!isset($_SESSION['user_id'])): ?>
-                    <div class="nav-item me-3">
-                        <div class="btn-list">
-                            <a href="/rovergigs/railshub/users/sign-in.php" class="btn" target="_blank"
-                                rel="noreferrer">
-                                Sign in
-                            </a>
-                            <a href="/rovergigs/railshub/users/sign-up.php" class="btn"
-                                style="background-color: #fe7470; color: white; font-weight: bold;" target="_blank"
-                                rel="noreferrer">
-                                Register
-                            </a>
+                        <div class="nav-item me-3">
+                            <div class="btn-list">
+                                <!-- Using the config/paths.php for the URL of the sign in and register buttons -->
+                                <a href="<?php echo path('users', 'sign_in'); ?>" class="btn" target="_blank"
+                                    rel="noreferrer">
+                                    Sign in
+                                </a>
+                                <a href="<?php echo path('users', 'sign_up'); ?>" class="btn"
+                                    style="background-color: #fe7470; color: white; font-weight: bold;" target="_blank"
+                                    rel="noreferrer">
+                                    Register
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <!-- If the user is logged in, show the log out button -->
+                        <!-- If the user is logged in, show the log out button -->
                     <?php else: ?>
-                    <div class="nav-item me-3">
-                        <a href="/rovergigs/railshub/users/logout.php" class="btn">Log out</a>
-                    </div>
+                        <div class="nav-item me-3">
+                            <a href="<?php echo path('users', 'logout'); ?>" class="btn">Log out</a>
+                        </div>
                     <?php endif; ?>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
@@ -238,7 +242,7 @@ session_start();
                         <div class="row row-cards row-deck">
                             <!-- Card for a new developer -->
                             <div class="col" style='cursor: pointer;'
-                                onclick="window.location='/rovergigs/railshub/Developers/new.php';">
+                                onclick="window.location='<?php echo path('developers', 'new'); ?>';">
                                 <div class="card">
                                     <div class="card-header">
                                         <ul class="nav nav-pills card-header-pills">
@@ -285,7 +289,7 @@ session_start();
 
                             <!-- Card for employer searching -->
                             <div class="col" style='cursor: pointer;'
-                                onclick="window.location='/rovergigs/railshub/Businesses/new.php';">
+                                onclick="window.location='<?php echo path('businesses', 'new'); ?>';">
                                 <div class="card">
                                     <div class="card-header">
                                         <ul class="nav nav-pills card-header-pills">
@@ -392,13 +396,13 @@ session_start();
     </div>
     </div>
     <!-- Libs JS -->
-    <script src="../../../../dist/libs/apexcharts/dist/apexcharts.min.js" defer></script>
-    <script src="./dist/libs/jsvectormap/dist/js/jsvectormap.min.js" defer></script>
-    <script src="./dist/libs/jsvectormap/dist/maps/world.js" defer></script>
-    <script src="./dist/libs/jsvectormap/dist/maps/world-merc.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>libs/apexcharts/dist/apexcharts.min.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>libs/jsvectormap/dist/js/jsvectormap.min.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>libs/jsvectormap/dist/maps/world.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>libs/jsvectormap/dist/maps/world-merc.js" defer></script>
     <!-- Tabler Core -->
-    <script src="./dist/js/tabler.min.js" defer></script>
-    <script src="./dist/js/demo.min.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>js/tabler.min.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>js/demo.min.js" defer></script>
 
     <!-- Custom Script for Subscribe Button -->
     <script>
