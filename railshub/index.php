@@ -327,7 +327,7 @@ $db->closeConnection();
                                                     Forget hunting through endless listings—let companies come to you
                                                     directly.</span></h3>
                                             <div class="mt-3 text-center">
-                                                <a href="/rovergigs/railshub/roles/new.php" class="btn btn-lg"
+                                                <a href="<?php echo path('roles', 'new'); ?>" class="btn btn-lg"
                                                     target="_blank" style="background-color: #fe7470; color: white;"
                                                     rel="noopener">Get Started</a>
                                             </div>
@@ -353,7 +353,7 @@ $db->closeConnection();
                                                     Forget hunting through endless listings—let companies come to you
                                                     directly.</span></h3>
                                             <div class="mt-3 text-center">
-                                                <a href="/rovergigs/railshub/roles/new.php" class="btn btn-lg"
+                                                <a href="<?php echo path('roles', 'new'); ?>" class="btn btn-lg"
                                                     target="_blank" style="background-color: #fe7470; color: white;"
                                                     rel="noopener">Get Started</a>
                                             </div>
@@ -377,7 +377,7 @@ $db->closeConnection();
                         <!-- Developer cards for desktop-->
                         <?php foreach ($developers as $developer): ?>
                             <div class="col-12 d-none d-md-block" style='cursor: pointer;'
-                                onclick="window.location='/rovergigs/railshub/Developers/hire.php?id=<?php echo $developer['id']; ?>';">
+                                onclick="window.location='<?php echo path('developers', 'hire'); ?>?id=<?php echo $developer['id']; ?>';">
                                 <div class="card">
                                     <!-- Card with image -->
                                     <div class="row row-0 mb-2">
@@ -441,7 +441,7 @@ $db->closeConnection();
                         <!-- Developer cards for mobile-->
                         <?php foreach ($developers as $developer): ?>
                             <div class="col-12 d-md-none" style='cursor: pointer;'
-                                onclick="window.location='/rovergigs/railshub/Developers/hire.php?id=<?php echo $developer['id']; ?>';">
+                                onclick="window.location='<?php echo path('developers', 'hire'); ?>?id=<?php echo $developer['id']; ?>';">
                                 <div class="card">
                                     <!-- Card with image -->
                                     <div class="row row-0 mb-2">
@@ -492,7 +492,7 @@ $db->closeConnection();
                         <!-- See more developers button -->
                         <div>
                             <div class="card-footer text-end">
-                                <a href="Developers/more-devs.php" class="btn"
+                                <a href="<?php echo path('developers', 'more'); ?>" class="btn"
                                     style="background-color: #fe7470; color: white; font-size: 16px; mr-3;">See more
                                     developers →
                                 </a>
@@ -559,13 +559,13 @@ $db->closeConnection();
     </div>
     </div>
     <!-- Libs JS -->
-    <script src="./dist/libs/apexcharts/dist/apexcharts.min.js" defer></script>
-    <script src="./dist/libs/jsvectormap/dist/js/jsvectormap.min.js" defer></script>
-    <script src="./dist/libs/jsvectormap/dist/maps/world.js" defer></script>
-    <script src="./dist/libs/jsvectormap/dist/maps/world-merc.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>/libs/apexcharts/dist/apexcharts.min.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>/libs/jsvectormap/dist/js/jsvectormap.min.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>/libs/jsvectormap/dist/maps/world.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>/libs/jsvectormap/dist/maps/world-merc.js" defer></script>
     <!-- Tabler Core -->
-    <script src="./dist/js/tabler.min.js" defer></script>
-    <script src="./dist/js/demo.min.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>/js/tabler.min.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>/js/demo.min.js" defer></script>
 </body>
 
 </html>
