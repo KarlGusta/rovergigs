@@ -1,6 +1,6 @@
 <!-- logout.php - The main logout file that you'll call -->
 <?php
-require_once '../config.php';
+require_once '../config/db.php';
 require_once 'logout_functions.php';
 
 if (performLogout()) {

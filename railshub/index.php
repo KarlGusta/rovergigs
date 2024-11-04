@@ -197,16 +197,18 @@ $db->closeConnection();
             font-size: 15px !important;
             /* Adjust the font size as needed */
         }
-    </style>
-    <!-- CSS files -->
-    <link href="./dist/css/tabler.min.css" rel="stylesheet" />
-    <link href="./dist/css/tabler-flags.min.css" rel="stylesheet" />
-    <link href="./dist/css/tabler-payments.min.css" rel="stylesheet" />
-    <link href="./dist/css/tabler-vendors.min.css" rel="stylesheet" />
-    <link href="./dist/css/demo.min.css" rel="stylesheet" />
+    </style>    
+     <!-- CSS files - Updated with path() function -->
+    <link href="<?php echo path('assets', 'dist'); ?>css/tabler.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/tabler.min.css" rel="stylesheet"/>
+    <link href="<?php echo path('assets', 'dist'); ?>css/tabler.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/tabler-flags.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/tabler-payments.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/demo.min.css" rel="stylesheet" />
 
     <!--Favicon-->
-    <link rel="icon" type="image/x-icon" href="Images/rovergigs_logo.png">
+    <link rel="icon" type="image/x-icon" href="<?php echo path('assets', 'images'); ?>rovergigs_logo.png">
 
     <!-- For the font -->
     <link href="https://fonts.googleapis.com/css2?family=Mabry:wght@400;700&display=swap" rel="stylesheet">
@@ -278,11 +280,11 @@ $db->closeConnection();
                                     <?php if (!isset($_SESSION['user_id'])): ?>
                                         <div class="nav-item me-3">
                                             <div class="btn-list">
-                                                <a href="/rovergigs/railshub/users/sign-in.php" class="btn" target="_blank"
+                                                <a href="<?php echo path('users', 'sign_in'); ?>" class="btn" target="_blank"
                                                     rel="noreferrer">
                                                     Sign in
                                                 </a>
-                                                <a href="/rovergigs/railshub/users/sign-up.php" class="btn"
+                                                <a href="<?php echo path('users', 'sign_up'); ?>" class="btn"
                                                     style="background-color: #fe7470; color: white; font-weight: bold;"
                                                     target="_blank" rel="noreferrer">
                                                     Register
@@ -292,7 +294,7 @@ $db->closeConnection();
                                         <!-- If the user is logged in, show the log out button -->
                                     <?php else: ?>
                                         <div class="nav-item me-3">
-                                            <a href="/rovergigs/railshub/users/logout.php" class="btn">Log out</a>
+                                            <a href="<?php echo path('users', 'logout'); ?>" class="btn">Log out</a>
                                         </div>
                                     <?php endif; ?>
                                 </div>
