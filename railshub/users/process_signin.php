@@ -5,22 +5,14 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Start session
-session_start();
+// Include the path config. This is to make it easy to manage my URLs when I upload to production, that is cpanel
+require_once '../config/paths.php';
 
-// Database connection details
-$host = "localhost";
-$dbname = "railshub";
-$username = "root";
-$password = "";
+// Database config file
+require_once '../config/db.php';
 
-// Create connection
-$conn = new mysqli($host, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+// To enable database connection
+$db = new Database();
 
 // Process form data
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -30,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = $_POST["password"];
 
         // Prepare and bind
-        $stmt = $conn->prepare("SELECT id, email, password FROM users WHERE email = ?");
+        $stmt = $db->prepare("SELECT id, email, password FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
 
         // Execute the statement
@@ -48,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "Sign in successful. Welcome, " . htmlspecialchars($user['email']) . "!";
                 
                 // Redirect to a welcome page or dashboard here 
-                header("Location: /rovergigs/railshub/index.php");
+                header("Location: " . path('home'));
                 exit(); // Ensure the script stops after the redirect
             } else {
                 echo "Incorrect password.";
@@ -64,5 +56,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Close connection
-$conn->close();
+// Close the database connection
+$db->closeConnection();

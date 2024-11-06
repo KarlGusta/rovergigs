@@ -233,8 +233,10 @@ require_once '../config/paths.php';
                                         <div class="mb-3">
                                             <label class="form-label">Email address</label>
                                             <input type="email" id="email" name="email" class="form-control" placeholder="your@email.com"
-                                                autocomplete="off">
+                                                autocomplete="off" onChange="updateUsername()">
                                         </div>
+                                        <!-- Username field populated from email. It is hidden -->
+                                        <input type="hidden" id="username" name="username" class="form-control">
                                         <div class="mb-2">
                                             <label class="form-label">
                                                 Password
@@ -324,6 +326,20 @@ require_once '../config/paths.php';
     <!-- Tabler Core -->
     <script src="<?php echo path('assets', 'dist'); ?>/js/tabler.min.js" defer></script>
     <script src="<?php echo path('assets', 'dist'); ?>/js/demo.min.js" defer></script>
+
+    <!-- Username updated from the email inputted in the form without creating a new username field -->
+     <script>
+        function updateUsername() {
+            // Get the email inputted  
+            const email = document.getElementById('email').value;
+            
+            // Remove everything after @
+            const username = email.split('@')[0];
+
+            // Update the username
+            document.getElementById('username').value = username;
+        }
+     </script>
 </body>
 
 </html>

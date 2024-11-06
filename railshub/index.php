@@ -384,7 +384,7 @@ $db->closeConnection();
                                             <?php
                                             $imageUrl = htmlspecialchars($developer['avatar_path']);
                                             // Check if the image URL is valid
-                                            if (!empty($imageUrl) && @getimagesize("Developers/" . $imageUrl)): ?>
+                                            if (!empty($imageUrl) && @getimagesize("developers/" . $imageUrl)): ?>
                                                 <img src="Developers/<?php echo $imageUrl; ?>" class="card-img-start"
                                                     alt="Developer image"
                                                     style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;" />
@@ -448,8 +448,8 @@ $db->closeConnection();
                                             <?php
                                             $imageUrl = htmlspecialchars($developer['avatar_path']);
                                             // Check if the image URL is valid
-                                            if (!empty($imageUrl) && @getimagesize("Developers/" . $imageUrl)): ?>
-                                                <img src="Developers/<?php echo $imageUrl; ?>" class="card-img-start"
+                                            if (!empty($imageUrl) && @getimagesize("developers/" . $imageUrl)): ?>
+                                                <img src="developers/<?php echo $imageUrl; ?>" class="card-img-start"
                                                     alt="Developer image"
                                                     style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" />
                                             <?php else: ?>

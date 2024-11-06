@@ -5,37 +5,33 @@ ini_set('display_errors', 1);
 
 // PHP file (process_signup.php)
 
-// Database connection details
-$host = "localhost";
-$dbname = "railshub";
-$username = "root";
-$password = "";
+// Include the path config. This is to make it easy to manage my URLs when I upload to production, that is cpanel
+require_once '../config/paths.php';
 
-// Create connection
-$conn = new mysqli($host, $username, $password, $dbname);
+// Database config file
+require_once '../config/db.php';
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+// To enable database connection
+$db = new Database();
 
 // Process form data
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if email and password are set
-    if (isset($_POST["email"]) && isset($_POST["password"])) {
+    if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["username"])) {
         $email = $_POST["email"];
+        $username = $_POST["username"];
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT); // Hash the password
 
         // Prepare and bind
-        $stmt = $conn->prepare("INSERT INTO users (email, password) VALUES (?, ?)");
-        $stmt->bind_param("ss", $email, $password);
+        $stmt = $db->prepare("INSERT INTO users (email, password, username) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $email, $password, $username);
 
         // Execute the statement
         if ($stmt->execute()) {
             echo "New user registered successfully";
 
-            // Redirect to the dashboard
-            header("Location: /rovergigs/railshub/index.php");
+                // Redirect to a welcome page or dashboard here 
+                header("Location: " . path('home'));
             exit; // Terminate the script after redirecting
         } else {
             echo "Error: " . $stmt->error;
@@ -48,6 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Close connection
-$conn->close();
+// Close the database connection
+$db->closeConnection();
 ?>
