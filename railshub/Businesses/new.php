@@ -8,7 +8,7 @@ require_once '../config/paths.php';
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
     // Redirect to the login page if not logged in
-    header("Location: " . path('businesses', 'new'));
+    header("Location: " . path('users', 'sign_in'));
     exit();
 }
 ?>
