@@ -221,7 +221,7 @@ $db->closeConnection();
                         <p>Rails Hub</p>
                     </a>
                 </h1>
-                <!-- Sign in and register buttons -->
+                <!-- Sign in and register buttons for desktop-->
                 <div class="navbar-nav flex-row order-md-last d-none d-md-flex">
                     <!-- Only show sign in and register buttons if the user is not logged in -->
                     <?php if (!isset($_SESSION['user_id'])): ?>
