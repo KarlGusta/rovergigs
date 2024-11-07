@@ -40,12 +40,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Password is correct, start a new session
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_email'] = $user['email'];
-
-                // To display a success message
-                echo "Sign in successful. Welcome, " . htmlspecialchars($user['email']) . "!";
-
+               
                 // Redirect to a welcome page or dashboard here 
                 header("Location: " . path('home'));
+
+                 // To display a success message
+                 echo "Sign in successful. Welcome, " . htmlspecialchars($user['email']) . "!";
 
                 exit(); // Ensure the script stops after the redirect
             } else {

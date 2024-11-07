@@ -1,13 +1,16 @@
-<!-- logout.php - The main logout file that you'll call -->
 <?php
+// Ensure this is at the very top of your script
+session_start(); // Start the session before any output
+
 require_once '../config/db.php';
+require_once '../config/paths.php';
 require_once 'logout_functions.php';
 
 if (performLogout()) {
-    header("Location: /rovergigs/railshub/index.php");
+    header("Location: " . path('home'));
     exit();
 } else {
-    header("Location: /rovergigs/railshub/index.php?error=not_logged_in");
+    header("Location: " . path('users', 'error_not_logged_in'));
     exit();
 }
 ?>

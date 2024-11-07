@@ -15,7 +15,8 @@ class PathConfig {
                     'users' => [
                         'sign_in' => '/users/sign-in.php',
                         'sign_up' => '/users/sign-up.php',
-                        'logout' => '/users/logout.php'
+                        'logout' => '/users/logout.php',
+                        'error_not_logged_in' => '/users/logout.php?error=not_logged_in' // Added error path
                     ],
                     'developers' => [
                         'more' => '/developers/more-devs.php',
@@ -44,7 +45,8 @@ class PathConfig {
                     'users' => [
                         'sign_in' => '/users/sign-in.php',
                         'sign_up' => '/users/sign-up.php',
-                        'logout' => '/users/logout.php'
+                        'logout' => '/users/logout.php',
+                        'error_not_logged_in' => '/users/logout.php?error=not_logged_in' // Added error path
                     ],
                     'developers' => [
                         'more' => '/developers/more-devs.php',

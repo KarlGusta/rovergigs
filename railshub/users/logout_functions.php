@@ -1,10 +1,6 @@
-<!-- logout_functions.php - Contains all logout related functions -->
 <?php
-
 // To connect to the database
 require_once '../config/db.php';
-
-
 
 function updateLogoutTime($userId)
 {
@@ -38,8 +34,6 @@ function destroySession()
 
 function performLogout()
 {
-    session_start();
-
     if (isset($_SESSION['user_id'])) {
         $userId = $_SESSION['user_id'];
         updateLogoutTime($userId);
