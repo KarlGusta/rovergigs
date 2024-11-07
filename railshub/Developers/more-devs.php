@@ -1239,10 +1239,11 @@ $db->closeConnection();
                                                             if (!empty($imageUrl)): ?>
                                                                 <img src="<?php echo $imageUrl; ?>" class="card-img-start"
                                                                     alt="Developer image"
+                                                                    loading="lazy"
                                                                     style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;" />
                                                             <?php else: ?>
-                                                                <img src="../Images/image.png" class="card-img-start" alt="Default image"
-                                                                    style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;" />
+                                                                <img src="../Images/image.png" class="card-img-start" alt="Default image" loading="lazy"
+                                                                    style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;" oneerror="this.oneerror=null; this.src='../Images/image.png';" />
                                                             <?php endif; ?>
                                                         </div>
                                                         <div class="col">

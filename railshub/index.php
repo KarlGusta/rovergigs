@@ -385,11 +385,12 @@ $db->closeConnection();
                                             $imageUrl = htmlspecialchars($developer['avatar_path']);
                                             // Check if the image URL is valid
                                             if (!empty($imageUrl) && @getimagesize("developers/" . $imageUrl)): ?>
-                                                <img src="Developers/<?php echo $imageUrl; ?>" class="card-img-start"
+                                                <img src="developers/<?php echo $imageUrl; ?>" class="card-img-start"
                                                     alt="Developer image"
-                                                    style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;" />
+                                                    loading="lazy"
+                                                    style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;" oneerror="this.oneerror=null; this.src='Images/image.png';" />
                                             <?php else: ?>
-                                                <img src="Images/image.png" class="card-img-start" alt="Default image"
+                                                <img src="Images/image.png" class="card-img-start" alt="Default image" loading="lazy"
                                                     style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;" />
                                             <?php endif; ?>
                                         </div>
