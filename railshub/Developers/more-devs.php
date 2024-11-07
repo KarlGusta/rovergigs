@@ -304,15 +304,15 @@ $db->closeConnection();
     <div class="modal modal-blur fade" id="paywall-popup" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-status bg-primary"></div>
+                <div class="modal-status" style="background-color: #fe7470;"></div>
                 <div class="modal-body text-center py-4">
                     <h2>Sign up now to see more profiles</h2>
-                    <div class="text-muted">Gain access to 1400+ Ruby on Rails developers.</div>
+                    <div>Gain access to 1400+ Ruby on Rails developers.</div>
                 </div>
                 <div class="modal-footer">
                     <div class="w-100">
                         <div class="row">
-                            <div class="col"><a href="<?php echo path('pricing'); ?>" class="btn btn-primary w-100" onclick="window.location.href=this.href;" data-bs-dismiss="modal">
+                            <div class="col"><a href="<?php echo path('pricing'); ?>" class="btn w-100" style="background-color: #fe7470; color: white; font-weight: bold;" onclick="window.location.href=this.href;" data-bs-dismiss="modal">
                                     Start hiring
                                 </a></div>
                         </div>
