@@ -369,7 +369,7 @@ require_once './config/paths.php';
                                                 <u>+ 10% first year salary</u>
                                             </a>
                                             <div class="text-center mt-4">
-                                                <a href="#" class="btn w-100"
+                                                <a href="https://rovergigs.gumroad.com/l/iedec" class="btn w-100"
                                                     style="background-color: #fe7470; color:
                                                     white; font-weight: bold; padding: 15px 30px; font-size: 1.2rem;">Get started today</a>
                                             </div>
