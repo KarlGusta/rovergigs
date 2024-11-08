@@ -20,14 +20,14 @@ require_once './config/paths.php';
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVPMVGBZ4Q"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-SVPMVGBZ4Q');
+        gtag('config', 'G-SVPMVGBZ4Q');
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -45,142 +45,142 @@ require_once './config/paths.php';
     <title>RoverGigs - Home</title>
     <!-- Custom CSS -->
     <style>
-    .text-muted {
-        border: 1px solid #ccc;
-        /* Adjust the color and style as needed */
-        border-radius: 5px;
-        /* Adjust the radius for roundness */
-        display: inline-block;
-        /* Ensures the border fits the text */
-        padding: 2px 4px;
-        /* Optional: adds some padding for better appearance */
-        background-color: white;
-        /* Set background color to white */
-    }
+        .text-muted {
+            border: 1px solid #ccc;
+            /* Adjust the color and style as needed */
+            border-radius: 5px;
+            /* Adjust the radius for roundness */
+            display: inline-block;
+            /* Ensures the border fits the text */
+            padding: 2px 4px;
+            /* Optional: adds some padding for better appearance */
+            background-color: white;
+            /* Set background color to white */
+        }
 
-    .job-title {
-        /* Assuming the job title has this class */
-        font-weight: bold;
-        /* Make the font bold */
-        font-size: 18px;
-        /* Set font size to 12px */
-    }
+        .job-title {
+            /* Assuming the job title has this class */
+            font-weight: bold;
+            /* Make the font bold */
+            font-size: 18px;
+            /* Set font size to 12px */
+        }
 
-    .company-title {
+        .company-title {
 
-        /* Make the font bold */
-        font-size: 18px;
-        /* Set font size to 12px */
-    }
+            /* Make the font bold */
+            font-size: 18px;
+            /* Set font size to 12px */
+        }
 
-    .table {
-        border-collapse: separate;
-        /* Ensure spacing is applied */
-        border-spacing: 0 10px;
-        /* Adjust the vertical spacing as needed */
-        background-color: #F5F7FB;
-        /* Set the table background color to #F5F7FB */
-    }
+        .table {
+            border-collapse: separate;
+            /* Ensure spacing is applied */
+            border-spacing: 0 10px;
+            /* Adjust the vertical spacing as needed */
+            background-color: #F5F7FB;
+            /* Set the table background color to #F5F7FB */
+        }
 
-    .table tr {
-        border-radius: 10px;
-        /* Adjust the radius as needed */
-        overflow: hidden;
-        /* Ensures the rounded corners are visible */
-    }
+        .table tr {
+            border-radius: 10px;
+            /* Adjust the radius as needed */
+            overflow: hidden;
+            /* Ensures the rounded corners are visible */
+        }
 
-    /* ... existing styles ... */
-    .table tr:hover .apply-button {
-        visibility: visible;
-        /* Show button on hover */
-        transition-delay: 0s;
-        /* Remove delay on hover */
-    }
+        /* ... existing styles ... */
+        .table tr:hover .apply-button {
+            visibility: visible;
+            /* Show button on hover */
+            transition-delay: 0s;
+            /* Remove delay on hover */
+        }
 
-    .apply-button {
-        visibility: hidden;
-        /* Hide button by default */
-        background-color: #fe7470;
-        /* Button background color */
-        color: white;
-        /* Text color */
-        border: none;
-        /* Remove border */
-        border-radius: 5px;
-        /* Rounded corners */
-        padding: 12px 80px;
-        /* Padding for better appearance */
-        cursor: pointer;
-        /* Pointer cursor on hover */
-        transition: background-color 0.3s;
-        /* Smooth transition */
-    }
+        .apply-button {
+            visibility: hidden;
+            /* Hide button by default */
+            background-color: #fe7470;
+            /* Button background color */
+            color: white;
+            /* Text color */
+            border: none;
+            /* Remove border */
+            border-radius: 5px;
+            /* Rounded corners */
+            padding: 12px 80px;
+            /* Padding for better appearance */
+            cursor: pointer;
+            /* Pointer cursor on hover */
+            transition: background-color 0.3s;
+            /* Smooth transition */
+        }
 
-    .apply-button:hover {
-        background-color: #fe7470;
-        /* Darker shade on hover */
-    }
+        .apply-button:hover {
+            background-color: #fe7470;
+            /* Darker shade on hover */
+        }
 
-    /* Remove the blur effect */
-    .offcanvas-backdrop {
-        display: none !important;
-        /* Hide the dark overlay */
-    }
+        /* Remove the blur effect */
+        .offcanvas-backdrop {
+            display: none !important;
+            /* Hide the dark overlay */
+        }
 
-    .subscribe-button {
-        background-color: #fe7470;
-        /* Button background color */
-        color: white;
-        /* Ensure text color is white */
-        border: none;
-        /* Remove border */
-        border-radius: 5px;
-        /* Rounded corners */
-        padding: 10px 20px;
-        /* Adjust padding for better appearance */
-        cursor: pointer;
-        /* Pointer cursor on hover */
-    }
+        .subscribe-button {
+            background-color: #fe7470;
+            /* Button background color */
+            color: white;
+            /* Ensure text color is white */
+            border: none;
+            /* Remove border */
+            border-radius: 5px;
+            /* Rounded corners */
+            padding: 10px 20px;
+            /* Adjust padding for better appearance */
+            cursor: pointer;
+            /* Pointer cursor on hover */
+        }
 
-    .subscribe-button:hover {
-        color: white;
-        /* Keep text color white on hover */
-        text-decoration: none;
-        /* Ensure no underline on hover */
-        opacity: 0.9;
-        /* Optional: add a hover effect */
-    }
+        .subscribe-button:hover {
+            color: white;
+            /* Keep text color white on hover */
+            text-decoration: none;
+            /* Ensure no underline on hover */
+            opacity: 0.9;
+            /* Optional: add a hover effect */
+        }
 
-    .card-title {
-        font-weight: bold;
-        font-size: 24px;
-        /* Increased font size from 20px to 24px */
-    }
+        .card-title {
+            font-weight: bold;
+            font-size: 24px;
+            /* Increased font size from 20px to 24px */
+        }
 
-    .text-secondary {
-        font-size: 16px;
-        /* Increased font size for secondary text */
-    }
+        .text-secondary {
+            font-size: 16px;
+            /* Increased font size for secondary text */
+        }
 
-    .card,
-    .card-md {
-        border: none !important;
-        /* Force removal of border */
-        box-shadow: none !important;
-        /* Force removal of shadow */
-        border-radius: 0 !important;
-        /* Force removal of rounded corners */
-    }
+        .card,
+        .card-md {
+            border: none !important;
+            /* Force removal of border */
+            box-shadow: none !important;
+            /* Force removal of shadow */
+            border-radius: 0 !important;
+            /* Force removal of rounded corners */
+        }
 
-    .row-cards {
-        border: none !important;
-        /* Ensure no border on the row */
-    }
+        .row-cards {
+            border: none !important;
+            /* Ensure no border on the row */
+        }
 
-    .table {
-        border: none !important;
-        /* Ensure no border on the table */
-    }
+        .table {
+            border: none !important;
+            /* Ensure no border on the table */
+        }
     </style>
     <!-- CSS files -->
     <link href="<?php echo path('assets', 'dist'); ?>css/tabler.min.css?1692870487" rel="stylesheet" />
@@ -195,7 +195,7 @@ require_once './config/paths.php';
 
 <body>
     <div class="page">
-    <header class="navbar navbar-expand-md navbar-light d-print-none">
+        <header class="navbar navbar-expand-md navbar-light d-print-none">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
                     <a href="<?php echo path('home'); ?>" style="text-decoration: none;">
@@ -400,6 +400,200 @@ require_once './config/paths.php';
                             </div>
                         </div>
                         <!-- End of Social Proof -->
+
+                        <!-- Social proof cards -->
+                        <div class="col-12" style="padding: 4rem;">
+                            <div class="row row-cards">
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="card card-sm">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <div style="font-weight: bold; font-size: 62px;">
+                                                        1400+
+                                                    </div>
+                                                    <div style="font-size: 16px; color: grey;">
+                                                        Rails developers
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="card card-sm">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <div style="font-weight: bold; font-size: 62px;">
+                                                        62%
+                                                    </div>
+                                                    <div style="font-size: 16px; color: grey;">
+                                                        Response rate
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="card card-sm">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <div style="font-weight: bold; font-size: 62px;">
+                                                        40+
+                                                    </div>
+                                                    <div style="font-size: 16px; color: grey;">
+                                                        New devs per month
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonials part -->
+                        <div class="col-12">
+                            <div class="row row-cards">
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="card card-borderless">
+                                        <div class="card-body">
+                                            <div class="row mb-4">
+                                                <div class="col-auto">
+                                                    <span class="avatar" style="background-image: url(<?php echo path('assets', 'images'); ?>/Sarah.png)"></span>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="text-truncate">
+                                                        <strong>Sarah Thompson</strong>
+                                                    </div>
+                                                    <div>Founder, TechWorks Inc.</div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">⭐⭐⭐⭐⭐</div>
+                                            <div>Hiring with Railshub was a breeze! We found a skilled Rails developer in record time, and the process was incredibly smooth. The platform's talent pool is impressive!</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="card card-borderless">
+                                        <div class="card-body">
+                                            <div class="row mb-4">
+                                                <div class="col-auto">
+                                                    <span class="avatar" style="background-image: url(<?php echo path('assets', 'images'); ?>/Mark.png)"></span>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="text-truncate">
+                                                        <strong>Mark Jensen</strong>
+                                                    </div>
+                                                    <div>Tech Lead, BlueSky Solutions</div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">⭐⭐⭐⭐⭐</div>
+                                            <div>Railshub made hiring seamless and efficient. We quickly connected with top-tier Rails developers who matched our project needs. Highly recommend for any team!</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="card card-borderless">
+                                        <div class="card-body">
+                                            <div class="row mb-4">
+                                                <div class="col-auto">
+                                                    <span class="avatar" style="background-image: url(<?php echo path('assets', 'images'); ?>/Michael.png)"></span>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="text-truncate">
+                                                        <strong>Michael Johnson</strong>
+                                                    </div>
+                                                    <div>Founder, NexWave Labs</div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">⭐⭐⭐⭐⭐</div>
+                                            <div>Railshub helped us find the perfect Rails developer within days. The quality of candidates was outstanding, and the platform’s interface made hiring easy and intuitive.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ part -->
+                        <div class="page-header d-print-none">
+                            <div class="row g-2 align-items-center">
+                                <div class="col">
+                                    <h2 class="page-title">
+                                        Frequently Asked Questions
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FAQ Body -->
+                        <div class="col-12">
+                            <div class="card card-md">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <h3 style="font-weight: bold;">Does RailsHub cost anything for developers?</h3>                                            
+                                        </div>
+                                        <div class="col">                                            
+                                            <p class="h3" style="color: grey;">No. RailsHub is free for developers.</p>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <h3 style="font-weight: bold;">How does the 10% hiring fee work?</h3>                                            
+                                        </div>
+                                        <div class="col">                                            
+                                            <p class="h3" style="color: grey;">If you hire a full-time employee through RailsHub you agree to pay a placement fee equal to 10% of their salary. Read the full hiring agreement for more details.</p>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <h3 style="font-weight: bold;">Can I pay annually or yearly?</h3>                                            
+                                        </div>
+                                        <div class="col">                                            
+                                            <p class="h3" style="color: grey;">Yes. DM Karl to set up discounted annual billing at karlgustaesimit@gmail.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <h3 style="font-weight: bold;">Can I cancel my subscription at any time?</h3>                                            
+                                        </div>
+                                        <div class="col">                                            
+                                            <p class="h3" style="color: grey;">Yes. You can cancel your subscription from the Billing link in the user drop-down. You will lose access to all paid features at the end of your billing period.</p>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <h3 style="font-weight: bold;">Who can I contact for more specific questions?</h3>                                            
+                                        </div>
+                                        <div class="col">                                            
+                                            <p class="h3" style="color: grey;">Email the founder – that's me, Karl! – with any questions. You can reach me on @karlgustaesimit@gmail.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Get started today part -->
+                        <div class="col-12">
+                            <div class="card card-md">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <h3 class="h1" style="font-size: 25px; font-weight: bold; color: grey;">Ready to start hiring?</h3>
+                                            <p class="h3" style="font-size: 25px; font-weight: bold;">Find your next Rails developer today.</p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <a href="https://rovergigs.gumroad.com/l/iedec" class="btn w-100"
+                                                style="background-color: #fe7470; color:
+                                                    white; font-weight: bold; padding: 15px 30px; font-size: 1.2rem;">Get started today</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -449,7 +643,7 @@ require_once './config/paths.php';
                         <li class="list-inline-item">
                             Copyright &copy;
                             <script type="text/javascript">
-                            document.write(new Date().getFullYear());
+                                document.write(new Date().getFullYear());
                             </script>
                             <a href="www.rovergigs.com/railshub" class="link-secondary">Rails Hub</a>.
                             All rights reserved.
