@@ -192,10 +192,11 @@ $db->closeConnection();
         }
 
         body {
-            font-family: 'Mabry', sans-serif !important;
-            /* Change font to Mabry */
-            font-size: 15px !important;
-            /* Adjust the font size as needed */
+            font-family: 'Bricolage Grotesque', sans-serif !important;
+            /* Change font to Bricolage Grotesque */
+            font-size: 15px !important; /* Adjust the font size as needed */             
+            background-color: #212121 !important; /* Change background color to #212121 */
+            color: #CFCFCF; /* Change text color to #CFCFCF */
         }
     </style>    
      <!-- CSS files - Updated with path() function -->
@@ -209,16 +210,16 @@ $db->closeConnection();
     <link rel="icon" type="image/x-icon" href="<?php echo path('assets', 'images'); ?>rovergigs_logo.png">
 
     <!-- For the font -->
-    <link href="https://fonts.googleapis.com/css2?family=Mabry:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="page">
-        <header class="navbar navbar-expand-md navbar-light d-print-none">
+        <header class="navbar navbar-expand-md d-print-none" style="background-color: #212121;">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
                     <a href="<?php echo path('home'); ?>" style="text-decoration: none;">
-                        <p>Rails Hub</p>
+                        <p style="color: #CFCFCF;">Rails Hub</p>
                     </a>
                 </h1>
                 <!-- Sign in and register buttons for desktop-->
@@ -228,12 +229,12 @@ $db->closeConnection();
                         <div class="nav-item me-3">
                             <div class="btn-list">
                                 <!-- Using the config/paths.php for the URL of the sign in and register buttons -->
-                                <a href="<?php echo path('users', 'sign_in'); ?>" class="btn" target="_blank"
+                                <a href="<?php echo path('users', 'sign_in'); ?>" class="btn" style="background-color: #212121; color: #CFCFCF; font-weight: bold;" target="_blank"
                                     rel="noreferrer">
                                     Sign in
                                 </a>
                                 <a href="<?php echo path('users', 'sign_up'); ?>" class="btn"
-                                    style="background-color: #fe7470; color: white; font-weight: bold;" target="_blank"
+                                    style="background-color: #F5AF00; color: #CFCFCF; font-weight: bold;" target="_blank"
                                     rel="noreferrer">
                                     Register
                                 </a>
@@ -242,7 +243,7 @@ $db->closeConnection();
                         <!-- If the user is logged in, show the log out button -->
                     <?php else: ?>
                         <div class="nav-item me-3">
-                            <a href="<?php echo path('users', 'logout'); ?>" class="btn">Log out</a>
+                            <a href="<?php echo path('users', 'logout'); ?>" class="btn" style="background-color: #212121; color: #CFCFCF; font-weight: bold;">Log out</a>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -309,7 +310,7 @@ $db->closeConnection();
                     <div class="row row-deck row-cards">
                         <!--Front Banner for desktop-->
                         <div class="col-12 d-none d-md-block">
-                            <div class="card card-md">
+                            <div class="card card-md" style="background-color: #212121; color: #CFCFCF;">
                                 <div class="card-stamp card-stamp-lg">
                                 </div>
                                 <div class="card-body">
@@ -326,7 +327,7 @@ $db->closeConnection();
                                                     directly.</span></h3>
                                             <div class="mt-3 text-center">
                                                 <a href="<?php echo path('roles', 'new'); ?>" class="btn btn-lg"
-                                                    target="_blank" style="background-color: #fe7470; color: white;"
+                                                    target="_blank" style="background-color: #F5AF00; color: #CFCFCF;"
                                                     rel="noopener">Get Started</a>
                                             </div>
                                         </div>
@@ -365,7 +366,7 @@ $db->closeConnection();
                             <div class="container-xl">
                                 <div class="row g-2 align-items-center">
                                     <div class="col">
-                                        <h2 class="page-title" style="margin-left: -15px;">
+                                        <h2 class="page-title" style="margin-left: -15px; color: #CFCFCF;">
                                             New Rails developers on RailsHub
                                         </h2>
                                     </div>
@@ -376,10 +377,10 @@ $db->closeConnection();
                         <?php foreach ($developers as $developer): ?>
                             <div class="col-12 d-none d-md-block" style='cursor: pointer;'
                                 onclick="window.location='<?php echo path('developers', 'hire'); ?>?id=<?php echo $developer['id']; ?>';">
-                                <div class="card">
+                                <div class="card" style="background-color: #212121; color: #CFCFCF; font-weight: bold;">
                                     <!-- Card with image -->
                                     <div class="row row-0 mb-2">
-                                        <div class="col-3 me-3 d-flex justify-content-center align-items-center">
+                                        <div class="col-2 me-3 d-flex justify-content-center align-items-center">
                                             <!-- Photo -->
                                             <?php
                                             $imageUrl = htmlspecialchars($developer['avatar_path']);
@@ -419,7 +420,7 @@ $db->closeConnection();
                                                         <!-- Changed text color to green -->
                                                     </p>
                                                 </div>
-                                                <p><span class="badge bg-green-lt">New profile</span></p>
+                                                <p><span class="badge" style="background-color: #212121; color: #CFCFCF; border: 1px solid #CFCFCF;">New profile</span></p>
                                                 <p class="text-secondary">
                                                     <!-- Only show a few words -->
                                                     <?php
@@ -492,7 +493,7 @@ $db->closeConnection();
                         <div>
                             <div class="card-footer text-end">
                                 <a href="<?php echo path('developers', 'more'); ?>" class="btn"
-                                    style="background-color: #fe7470; color: white; font-size: 16px; mr-3;">See more
+                                    style="background-color: #F5AF00; color: #CFCFCF; font-size: 16px;"style="background-color: #F5AF00; color: #CFCFCF;">See more
                                     developers →
                                 </a>
                             </div>
