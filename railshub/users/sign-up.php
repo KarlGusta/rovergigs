@@ -158,6 +158,17 @@ require_once '../config/paths.php';
             font-size: 16px;
             /* Increased font size for secondary text */
         }
+
+        body {
+            font-family: 'Bricolage Grotesque', sans-serif !important;
+            /* Change font to Bricolage Grotesque */
+            font-size: 15px !important;
+            /* Adjust the font size as needed */
+            background-color: #212121 !important;
+            /* Change background color to #212121 */
+            color: #CFCFCF;
+            /* Change text color to #CFCFCF */
+        }
     </style>
 
     <!-- CSS files - Updated with path() function -->
@@ -169,30 +180,33 @@ require_once '../config/paths.php';
 
     <!--Favicon-->
     <link rel="icon" type="image/x-icon" href="<?php echo path('assets', 'images'); ?>rovergigs_logo.png">
+
+    <!-- For the font -->
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="page">
-    <header class="navbar navbar-expand-md navbar-light d-print-none">
+    <header class="navbar navbar-expand-md d-print-none" style="background-color: #212121;">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
                     <a href="<?php echo path('home'); ?>" style="text-decoration: none;">
-                        <p>Rails Hub</p>
+                        <p class="mt-3" style="color: #CFCFCF;">Rails Hub</p>
                     </a>
                 </h1>
-                <!-- Sign in and register buttons -->
+                <!-- Sign in and register buttons for desktop-->
                 <div class="navbar-nav flex-row order-md-last d-none d-md-flex">
                     <!-- Only show sign in and register buttons if the user is not logged in -->
                     <?php if (!isset($_SESSION['user_id'])): ?>
                         <div class="nav-item me-3">
                             <div class="btn-list">
                                 <!-- Using the config/paths.php for the URL of the sign in and register buttons -->
-                                <a href="<?php echo path('users', 'sign_in'); ?>" class="btn" target="_blank"
+                                <a href="<?php echo path('users', 'sign_in'); ?>" class="btn" style="background-color: #212121; color: #CFCFCF; font-weight: bold;" target="_blank"
                                     rel="noreferrer">
                                     Sign in
                                 </a>
                                 <a href="<?php echo path('users', 'sign_up'); ?>" class="btn"
-                                    style="background-color: #fe7470; color: white; font-weight: bold;" target="_blank"
+                                    style="background-color: #F5AF00; color: #CFCFCF; font-weight: bold;" target="_blank"
                                     rel="noreferrer">
                                     Register
                                 </a>
@@ -201,11 +215,11 @@ require_once '../config/paths.php';
                         <!-- If the user is logged in, show the log out button -->
                     <?php else: ?>
                         <div class="nav-item me-3">
-                            <a href="<?php echo path('users', 'logout'); ?>" class="btn">Log out</a>
+                            <a href="<?php echo path('users', 'logout'); ?>" class="btn" style="background-color: #212121; color: #CFCFCF; font-weight: bold;">Log out</a>
                         </div>
                     <?php endif; ?>
                 </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" style="color: #CFCFCF;">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
@@ -226,7 +240,7 @@ require_once '../config/paths.php';
                     <div class="row row-deck row-cards">
                         <!-- Sign in form -->
                         <div class="container container-tight py-4">
-                            <div class="card card-md">
+                            <div class="card card-md" style="background-color: #212121; color: #CFCFCF;">
                                 <div class="card-body">
                                     <h2 class="h2 text-center mb-4">Create your account</h2>
                                     <form action="process_signup.php" method="post" autocomplete="off" novalidate>
@@ -247,7 +261,7 @@ require_once '../config/paths.php';
                                             </div>
                                         </div>
                                         <div class="form-footer">
-                                            <button type="submit" class="btn w-100" style="background-color: #fe7470; color: white; font-weight: bold;">Sign up</button>
+                                            <button type="submit" class="btn w-100" style="background-color: #F5AF00; color: #CFCFCF; font-weight: bold;">Sign up</button>
                                         </div>
                                     </form>
                                 </div>
@@ -328,18 +342,18 @@ require_once '../config/paths.php';
     <script src="<?php echo path('assets', 'dist'); ?>/js/demo.min.js" defer></script>
 
     <!-- Username updated from the email inputted in the form without creating a new username field -->
-     <script>
+    <script>
         function updateUsername() {
             // Get the email inputted  
             const email = document.getElementById('email').value;
-            
+
             // Remove everything after @
             const username = email.split('@')[0];
 
             // Update the username
             document.getElementById('username').value = username;
         }
-     </script>
+    </script>
 </body>
 
 </html>

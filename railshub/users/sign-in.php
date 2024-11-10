@@ -268,7 +268,6 @@ require_once '../config/paths.php';
                                 Don't have account yet? <a href="<?php echo path('users', 'sign_up'); ?>" tabindex="-1">Sign up</a>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
