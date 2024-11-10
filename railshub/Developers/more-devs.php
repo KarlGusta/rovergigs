@@ -323,13 +323,18 @@ $db->closeConnection();
     </div>
     <!-- End of the pop-up requiring a paid account -->
     <div class="page">
-    <header class="navbar navbar-expand-md navbar-light d-print-none">
+        <header class="navbar navbar-expand-md navbar-light d-print-none">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
                     <a href="<?php echo path('home'); ?>" style="text-decoration: none;">
                         <p>Rails Hub</p>
                     </a>
                 </h1>
+
+                <!-- Toggle button for Collapsible content -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <!-- Sign in and register buttons -->
                 <div class="navbar-nav flex-row order-md-last d-none d-md-flex">
                     <!-- Only show sign in and register buttons if the user is not logged in -->
@@ -355,18 +360,66 @@ $db->closeConnection();
                         </div>
                     <?php endif; ?>
                 </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
             </div>
         </header>
+        <!-- Navigation menu collapsible hamberger for mobile -->
+        <div class="navbar-expand-md d-md-none">
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <div class="navbar navbar-light">
+                    <div class="container-xl">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="<?php echo path('developers', 'more') ?> ">
+                                    <span class="nav-link-title">
+                                        Developers
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo path('pricing') ?>">
+                                    <span class="nav-link-title">
+                                        Pricing
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <!-- Sign in and register buttons -->
+                                <div class="navbar-nav flex-row order-md-last">
+                                    <!-- Only show sign in and register buttons if the user is not logged in -->
+                                    <?php if (!isset($_SESSION['user_id'])): ?>
+                                        <div class="nav-item me-3">
+                                            <div class="btn-list">
+                                                <a href="<?php echo path('users', 'sign_in'); ?>" class="btn" target="_blank"
+                                                    rel="noreferrer">
+                                                    Sign in
+                                                </a>
+                                                <a href="<?php echo path('users', 'sign_up'); ?>" class="btn"
+                                                    style="background-color: #fe7470; color: white; font-weight: bold;"
+                                                    target="_blank" rel="noreferrer">
+                                                    Register
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- If the user is logged in, show the log out button -->
+                                    <?php else: ?>
+                                        <div class="nav-item me-3">
+                                            <a href="<?php echo path('users', 'logout'); ?>" class="btn">Log out</a>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Page wrapper -->
         <div class="page-wrapper">
             <!-- Page header -->
             <div class="page-header d-print-none">
                 <div class="container-xl">
-                    <!-- Front banner card -->
-                    <div class="col-12">
+                    <!-- Front banner card for desktop-->
+                    <div class="col-12 d-none d-md-block" style="display: none;"> <!-- Added style to hide the banner -->
                         <div class="card card-md">
                             <div class="card-body">
                                 <div class="row align-items-center">
@@ -394,13 +447,49 @@ $db->closeConnection();
                             </div>
                         </div>
                     </div>
+                    <!-- Front banner card for mobile-->
+                    <div class="col-12 d-block d-md-none" style="display: none;">
+                        <div class="card card-md">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col mb-3">
+                                        <h2 class="page-title">Hire Ruby on Rails developers.</h2>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center">
+                                    <div class="col mb-3">
+                                        <p class="m-0 text-secondary">1300+ Ruby on Rails developers looking for their
+                                            next gig. Juniors
+                                            to seniors and everyone in between, you'll find them all here.</p>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <a href="<?php echo path('developers', 'new'); ?>" class="btn"
+                                            style="background-color: #fe7470; color: white; font-weight: bold;">
+                                            <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M12 5l0 14" />
+                                                <path d="M5 12l14 0" />
+                                            </svg>
+                                            Add my profile
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- Page body -->
             <div class="page-body">
                 <div class="container-xl">
                     <div class="row g-4">
-                        <div class="col-md-3">
+                        <!-- Desktop filter -->
+                        <div class="col-md-3 d-none d-md-block"> <!-- Added d-none d-md-block to hide on mobile -->
                             <form action="" method="get" id="filterForm" autocomplete="off" novalidate
                                 class="sticky-top">
                                 <div class="form-label">Search profiles</div>
@@ -1197,7 +1286,49 @@ $db->closeConnection();
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-9">
+                        <!-- Filter for mobile -->
+                        <div class="d-md-none">
+                            <div class="accordion">
+                                <div class="form-label accordion-header d-flex justify-content-between" id="mobileFilterHeader">
+                                    <span>Filters</span>
+                                    <span class="mobile-filter-toggle-icon">🔍</span>
+                                </div>
+                                <div class="accordion-content" id="mobileFilterContent">
+                                    <form action="" method="get" id="mobileFilterForm" autocomplete="off" novalidate>
+                                        <div class="form-label">Role level</div>
+                                        <div class="mb-4">
+                                            <label class="form-check">
+                                                <input type="checkbox" class="form-check-input" name="role_levels[]" value="Junior">
+                                                <span class="form-check-label">Junior</span>
+                                            </label>
+                                            <label class="form-check">
+                                                <input type="checkbox" class="form-check-input" name="role_levels[]" value="Mid-level">
+                                                <span class="form-check-label">Mid-level</span>
+                                            </label>
+                                            <label class="form-check">
+                                                <input type="checkbox" class="form-check-input" name="role_levels[]" value="Senior">
+                                                <span class="form-check-label">Senior</span>
+                                            </label>
+                                            <label class="form-check">
+                                                <input type="checkbox" class="form-check-input" name="role_levels[]" value="Principal/staff">
+                                                <span class="form-check-label">Principal / Staff</span>
+                                            </label>
+                                            <label class="form-check">
+                                                <input type="checkbox" class="form-check-input" name="role_levels[]" value="C-level">
+                                                <span class="form-check-label">C - level</span>
+                                            </label>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <button type="submit" class="col btn w-100" style="background-color: #fe7470; color: white; font-weight: bold;">
+                                                Apply
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Developer cards for desktop -->
+                        <div class="col-md-9 d-none d-md-block">
                             <div class="row row-cards">
                                 <div class="space-y">
                                     <div>
@@ -1290,6 +1421,85 @@ $db->closeConnection();
                                             </div>
                                         <?php endforeach; ?>
                                     <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Developer cards for mobile -->
+                        <div class="col-md-9 d-block d-md-none"><!-- Changed to d-block d-md-none to show on mobile and hide on desktop -->
+                            <div class="row row-cards">
+                                <div class="space-y">
+                                    <div>
+                                        <div class="row g-0">
+                                            <div class="col-auto">
+                                                <div class="card-body ps-0">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <p class="mb-0 text-secondary">Showing
+                                                                <strong><?php echo count($developers); ?></strong>
+                                                                of <strong>1300+ </strong>developers.
+                                                                <!-- If there are any filters applied, display the reset filters link  -->
+                                                                <?php if (!empty($_GET)): ?>
+                                                                    <a href="more-devs.php" class="text-secondary">
+                                                                        <strong>Reset filters</strong></a>
+                                                                <?php endif; ?>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Developer cards for mobile-->
+                                    <?php foreach ($developers as $developer): ?>
+                                        <div class="col-12 d-md-none" style='cursor: pointer;'
+                                            onclick="window.location='<?php echo path('developers', 'hire'); ?>?id=<?php echo $developer['id']; ?>';">
+                                            <div class="card">
+                                                <!-- Card with image -->
+                                                <div class="row row-0 mb-2">
+                                                    <div class="col-3 me-3 d-flex m-4">
+                                                        <!-- Photo -->
+                                                        <?php
+                                                        $imageUrl = htmlspecialchars($developer['avatar_path']);
+                                                        // Check if the image URL is valid
+                                                        if (!empty($imageUrl) && @getimagesize($imageUrl)): ?>
+                                                            <img src="<?php echo $imageUrl; ?>" class="card-img-start"
+                                                                alt="Developer image"
+                                                                style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" />
+                                                        <?php else: ?>
+                                                            <img src="Images/image.png" class="card-img-start" alt="Default image"
+                                                                style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;" />
+                                                        <?php endif; ?>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="card-body">
+                                                            <h3 class="card-title" style="font-weight: bold; font-size: 20px;">
+                                                                <!-- Only show a few words -->
+                                                                <?php
+                                                                $hero = htmlspecialchars($developer['hero']);
+                                                                $words = explode(" ", $hero);
+                                                                $truncated = array_slice($words, 0, 10);
+                                                                echo implode(" ", $truncated);
+                                                                if (count($words) > 10) echo '...';
+                                                                ?>
+                                                            </h3>
+                                                            <p><span class="badge bg-green-lt">New profile</span></p>
+                                                            <p class="text-secondary">
+                                                                <!-- Only show a few words -->
+                                                                <?php
+                                                                $bio = htmlspecialchars($developer['bio']);
+                                                                $words = explode(" ", $bio);
+                                                                $truncated = array_slice($words, 0, 15);
+                                                                echo implode(" ", $truncated);
+                                                                if (count($words) > 30) echo '...';
+                                                                ?>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- End of card with image -->
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
                         </div>
@@ -1455,11 +1665,34 @@ $db->closeConnection();
         });
     </script>
 
-    <!-- Optional: Add JavaScript for auto-submit on checkbox change -->
+    <!-- For the filters accordion -->
     <script>
-        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                document.getElementById('filterForm').submit();
+        const mobileFilterHeader = document.getElementById('mobileFilterHeader');
+        const mobileFilterContent = document.getElementById('mobileFilterContent');
+        const mobileFilterToggleIcon = mobileFilterHeader.querySelector('.mobile-filter-toggle-icon');
+
+        mobileFilterHeader.addEventListener('click', function() {
+            if (mobileFilterContent.style.display === 'block') {
+                mobileFilterContent.style.display = 'none';
+                mobileFilterToggleIcon.textContent = '🔍';
+            } else {
+                mobileFilterContent.style.display = 'block';
+                mobileFilterToggleIcon.textContent = '❌'; // This is a minus sign (U+2212)
+            }
+        });
+    </script>
+
+    <!-- Add this script at the bottom of your page, before the closing body tag -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarMenu = document.querySelector('#navbar-menu');
+
+            navbarToggler.addEventListener('click', function() {
+                navbarMenu.classList.toggle('show');
+                // Update aria-expanded attribute
+                const isExpanded = navbarMenu.classList.contains('show');
+                navbarToggler.setAttribute('aria-expanded', isExpanded);
             });
         });
     </script>
