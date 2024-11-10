@@ -252,7 +252,7 @@ $db->closeConnection();
                 </button>
             </div>
         </header>
-        <!-- Navigation menu for mobile -->
+        <!-- Navigation menu collapsible hamberger for mobile -->
         <div class="navbar-expand-md d-md-none">
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <div class="navbar navbar-light">
