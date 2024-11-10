@@ -211,14 +211,14 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVPMVGBZ4Q"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-SVPMVGBZ4Q');
+        gtag('config', 'G-SVPMVGBZ4Q');
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -236,9 +236,70 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
     <title>Rails Devs - Hire</title>
     <!-- Custom CSS -->
     <style>
-    /* ... existing styles ... */
+        /* ... existing styles ... */
+        body {
+            font-family: 'Bricolage Grotesque', sans-serif !important;
+            /* Change font to Bricolage Grotesque */
+            font-size: 15px !important;
+            /* Adjust the font size as needed */
+            background-color: #212121 !important;
+            /* Change background color to #212121 */
+            color: #CFCFCF;
+            /* Change text color to #CFCFCF */
+        }
 
-    /* ... !existing styles ... */
+        .hire-btn {
+            background-color: #212121 !important;
+            color: #CFCFCF !important;
+        }
+
+        .hover-btn:hover {
+            background-color: #F5AF00 !important;
+            /* Change to your desired hover color */
+            color: #CFCFCF !important;
+            /* Change text color on hover if needed */
+        }
+
+        /* To shake the card */
+        @keyframes shake {
+
+            0% {
+                transform: translate(0);
+            }
+
+            25% {
+                transform: translate(-5px, 0);
+            }
+
+            50% {
+                transform: translate(5px, 0);
+            }
+
+            75% {
+                transform: translate(-5px, 0);
+            }
+
+            100% {
+                transform: translate(0);
+            }
+        }
+
+        .private-info-card:hover {
+            transform: rotate(3deg);
+            /* Tilt effect */
+
+            /* border-color: #CFCFCF; */
+            /* Change border color on hover */
+
+            border: 2px dotted #F5AF00;
+
+            transition: transform 0.3s;
+
+            animation: shake 0.5s;
+            /* Shake effect */
+        }
+
+        /* ... !existing styles ... */
     </style>
     <!-- CSS files -->
     <link href="<?php echo path('assets', 'dist'); ?>css/tabler.min.css" rel="stylesheet" />
@@ -249,15 +310,18 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
 
     <!--Favicon-->
     <link rel="icon" type="image/x-icon" href="<?php echo path('assets', 'images'); ?>rovergigs_logo.png">
+
+    <!-- For the font -->
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="page">
-    <header class="navbar navbar-expand-md navbar-light d-print-none">
+        <header class="navbar navbar-expand-md navbar-light d-print-none" style="background-color: #212121;">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
                     <a href="<?php echo path('home'); ?>" style="text-decoration: none;">
-                        <p>Rails Hub</p>
+                        <p class="mt-3" style="color: #CFCFCF;">Rails Hub</p>
                     </a>
                 </h1>
                 <!-- Sign in and register buttons -->
@@ -267,12 +331,12 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
                         <div class="nav-item me-3">
                             <div class="btn-list">
                                 <!-- Using the config/paths.php for the URL of the sign in and register buttons -->
-                                <a href="<?php echo path('users', 'sign_in'); ?>" class="btn" target="_blank"
+                                <a href="<?php echo path('users', 'sign_in'); ?>" class="btn" style="background-color: #212121; color: #CFCFCF; font-weight: bold;" target="_blank"
                                     rel="noreferrer">
                                     Sign in
                                 </a>
                                 <a href="<?php echo path('users', 'sign_up'); ?>" class="btn"
-                                    style="background-color: #fe7470; color: white; font-weight: bold;" target="_blank"
+                                    style="background-color: #F5AF00; color: #CFCFCF; font-weight: bold;" target="_blank"
                                     rel="noreferrer">
                                     Register
                                 </a>
@@ -325,18 +389,18 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
                     </div>
                     <div class="row row-cards">
                         <div class="col-lg-8">
-                            <div class="card card-lg">
+                            <div class="card card-lg" style="background-color: #212121; color: #CFCFCF;">
                                 <div class="card-header">
                                     <div class="col">
                                         <div class="card-title" style="font-weight: bold; font-size: 1.5rem;">
                                             <!-- Only show a few words -->
-                                                    <?php 
-                                                      $hero = htmlspecialchars($developer['hero']);
-                                                      $words = explode(" ", $hero);
-                                                      $truncated = array_slice($words, 0, 10);
-                                                      echo implode(" ", $truncated);
-                                                      if (count($words) > 10) echo '...';
-                                                    ?>
+                                            <?php
+                                            $hero = htmlspecialchars($developer['hero']);
+                                            $words = explode(" ", $hero);
+                                            $truncated = array_slice($words, 0, 10);
+                                            echo implode(" ", $truncated);
+                                            if (count($words) > 10) echo '...';
+                                            ?>
                                         </div>
                                         <div class="card-subtitle mt-3">
                                             <!-- Download SVG icon from http://tabler-icons.io/i/lock -->
@@ -355,7 +419,7 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
                                     </div>
                                     <div class="card-actions">
                                         <a href="<?php echo path('businesses', 'new'); ?>"
-                                            class="btn .btn-outline-secondary"
+                                            class="btn hire-btn hover-btn"
                                             style="font-weight: bold; font-size: 16px; margin-top: -45px;">
                                             <!-- Download SVG icon from http://tabler-icons.io/i/briefcase -->
                                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
@@ -374,8 +438,7 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
                                     </div>
                                 </div>
                                 <div class="card-body" style="margin-top: -25px;">
-                                    <p><span class="badge bg-green-lt" style="font-weight: bold; font-size: 16px;">New
-                                            profile</span></p>
+                                    <p><span class="badge" style="background-color: #212121; color: #CFCFCF; border: 1px solid #CFCFCF;">New profile</span></p>
                                     <div class="markdown">
                                         <p><?php echo nl2br(e($developer['bio'])); ?></p>
                                     </div>
@@ -383,7 +446,7 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            <div class="card">
+                            <div class="card" style="background-color: #212121; color: #CFCFCF;">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center mb-3">
                                         <div class="me-3">
@@ -407,27 +470,27 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
                                     }
 
                                     foreach ($rolesArray as $role) {
-                                        ?>
-                                    <h4>Interested in roles</h4>
-                                    <ul class="list-unstyled space-y-1">
-                                        <li>
-                                            <!-- Download SVG icon from http://tabler-icons.io/i/check -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon text-grey" width="24"
-                                                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                                fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path d="M5 12l5 5l10 -10" />
-                                            </svg>
-                                            <?php echo nl2br(e(trim($role))); ?>
-                                            <!-- Trim whitespace from each role -->
-                                        </li>
-                                    </ul>
+                                    ?>
+                                        <h4>Interested in roles</h4>
+                                        <ul class="list-unstyled space-y-1">
+                                            <li>
+                                                <!-- Download SVG icon from http://tabler-icons.io/i/check -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon text-grey" width="24"
+                                                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                    <path d="M5 12l5 5l10 -10" />
+                                                </svg>
+                                                <?php echo nl2br(e(trim($role))); ?>
+                                                <!-- Trim whitespace from each role -->
+                                            </li>
+                                        </ul>
                                     <?php } ?>
                                     <ul class="list-unstyled space-y-1">
                                         <li>
-                                            <div class="card bg-primary-lt" style='cursor: pointer;'
+                                            <div class="card private-info-card bg-primary-lt" style='cursor: pointer; background-color: #212121; color: #CFCFCF; font-weight: bold;'
                                                 onclick="window.location='<?php echo path('pricing'); ?>';">
-                                                <div class="card-body">
+                                                <div class="card-body" style='cursor: pointer; background-color: #212121; color: #CFCFCF; font-weight: bold;'>
                                                     <!-- Download SVG icon from http://tabler-icons.io/i/lock -->
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -519,7 +582,7 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
                         <li class="list-inline-item">
                             Copyright &copy;
                             <script type="text/javascript">
-                            document.write(new Date().getFullYear());
+                                document.write(new Date().getFullYear());
                             </script>
                             <a href="www.rovergigs.com/railshub" class="link-secondary">Rails Hub</a>.
                             All rights reserved.
@@ -542,16 +605,16 @@ $timezone = isset($timezones[$city]) ? $timezones[$city] : "Timezone not specifi
 
     <!-- Custom Script for Subscribe Button -->
     <script>
-    // Check if the user has already subscribed
-    if (localStorage.getItem('subscribed')) {
-        document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
-    }
+        // Check if the user has already subscribed
+        if (localStorage.getItem('subscribed')) {
+            document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
+        }
 
-    // Add click event to the subscribe button
-    document.getElementById('subscribe-button').addEventListener('click', function() {
-        localStorage.setItem('subscribed', 'true'); // Set the subscribed flag
-        document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
-    });
+        // Add click event to the subscribe button
+        document.getElementById('subscribe-button').addEventListener('click', function() {
+            localStorage.setItem('subscribed', 'true'); // Set the subscribed flag
+            document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
+        });
     </script>
 </body>
 
