@@ -42,7 +42,7 @@ require_once '../config/paths.php';
     <meta property="og:site_name" content="WARO" />
     <meta property="og:locale" content="en_US" />
 
-    <title>RoverGigs - Home</title>
+    <title>RailsHub - New</title>
     <!-- Custom CSS -->
     <style>
     .text-muted {
@@ -174,6 +174,14 @@ require_once '../config/paths.php';
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         /* Add shadow for depth */
     }
+
+    body {
+            font-family: 'Bricolage Grotesque', sans-serif !important;
+            /* Change font to Bricolage Grotesque */
+            font-size: 15px !important; /* Adjust the font size as needed */             
+            background-color: #212121 !important; /* Change background color to #212121 */
+            color: #CFCFCF; /* Change text color to #CFCFCF */
+        }
     </style>
     <!-- CSS files -->
     <link href="<?php echo path('assets', 'dist'); ?>css/tabler.min.css" rel="stylesheet" />
@@ -184,15 +192,18 @@ require_once '../config/paths.php';
 
     <!--Favicon-->
     <link rel="icon" type="image/x-icon" href="<?php echo path('assets', 'images'); ?>rovergigs_logo.png">
+
+        <!-- For the font -->
+        <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="page">
-    <header class="navbar navbar-expand-md navbar-light d-print-none">
+    <header class="navbar navbar-expand-md navbar-light d-print-none" style="background-color: #212121;">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
                     <a href="<?php echo path('home'); ?>" style="text-decoration: none;">
-                        <p>Rails Hub</p>
+                        <p class="mt-3" style="color: #CFCFCF;">Rails Hub</p>
                     </a>
                 </h1>
                 <!-- Sign in and register buttons -->
@@ -202,12 +213,12 @@ require_once '../config/paths.php';
                         <div class="nav-item me-3">
                             <div class="btn-list">
                                 <!-- Using the config/paths.php for the URL of the sign in and register buttons -->
-                                <a href="<?php echo path('users', 'sign_in'); ?>" class="btn" target="_blank"
+                                <a href="<?php echo path('users', 'sign_in'); ?>" class="btn" style="background-color: #212121; color: #CFCFCF; font-weight: bold;" target="_blank"
                                     rel="noreferrer">
                                     Sign in
                                 </a>
                                 <a href="<?php echo path('users', 'sign_up'); ?>" class="btn"
-                                    style="background-color: #fe7470; color: white; font-weight: bold;" target="_blank"
+                                style="background-color: #F5AF00; color: #CFCFCF; font-weight: bold;" target="_blank"
                                     rel="noreferrer">
                                     Register
                                 </a>
@@ -243,7 +254,7 @@ require_once '../config/paths.php';
                             <!-- Card for a new developer -->
                             <div class="col" style='cursor: pointer;'
                                 onclick="window.location='<?php echo path('developers', 'new'); ?>';">
-                                <div class="card">
+                                <div class="card" style="background-color: #212121; color: #CFCFCF;">
                                     <div class="card-header">
                                         <ul class="nav nav-pills card-header-pills">
                                             <li class="nav-item active">
@@ -290,7 +301,7 @@ require_once '../config/paths.php';
                             <!-- Card for employer searching -->
                             <div class="col" style='cursor: pointer;'
                                 onclick="window.location='<?php echo path('businesses', 'new'); ?>';">
-                                <div class="card">
+                                <div class="card" style="background-color: #212121; color: #CFCFCF;">
                                     <div class="card-header">
                                         <ul class="nav nav-pills card-header-pills">
                                             <li class="nav-item active">
