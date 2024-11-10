@@ -219,7 +219,7 @@ $db->closeConnection();
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
                     <a href="<?php echo path('home'); ?>" style="text-decoration: none;">
-                        <p style="color: #CFCFCF;">Rails Hub</p>
+                        <p class="mt-3" style="color: #CFCFCF;">Rails Hub</p>
                     </a>
                 </h1>
                 <!-- Sign in and register buttons for desktop-->
@@ -247,7 +247,7 @@ $db->closeConnection();
                         </div>
                     <?php endif; ?>
                 </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" style="color: #CFCFCF;">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
@@ -255,19 +255,19 @@ $db->closeConnection();
         <!-- Navigation menu collapsible hamberger for mobile -->
         <div class="navbar-expand-md d-md-none">
             <div class="collapse navbar-collapse" id="navbar-menu">
-                <div class="navbar navbar-light">
+                <div class="navbar" style="background-color: #212121;">
                     <div class="container-xl">
                         <ul class="navbar-nav">
                             <li class="nav-item active">
                                 <a class="nav-link" href="<?php echo path('developers', 'more') ?> ">
-                                    <span class="nav-link-title">
+                                    <span class="nav-link-title" style="color: #CFCFCF;">
                                         Developers
                                     </span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo path('pricing') ?>">
-                                    <span class="nav-link-title">
+                                    <span class="nav-link-title" style="color: #CFCFCF;">
                                         Pricing
                                     </span>
                                 </a>
@@ -278,17 +278,18 @@ $db->closeConnection();
                                     <!-- Only show sign in and register buttons if the user is not logged in -->
                                     <?php if (!isset($_SESSION['user_id'])): ?>
                                         <div class="nav-item me-3">
-                                            <div class="btn-list">
-                                                <a href="<?php echo path('users', 'sign_in'); ?>" class="btn" target="_blank"
-                                                    rel="noreferrer">
-                                                    Sign in
-                                                </a>
-                                                <a href="<?php echo path('users', 'sign_up'); ?>" class="btn"
-                                                    style="background-color: #fe7470; color: white; font-weight: bold;"
-                                                    target="_blank" rel="noreferrer">
-                                                    Register
-                                                </a>
-                                            </div>
+                                        <div class="btn-list">
+                                <!-- Using the config/paths.php for the URL of the sign in and register buttons -->
+                                <a href="<?php echo path('users', 'sign_in'); ?>" class="btn" style="background-color: #212121; color: #CFCFCF; font-weight: bold;" target="_blank"
+                                    rel="noreferrer">
+                                    Sign in
+                                </a>
+                                <a href="<?php echo path('users', 'sign_up'); ?>" class="btn"
+                                    style="background-color: #F5AF00; color: #CFCFCF; font-weight: bold;" target="_blank"
+                                    rel="noreferrer">
+                                    Register
+                                </a>
+                            </div>
                                         </div>
                                         <!-- If the user is logged in, show the log out button -->
                                     <?php else: ?>
@@ -337,7 +338,7 @@ $db->closeConnection();
                         </div>
                         <!--Front Banner for mobile-->
                         <div class="col-12 d-md-none">
-                            <div class="card card-md">
+                            <div class="card card-md" style="background-color: #212121; color: #CFCFCF;">
                                 <div class="card-stamp card-stamp-lg">
                                 </div>
                                 <div class="card-body">
@@ -353,7 +354,7 @@ $db->closeConnection();
                                                     directly.</span></h3>
                                             <div class="mt-3 text-center">
                                                 <a href="<?php echo path('roles', 'new'); ?>" class="btn btn-lg"
-                                                    target="_blank" style="background-color: #fe7470; color: white;"
+                                                    target="_blank" style="background-color: #F5AF00; color: #CFCFCF;"
                                                     rel="noopener">Get Started</a>
                                             </div>
                                         </div>
@@ -442,7 +443,7 @@ $db->closeConnection();
                         <?php foreach ($developers as $developer): ?>
                             <div class="col-12 d-md-none" style='cursor: pointer;'
                                 onclick="window.location='<?php echo path('developers', 'hire'); ?>?id=<?php echo $developer['id']; ?>';">
-                                <div class="card">
+                                <div class="card" style="background-color: #212121; color: #CFCFCF; font-weight: bold;">
                                     <!-- Card with image -->
                                     <div class="row row-0 mb-2">
                                         <div class="col-3 me-3 d-flex m-4">
@@ -471,7 +472,7 @@ $db->closeConnection();
                                                     if (count($words) > 10) echo '...';
                                                     ?>
                                                 </h3>
-                                                <p><span class="badge bg-green-lt">New profile</span></p>
+                                                <p><span class="badge" style="background-color: #212121; color: #CFCFCF; border: 1px solid #CFCFCF;">New profile</span></p>
                                                 <p class="text-secondary">
                                                     <!-- Only show a few words -->
                                                     <?php
