@@ -247,6 +247,57 @@ if (!isset($_SESSION['user_id'])) {
                 </button>
             </div>
         </header>
+                <!-- Navigation menu collapsible hamberger for mobile -->
+                <div class="navbar-expand-md d-md-none">
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <div class="navbar navbar-light">
+                    <div class="container-xl">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="<?php echo path('developers', 'more') ?> ">
+                                    <span class="nav-link-title">
+                                        Developers
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo path('pricing') ?>">
+                                    <span class="nav-link-title">
+                                        Pricing
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <!-- Sign in and register buttons -->
+                                <div class="navbar-nav flex-row order-md-last">
+                                    <!-- Only show sign in and register buttons if the user is not logged in -->
+                                    <?php if (!isset($_SESSION['user_id'])): ?>
+                                        <div class="nav-item me-3">
+                                            <div class="btn-list">
+                                                <a href="<?php echo path('users', 'sign_in'); ?>" class="btn" target="_blank"
+                                                    rel="noreferrer">
+                                                    Sign in
+                                                </a>
+                                                <a href="<?php echo path('users', 'sign_up'); ?>" class="btn"
+                                                    style="background-color: #fe7470; color: white; font-weight: bold;"
+                                                    target="_blank" rel="noreferrer">
+                                                    Register
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- If the user is logged in, show the log out button -->
+                                    <?php else: ?>
+                                        <div class="nav-item me-3">
+                                            <a href="<?php echo path('users', 'logout'); ?>" class="btn">Log out</a>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="page-wrapper">
             <div class="page-body">
                 <form action="submit_profile.php" method="post" enctype="multipart/form-data">
