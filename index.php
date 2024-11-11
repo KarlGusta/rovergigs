@@ -1,3 +1,8 @@
+<?php
+// Include the path config. This is to make it easy to manage my URLs when I upload to production, that is cpanel
+require_once 'config/paths.php';
+?>
+
 <!doctype html>
 <!--
 * Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
@@ -167,20 +172,32 @@
             /* Font size for larger screens */
         }
     }
+
+    body {
+            font-family: 'Bricolage Grotesque', sans-serif !important;
+            /* Change font to Bricolage Grotesque */
+            font-size: 15px !important; /* Adjust the font size as needed */             
+            background-color: #FFD015 !important; /* Change background color to #212121 */
+            color: #0B090A; /* Change text color to #CFCFCF */
+        }
     </style>
     <!-- CSS files -->
-    <link href="./dist/css/tabler.min.css" rel="stylesheet" />
-    <link href="./dist/css/tabler-flags.min.css" rel="stylesheet" />
-    <link href="./dist/css/tabler-payments.min.css" rel="stylesheet" />
-    <link href="./dist/css/tabler-vendors.min.css" rel="stylesheet" />
-    <link href="./dist/css/demo.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/tabler.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/tabler-flags.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/tabler-payments.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/demo.min.css" rel="stylesheet" />
+
     <!--Favicon-->
     <link rel="icon" type="image/x-icon" href="src/img/logo/rovergigs_logo.png">
+
+        <!-- For the font -->
+        <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="page">
-        <header class="navbar navbar-expand-md navbar-light d-print-none">
+        <header class="navbar navbar-expand-md navbar-light d-print-none" style="background-color: #FFD015;">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
                     <a href="." style="text-decoration: none;">
@@ -190,7 +207,7 @@
                 <div class="navbar-nav flex-row order-md-last">
                     <div class="nav-item me-3">
                         <div class="btn-list">
-                            <a href="/rovergigs/post-a-job.php" class="btn btn-danger d-none d-md-block" target="_blank"
+                            <a href="<?php echo path('post_a_job') ?>" class="btn d-none d-md-block" style="background-color: #F1F2F6; color:#0B090A;" target="_blank"
                                 rel="noreferrer">
                                 Post a remote job
                             </a>
@@ -208,7 +225,7 @@
 
                         <!--Front Banner-->
                         <div class="col-12">
-                            <div class="card card-md">
+                            <div class="card card-md" style="background-color: #FFD015; color:#0B090A;">
                                 <div class="card-stamp card-stamp-lg">
                                 </div>
                                 <div class="card-body">
@@ -219,7 +236,7 @@
                                                     style="color: grey;">fast—work from anywhere, anytime. 🏆 #1
                                                     Rover Job Board.</span></h3>
                                             <div class="mt-3 text-center">
-                                                <a href="/rovergigs/post-a-job.php" class="btn btn-danger"
+                                                <a href="<?php echo path('post_a_job') ?>" class="btn btn-danger" style="background-color: #F1F2F6; color:#0B090A;"
                                                     target="_blank" rel="noopener">Post a remote job</a>
                                             </div>
                                         </div>
@@ -232,26 +249,26 @@
                             <h2 class="trusted-by-title">trusted by</h2>
                             <div class="row justify-content-center">
                                 <div class="col-auto">
-                                    <img src="src/img/logo/microsoft.png" alt="Microsoft" class="trusted-logo">
+                                    <img src="<?php echo path('assets', 'sponsor_images') ?>microsoft.png" alt="Microsoft" class="trusted-logo">
                                 </div>
                                 <div class="col-auto">
-                                    <img src="src/img/logo/amazon.png" alt="Amazon" class="trusted-logo">
+                                    <img src="<?php echo path('assets', 'sponsor_images') ?>amazon.png" alt="Amazon" class="trusted-logo">
                                 </div>
                                 <div class="col-auto">
-                                    <img src="src/img/logo/cloudflare.png" alt="Cloudflare"
+                                    <img src="<?php echo path('assets', 'sponsor_images') ?>cloudflare.png" alt="Cloudflare"
                                         class="trusted-logo cloudflare-logo">
                                 </div>
                                 <div class="col-auto">
-                                    <img src="src/img/logo/github.png" alt="GitHub" class="trusted-logo">
+                                    <img src="<?php echo path('assets', 'sponsor_images') ?>github.png" alt="GitHub" class="trusted-logo">
                                 </div>
                                 <div class="col-auto">
-                                    <img src="src/img/logo/ibm.png" alt="IBM" class="trusted-logo ibm-logo">
+                                    <img src="<?php echo path('assets', 'sponsor_images') ?>ibm.png" alt="IBM" class="trusted-logo ibm-logo">
                                 </div>
                                 <div class="col-auto">
-                                    <img src="src/img/logo/scale-ai.png" alt="Scale AI" class="trusted-logo">
+                                    <img src="<?php echo path('assets', 'sponsor_images') ?>scale-ai.png" alt="Scale AI" class="trusted-logo">
                                 </div>
                                 <div class="col-auto">
-                                    <img src="src/img/logo/shopify.png" alt="Shopify" class="trusted-logo">
+                                    <img src="<?php echo path('assets', 'sponsor_images') ?>shopify.png" alt="Shopify" class="trusted-logo">
                                 </div>
                                 <!-- Add more logos as needed -->
                             </div>
@@ -262,7 +279,7 @@
                                 <div class='space-y'>
                                     <!--Connection to the database-->
                                     <?php
-                                    require_once 'config.php';
+                                    require_once 'config/db.php';
 
                                     // Create connection to the database
                                     $connection = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
@@ -329,7 +346,7 @@
                                         $limitedTags = array_slice($tags, 0, 3); // Limit to 3 tags
                                     
                                         echo "
-                            <div class='card' style='cursor: pointer;' onclick=\"window.location='$redirectUrl';\">
+                            <div class='card' style='cursor: pointer; background-color: #FFD015; color:#0B090A;' onclick=\"window.location='$redirectUrl';\">
                                 <div class='row g-0'>
                                     <div class='col-auto'>
                                         <div class='card-body'>
@@ -383,7 +400,7 @@
                                     </div>
                                     <div class='col-auto d-none d-md-block'>
                                         <div class='card-body'>
-                                            <button class='apply-button'><strong>Apply</strong></button>
+                                            <button class='apply-button' style='background-color: #F1F2F6; color:#0B090A;'><strong>Apply</strong></button>
                                         </div>
                                     </div>
                                 </div>
@@ -416,7 +433,7 @@
     </div>
     <!-- Cookie banner -->
     <div class="container-xl d-none d-md-block">
-        <div class="offcanvas offcanvas-bottom h-auto show" data-bs-scroll="true" tabindex="-1" id="offcanvasBottom"
+        <div class="offcanvas offcanvas-bottom h-auto show" style='background-color: #FFD015; color:#0B090A;' data-bs-scroll="true" tabindex="-1" id="offcanvasBottom"
             aria-modal="true" role="dialog">
             <div class="offcanvas-body">
                 <div class="container text-center">
@@ -436,7 +453,7 @@
                                             style="font-weight: bold; font-size: 16px; color: black;" required>
                                     </div>
                                     <div class="col">
-                                        <input type="submit" class="subscribe-button w-100" id="subscribe-button"
+                                        <input type="submit" class="subscribe-button w-100" style="background-color: #F1F2F6; color:#0B090A;" id="subscribe-button"
                                             value="Subscribe">
                                     </div>
                                 </div>
@@ -526,13 +543,13 @@
     </div>
     </div>
     <!-- Libs JS -->
-    <script src="./dist/libs/apexcharts/dist/apexcharts.min.js" defer></script>
-    <script src="./dist/libs/jsvectormap/dist/js/jsvectormap.min.js" defer></script>
-    <script src="./dist/libs/jsvectormap/dist/maps/world.js" defer></script>
-    <script src="./dist/libs/jsvectormap/dist/maps/world-merc.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>libs/apexcharts/dist/apexcharts.min.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>libs/jsvectormap/dist/js/jsvectormap.min.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>libs/jsvectormap/dist/maps/world.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>libs/jsvectormap/dist/maps/world-merc.js" defer></script>
     <!-- Tabler Core -->
-    <script src="./dist/js/tabler.min.js" defer></script>
-    <script src="./dist/js/demo.min.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>js/tabler.min.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>js/demo.min.js" defer></script>
 
     <!-- Custom Script for Subscribe Button -->
     <script>
