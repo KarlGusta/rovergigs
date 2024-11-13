@@ -1,3 +1,9 @@
+<?php
+// Include the path config. This is to make it easy to manage my URLs when I upload to production, that is cpanel
+require_once 'config/paths.php';
+?>
+
+
 <!doctype html>
 <!--
 * Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
@@ -13,14 +19,14 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVPMVGBZ4Q"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-SVPMVGBZ4Q');
+        gtag('config', 'G-SVPMVGBZ4Q');
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -37,68 +43,58 @@
     <meta property="og:locale" content="en_US" />
 
     <title>Rovergigs - Apply</title>
+
+    <!-- CSS Styles -->
+    <style>
+        body {
+            font-family: 'Bricolage Grotesque', sans-serif !important;
+            /* Change font to Bricolage Grotesque */
+            font-size: 15px !important;
+            /* Adjust the font size as needed */
+            background-color: #FFD015 !important;
+            /* Change background color to #212121 */
+            color: #0B090A;
+            /* Change text color to #CFCFCF */
+        }
+    </style>
     <!-- CSS files -->
-    <link href="./dist/css/tabler.min.css" rel="stylesheet" />
-    <link href="./dist/css/tabler-flags.min.css" rel="stylesheet" />
-    <link href="./dist/css/tabler-payments.min.css" rel="stylesheet" />
-    <link href="./dist/css/tabler-vendors.min.css" rel="stylesheet" />
-    <link href="./dist/css/demo.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/tabler.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/tabler-flags.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/tabler-payments.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="<?php echo path('assets', 'dist'); ?>css/demo.min.css" rel="stylesheet" />
 
     <!--Favicon-->
     <link rel="icon" type="image/x-icon" href="src/img/logo/rovergigs_logo.png">
+
+        <!-- For the font -->
+        <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="page">
-        <header class="navbar navbar-expand-md navbar-light d-print-none">
+        <header class="navbar navbar-expand-md navbar-light d-print-none" style="background-color: #FFD015;">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
                     <a href="." style="text-decoration: none;">
                         Rover Gigs
                     </a>
                 </h1>
-                <!--To be Launched in July 2023-->
-                <!--<div class="navbar-nav flex-row order-md-last">
-                    <div class="nav-item d-md-flex me-3">
-                        <div class="btn-list">
-                            <a href="/weareremoteokay/join-early-access.php" class="btn btn-outline-primary" target="_blank" rel="noreferrer">
-                                Join Early Access to Jobs $59
-                            </a>
-                        </div>
-                    </div>
-                </div>-->
             </div>
         </header>
         <div class="page-wrapper">
             <div class="page-body">
                 <div class="container-xl">
                     <div class="row row-deck row-cards">
-
-                        <!--Front banner color-->
-                        <div class='col-12'>
-                            <div class='card card-md' style='background: linear-gradient(to right, #ee378f, #ff884d);'>
-                                <div class='card-body'>
-                                    <div class='row align-items-center'>
-                                        <div class='col-10'>
-                                            <!-- No content here -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <!--Connection to the database-->
                         <?php
                         // Get id from the url
                         $id = $_GET['id'];
 
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $database = "rovergigs";
+                        require_once 'config/db.php';
 
                         // Create connection to the database
-                        $connection = new mysqli($servername, $username, $password, $database);
+                        $connection = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
                         // Check if the connection is established correctly or not
                         if ($connection->connect_error) {
@@ -127,7 +123,7 @@
                                 echo "
                                 <!--Organization Description-->
                               <div class='col-12'>
-                                  <div class='card card-md'>
+                                  <div class='card card-md' style='background-color: #FFD015; color:#0B090A;'>
                                       <div class='card-body'>
                                           <div class='row align-items-center'>
                                               <div class='col-10'>
@@ -143,7 +139,7 @@
       
                               <!--Job Description-->
                                 <div class='col-12'>
-                                  <div class='card card-md'>
+                                  <div class='card card-md' style='background-color: #FFD015; color:#0B090A;'>
                                       <div class='card-body'>
                                           <div class='row align-items-center'>
                                               <div class='col-10'>
@@ -151,15 +147,14 @@
                                                   <div class='markdown text-muted'>
                                                       $row[jobDescription]
                                                   </div>
-                                                  <div class='mt-3'>
-                                                      <!--<a href='/weareremoteokay/apply-for-the-job.php?JobId=$row[jobId]' class='btn btn-primary' target='_blank' rel='noopener'>Apply for the job</a>-->
+                                                  <div class='mt-3'>                                                      
                                                       <input type='hidden' value='<?php $row[applicationLinkOrEmail] ?>'
                         id='myInput'>
                         <p id='emailFromDBToBeCopied' style='display:none'>$row[applicationLinkOrEmail]</p>
                         <button type='button' class='btn btn-success' id='emailCopiedToClipboardButton'
                             style='display:none;' data-bs-toggle='tooltip' data-bs-placement='right'
                             title='Email Copied to clipboard'>Email copied!</button>
-                        <button type='button' id='buttonToBeClickedToCopyEmail' class='btn btn-danger' id='button1'
+                        <button type='button' id='buttonToBeClickedToCopyEmail' class='btn btn-danger' style='background-color: #F1F2F6; color:#0B090A;' id='button1'
                             onclick='copyContent()'>Apply for job</button>
                     </div>
                 </div>
@@ -169,36 +164,36 @@
     </div>
     <!-- Benefits -->
     <div class='col-12'>
-        <div class='card card-md'>
+        <div class='card card-md' style='background-color: #FFD015; color:#0B090A;'>
             <div class='card-body'>
                 <div class='row align-items-center'>
                     <div class='col-10'>
                         <h3 class='h1'>Benefits</h3>
                         <div class='list-group list-group-flush'>
-                            <a href='#' class='list-group-item list-group-item-action'>💰 401(k)</a>
-                            <a href='#' class='list-group-item list-group-item-action'>🌎 Distributed team</a>
-                            <a href='#' class='list-group-item list-group-item-action'>⏰ Async</a>
-                            <a href='#' class='list-group-item list-group-item-action'>🤓 Vision insurance</a>
-                            <a href='#' class='list-group-item list-group-item-action'>🦷 Dental insurance</a>
-                            <a href='#' class='list-group-item list-group-item-action'>🚑 Medical insurance</a>
-                            <a href='#' class='list-group-item list-group-item-action'>🏖 Unlimited vacation</a>
-                            <a href='#' class='list-group-item list-group-item-action'>🏖 Paid time off</a>
-                            <a href='#' class='list-group-item list-group-item-action'>📆 4 day workweek</a>
-                            <a href='#' class='list-group-item list-group-item-action'>💰 401k matching</a>
-                            <a href='#' class='list-group-item list-group-item-action'>🏔 Company retreats</a>
-                            <a href='#' class='list-group-item list-group-item-action'>🏬 Coworking budget</a>
-                            <a href='#' class='list-group-item list-group-item-action'>📚 Learning budget</a>
-                            <a href='#' class='list-group-item list-group-item-action'>💪 Free gym membership</a>
-                            <a href='#' class='list-group-item list-group-item-action'>🧘 Mental wellness budget</a>
-                            <a href='#' class='list-group-item list-group-item-action'>🖥 Home office budget</a>
-                            <a href='#' class='list-group-item list-group-item-action'>🥧 Pay in crypto</a>
-                            <a href='#' class='list-group-item list-group-item-action'>🥸 Pseudonymous</a>
-                            <a href='#' class='list-group-item list-group-item-action'>💰 Profit sharing</a>
-                            <a href='#' class='list-group-item list-group-item-action'>💰 Equity compensation</a>
-                            <a href='#' class='list-group-item list-group-item-action'>⬜️ No whiteboard interview</a>
-                            <a href='#' class='list-group-item list-group-item-action'>👀 No monitoring system</a>
-                            <a href='#' class='list-group-item list-group-item-action'>🚫 No politics at work</a>
-                            <a href='#' class='list-group-item list-group-item-action'>🎅 We hire old (and young)</a>
+                            <a href='#' class='list-group-item-action'>💰 401(k)</a>
+                            <a href='#' class='list-group-item-action'>🌎 Distributed team</a>
+                            <a href='#' class='list-group-item-action'>⏰ Async</a>
+                            <a href='#' class='list-group-item-action'>🤓 Vision insurance</a>
+                            <a href='#' class='list-group-item-action'>🦷 Dental insurance</a>
+                            <a href='#' class='list-group-item-action'>🚑 Medical insurance</a>
+                            <a href='#' class='list-group-item-action'>🏖 Unlimited vacation</a>
+                            <a href='#' class='list-group-item-action'>🏖 Paid time off</a>
+                            <a href='#' class='list-group-item-action'>📆 4 day workweek</a>
+                            <a href='#' class='list-group-item-action'>💰 401k matching</a>
+                            <a href='#' class='list-group-item-action'>🏔 Company retreats</a>
+                            <a href='#' class='list-group-item-action'>🏬 Coworking budget</a>
+                            <a href='#' class='list-group-item-action'>📚 Learning budget</a>
+                            <a href='#' class='list-group-item-action'>💪 Free gym membership</a>
+                            <a href='#' class='list-group-item-action'>🧘 Mental wellness budget</a>
+                            <a href='#' class='list-group-item-action'>🖥 Home office budget</a>
+                            <a href='#' class='list-group-item-action'>🥧 Pay in crypto</a>
+                            <a href='#' class='list-group-item-action'>🥸 Pseudonymous</a>
+                            <a href='#' class='list-group-item-action'>💰 Profit sharing</a>
+                            <a href='#' class='list-group-item-action'>💰 Equity compensation</a>
+                            <a href='#' class='list-group-item-action'>⬜️ No whiteboard interview</a>
+                            <a href='#' class='list-group-item-action'>👀 No monitoring system</a>
+                            <a href='#' class='list-group-item-action'>🚫 No politics at work</a>
+                            <a href='#' class='list-group-item-action'>🎅 We hire old (and young)</a>
                         </div>
                     </div>
                 </div>
@@ -207,7 +202,7 @@
     </div>
     <!--Share this job-->
     <div class='col-12'>
-        <div class='card card-md'>
+        <div class='card card-md' style='background-color: #FFD015; color:#0B090A;'>
             <div class='card-body'>
                 <div class='row align-items-center'>
                     <h4>
@@ -259,8 +254,8 @@
     </div>
 
     ";
-    } else {
-    echo "
+                            } else {
+                                echo "
     <!--Organization Description-->
     <div class='col-12'>
         <div class='card card-md'>
@@ -387,13 +382,13 @@
         </div>
     </div>
     ";
-    }
-    }
-    ?>
-    </div>
-    </div>
-    </div>
-    </div>
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!--This is where the footer should be-->
     <footer class="footer footer-transparent d-print-none">
@@ -439,7 +434,7 @@
                         <li class="list-inline-item">
                             Copyright &copy;
                             <script type="text/javascript">
-                            document.write(new Date().getFullYear());
+                                document.write(new Date().getFullYear());
                             </script>
                             <a href="www.weareremoteokay.com" class="link-secondary">Rover Gigs</a>.
                             All rights reserved.
@@ -452,25 +447,25 @@
     </div>
     </div>
     <!-- Libs JS -->
-    <script src="./dist/libs/apexcharts/dist/apexcharts.min.js" defer></script>
-    <script src="./dist/libs/jsvectormap/dist/js/jsvectormap.min.js" defer></script>
-    <script src="./dist/libs/jsvectormap/dist/maps/world.js" defer></script>
-    <script src="./dist/libs/jsvectormap/dist/maps/world-merc.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>libs/apexcharts/dist/apexcharts.min.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>libs/jsvectormap/dist/js/jsvectormap.min.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>libs/jsvectormap/dist/maps/world.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>libs/jsvectormap/dist/maps/world-merc.js" defer></script>
     <!-- Tabler Core -->
-    <script src="./dist/js/tabler.min.js" defer></script>
-    <script src="./dist/js/demo.min.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>js/tabler.min.js" defer></script>
+    <script src="<?php echo path('assets', 'dist'); ?>js/demo.min.js" defer></script>
     <!--Copy to Clipboard-->
     <script>
-    let emailFromDBToBeCopied = document.getElementById('emailFromDBToBeCopied').innerHTML;
-    const copyContent = async () => {
-        try {
-            await navigator.clipboard.writeText(emailFromDBToBeCopied);
-            document.getElementById('emailCopiedToClipboardButton').style.display = "block";
-            document.getElementById('buttonToBeClickedToCopyEmail').style.display = "none";
-        } catch (err) {
-            console.error('Failed to copy: ', err);
+        let emailFromDBToBeCopied = document.getElementById('emailFromDBToBeCopied').innerHTML;
+        const copyContent = async () => {
+            try {
+                await navigator.clipboard.writeText(emailFromDBToBeCopied);
+                document.getElementById('emailCopiedToClipboardButton').style.display = "block";
+                document.getElementById('buttonToBeClickedToCopyEmail').style.display = "none";
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+            }
         }
-    }
     </script>
     <!--Share the job-->
     <script async src="https://static.addtoany.com/menu/page.js"></script>
