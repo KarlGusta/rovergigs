@@ -18,14 +18,14 @@ require_once 'config/paths.php';
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVPMVGBZ4Q"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-    gtag('config', 'G-SVPMVGBZ4Q');
+        gtag('config', 'G-SVPMVGBZ4Q');
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -44,141 +44,144 @@ require_once 'config/paths.php';
     <title>RoverGigs - Home</title>
     <!-- Custom CSS -->
     <style>
-    .text-muted {
-        border: 1px solid #ccc;
-        /* Adjust the color and style as needed */
-        border-radius: 5px;
-        /* Adjust the radius for roundness */
-        display: inline-block;
-        /* Ensures the border fits the text */
-        padding: 2px 4px;
-        /* Optional: adds some padding for better appearance */
-        background-color: white;
-        /* Set background color to white */
-    }
-
-    .job-title {
-        /* Assuming the job title has this class */
-        font-weight: bold;
-        /* Make the font bold */
-        font-size: 18px;
-        /* Set font size to 12px */
-    }
-
-    .company-title {
-
-        /* Make the font bold */
-        font-size: 18px;
-        /* Set font size to 12px */
-    }
-
-    .card:hover .apply-button {
-        visibility: visible;
-        /* Show button on card hover */
-    }
-
-    .apply-button {
-        visibility: hidden;
-        /* Hide button by default */
-        background-color: #fe7470;
-        /* Button background color */
-        color: white;
-        /* Text color */
-        border: none;
-        /* Remove border */
-        border-radius: 5px;
-        /* Rounded corners */
-        padding: 12px 80px;
-        /* Padding for better appearance */
-        cursor: pointer;
-        /* Pointer cursor on hover */
-        transition: background-color 0.3s;
-        /* Smooth transition */
-    }
-
-    .apply-button:hover {
-        background-color: #fe7470;
-        /* Darker shade on hover */
-    }
-
-    /* Remove the blur effect */
-    .offcanvas-backdrop {
-        display: none !important;
-        /* Hide the dark overlay */
-    }
-
-    .subscribe-button {
-        background-color: #fe7470;
-        /* Button background color */
-        color: white;
-        /* Ensure text color is white */
-        border: none;
-        /* Remove border */
-        border-radius: 5px;
-        /* Rounded corners */
-        padding: 10px 20px;
-        /* Adjust padding for better appearance */
-        cursor: pointer;
-        /* Pointer cursor on hover */
-    }
-
-    .subscribe-button:hover {
-        color: white;
-        /* Keep text color white on hover */
-        text-decoration: none;
-        /* Ensure no underline on hover */
-        opacity: 0.9;
-        /* Optional: add a hover effect */
-    }
-
-    .trusted-logo {
-        filter: grayscale(100%) opacity(0.5);
-        /* Adjusted opacity */
-        width: 90px;
-        /* Set a fixed width */
-        height: auto;
-        /* Maintain aspect ratio */
-        margin: 0 10px;
-        /* Added margin for spacing */
-    }
-
-    .cloudflare-logo {
-        width: 50px;
-        /* Reduced size for Cloudflare logo */
-    }
-
-    .ibm-logo {
-        width: 70px;
-        /* Reduced size for IBM logo */
-    }
-
-    .trusted-by-title {
-        color: grey;
-        /* Set text color to grey */
-        opacity: 0.7;
-        /* Match opacity with logos */
-        font-size: 10px;
-        /* Set font size to a very small value */
-    }
-
-    .responsive-title {
-        font-size: 36px !important;
-        /* Default font size for mobile */
-    }
-
-    @media (min-width: 768px) {
-        .responsive-title {
-            font-size: 56px !important;
-            /* Font size for larger screens */
+        .text-muted {
+            border: 1px solid #ccc;
+            /* Adjust the color and style as needed */
+            border-radius: 5px;
+            /* Adjust the radius for roundness */
+            display: inline-block;
+            /* Ensures the border fits the text */
+            padding: 2px 4px;
+            /* Optional: adds some padding for better appearance */
+            background-color: white;
+            /* Set background color to white */
         }
-    }
 
-    body {
+        .job-title {
+            /* Assuming the job title has this class */
+            font-weight: bold;
+            /* Make the font bold */
+            font-size: 18px;
+            /* Set font size to 12px */
+        }
+
+        .company-title {
+
+            /* Make the font bold */
+            font-size: 18px;
+            /* Set font size to 12px */
+        }
+
+        .card:hover .apply-button {
+            visibility: visible;
+            /* Show button on card hover */
+        }
+
+        .apply-button {
+            visibility: hidden;
+            /* Hide button by default */
+            background-color: #fe7470;
+            /* Button background color */
+            color: white;
+            /* Text color */
+            border: none;
+            /* Remove border */
+            border-radius: 5px;
+            /* Rounded corners */
+            padding: 12px 80px;
+            /* Padding for better appearance */
+            cursor: pointer;
+            /* Pointer cursor on hover */
+            transition: background-color 0.3s;
+            /* Smooth transition */
+        }
+
+        .apply-button:hover {
+            background-color: #fe7470;
+            /* Darker shade on hover */
+        }
+
+        /* Remove the blur effect */
+        .offcanvas-backdrop {
+            display: none !important;
+            /* Hide the dark overlay */
+        }
+
+        .subscribe-button {
+            background-color: #fe7470;
+            /* Button background color */
+            color: white;
+            /* Ensure text color is white */
+            border: none;
+            /* Remove border */
+            border-radius: 5px;
+            /* Rounded corners */
+            padding: 10px 20px;
+            /* Adjust padding for better appearance */
+            cursor: pointer;
+            /* Pointer cursor on hover */
+        }
+
+        .subscribe-button:hover {
+            color: white;
+            /* Keep text color white on hover */
+            text-decoration: none;
+            /* Ensure no underline on hover */
+            opacity: 0.9;
+            /* Optional: add a hover effect */
+        }
+
+        .trusted-logo {
+            filter: grayscale(100%) opacity(0.5);
+            /* Adjusted opacity */
+            width: 90px;
+            /* Set a fixed width */
+            height: auto;
+            /* Maintain aspect ratio */
+            margin: 0 10px;
+            /* Added margin for spacing */
+        }
+
+        .cloudflare-logo {
+            width: 50px;
+            /* Reduced size for Cloudflare logo */
+        }
+
+        .ibm-logo {
+            width: 70px;
+            /* Reduced size for IBM logo */
+        }
+
+        .trusted-by-title {
+            color: grey;
+            /* Set text color to grey */
+            opacity: 0.7;
+            /* Match opacity with logos */
+            font-size: 10px;
+            /* Set font size to a very small value */
+        }
+
+        .responsive-title {
+            font-size: 36px !important;
+            /* Default font size for mobile */
+        }
+
+        @media (min-width: 768px) {
+            .responsive-title {
+                font-size: 56px !important;
+                /* Font size for larger screens */
+            }
+        }
+
+        body {
             font-family: 'Bricolage Grotesque', sans-serif !important;
             /* Change font to Bricolage Grotesque */
-            font-size: 15px !important; /* Adjust the font size as needed */             
-            background-color: #FFD015 !important; /* Change background color to #212121 */
-            color: #0B090A; /* Change text color to #CFCFCF */
+            font-size: 15px !important;
+            /* Adjust the font size as needed */
+            background-color: #FFD015 !important;
+            /* Change background color to #212121 */
+            color: #0B090A;
+            /* Change text color to #CFCFCF */
         }
     </style>
     <!-- CSS files -->
@@ -191,8 +194,8 @@ require_once 'config/paths.php';
     <!--Favicon-->
     <link rel="icon" type="image/x-icon" href="src/img/logo/rovergigs_logo.png">
 
-        <!-- For the font -->
-        <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&display=swap" rel="stylesheet">
+    <!-- For the font -->
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -317,9 +320,9 @@ require_once 'config/paths.php';
                                         $companyNameDisplay = $row['valueMemberOnly'] === 'Yes' ? $row['companyName'] : '🔒<em>(Value Members Only)</em>'; // Check valueMemberOnly
                                         $companyLogoDisplayFirstTwoLetters = substr($row['companyName'], 0, 2); // Get the first two letters of the company name
                                         $companyLogoDisplay = $row['valueMemberOnly'] === 'Yes' ? $companyLogoDisplayFirstTwoLetters : $companyLogoDisplayFirstTwoLetters; // Check valueMemberOnly
-                                        // $jobTypeDisplay = $row['valueMemberOnly'] === 'Yes' ? $row['jobType'] : ''; // Check valueMemberOnly                                                
+                                        // $jobTypeDisplay = $row['valueMemberOnly'] === 'Yes' ? $row['jobType'] : ''; // Check valueMemberOnly
                                         $redirectUrl = $row['valueMemberOnly'] === 'Yes' ? path('apply') . "?id=" . $row['jobId'] : path('value_membership'); // Redirect based on membership type
-                                    
+
                                         // When the job was posted
                                         $post_date = new DateTime($row['post_date']);
                                         $now = new DateTime();
@@ -344,7 +347,7 @@ require_once 'config/paths.php';
                                         // Get the job tags and limit to 3
                                         $tags = $row['tags'] ? explode(',', $row['tags']) : []; // Split tags into an array
                                         $limitedTags = array_slice($tags, 0, 3); // Limit to 3 tags
-                                    
+
                                         echo "
                             <div class='card' style='cursor: pointer; background-color: #FFD015; color:#0B090A;' onclick=\"window.location='$redirectUrl';\">
                                 <div class='row g-0'>
@@ -530,7 +533,7 @@ require_once 'config/paths.php';
                         <li class="list-inline-item">
                             Copyright &copy;
                             <script type="text/javascript">
-                            document.write(new Date().getFullYear());
+                                document.write(new Date().getFullYear());
                             </script>
                             <a href="www.rovergigs.com" class="link-secondary">Rover Gigs</a>.
                             All rights reserved.
@@ -553,16 +556,16 @@ require_once 'config/paths.php';
 
     <!-- Custom Script for Subscribe Button -->
     <script>
-    // Check if the user has already subscribed
-    if (localStorage.getItem('subscribed')) {
-        document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
-    }
+        // Check if the user has already subscribed
+        if (localStorage.getItem('subscribed')) {
+            document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
+        }
 
-    // Add click event to the subscribe button
-    document.getElementById('subscribe-button').addEventListener('click', function() {
-        localStorage.setItem('subscribed', 'true'); // Set the subscribed flag
-        document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
-    });
+        // Add click event to the subscribe button
+        document.getElementById('subscribe-button').addEventListener('click', function() {
+            localStorage.setItem('subscribed', 'true'); // Set the subscribed flag
+            document.getElementById('offcanvasBottom').style.display = 'none'; // Hide the banner
+        });
     </script>
 </body>
 
