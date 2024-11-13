@@ -5,6 +5,11 @@ session_start();
 // Include the path config. This is to make it easy to manage my URLs when I upload to production, that is cpanel
 require_once './config/paths.php';
 
+// For meta tags reusability
+require_once 'meta-tags.php';
+$metaTags = new MetaTags();
+echo $metaTags->generateMetaTags('home'); // or 'about' or any other page ID
+
 // Enable error reporting
 error_reporting(E_ALL); // Report all types of errors
 ini_set('display_errors', 1); // Display errors on the screen
@@ -61,15 +66,6 @@ $db->closeConnection();
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <!--To Display meta image, description-->
-    <meta property="og:title" content="We Are Remote Okay" />
-    <meta property="og:type" content="remote jobs" />
-    <meta property="og:url" content="https://weareremoteokay.com" />
-    <meta property="og:image" content="https://pbs.twimg.com/profile_images/1615947531615084544/v9aYayDa_400x400.jpg" />
-    <meta property="og:description" content="A global community of remote workers with over 100,000+ visitors." />
-    <meta property="og:site_name" content="WARO" />
-    <meta property="og:locale" content="en_US" />
 
     <title>RoverGigs - Home</title>
     <!-- Custom CSS -->

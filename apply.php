@@ -37,16 +37,6 @@ echo $metaTags->generateMetaTags('apply'); // or 'about' or any other page ID
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <!--To Display meta image, description-->
-    <meta property="og:title" content="Rover Gigs" />
-    <meta property="og:type" content="remote jobs" />
-    <meta property="og:url" content="https://rovergigs.com" />
-    <meta property="og:image"
-        content="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0p4eq5kustxxpk2mbe2t.png" />
-    <meta property="og:description" content="A global community of remote workers." />
-    <meta property="og:site_name" content="Rover Gigs" />
-    <meta property="og:locale" content="en_US" />
-
     <title>Rovergigs - Apply</title>
 
     <!-- CSS Styles -->

@@ -5,6 +5,11 @@ session_start();
 // Include the path config
 require_once '../config/paths.php';
 
+// For meta tags reusability
+require_once '../meta-tags.php';
+$metaTags = new MetaTags();
+echo $metaTags->generateMetaTags('more-devs'); // or 'about' or any other page ID
+
 // Enable error reporting
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -88,15 +93,6 @@ $db->closeConnection();
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <!--To Display meta image, description-->
-    <meta property="og:title" content="We Are Remote Okay" />
-    <meta property="og:type" content="remote jobs" />
-    <meta property="og:url" content="https://weareremoteokay.com" />
-    <meta property="og:image" content="https://pbs.twimg.com/profile_images/1615947531615084544/v9aYayDa_400x400.jpg" />
-    <meta property="og:description" content="A global community of remote workers with over 100,000+ visitors." />
-    <meta property="og:site_name" content="WARO" />
-    <meta property="og:locale" content="en_US" />
 
     <title>RoverGigs - Home</title>
     <!-- Custom CSS -->
@@ -279,6 +275,22 @@ $db->closeConnection();
             background-color: rgba(0, 0, 0, 0.5);
         }
 
+        body {
+            font-family: 'Bricolage Grotesque', sans-serif !important;
+            /* Change font to Bricolage Grotesque */
+            font-size: 15px !important;
+            /* Adjust the font size as needed */
+            background-color: #212121 !important;
+            /* Change background color to #212121 */
+            color: #CFCFCF;
+            /* Change text color to #CFCFCF */
+        }
+
+        .card-custom-style {
+            background-color: #212121 !important;
+            color: #CFCFCF !important;
+        }
+
         /* ... existing styles ... */
     </style>
     <!-- CSS files -->
@@ -304,7 +316,7 @@ $db->closeConnection();
     <div class="modal modal-blur fade" id="paywall-popup" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-status" style="background-color: #fe7470;"></div>
+                <div class="modal-status" style="background-color: #F5AF00;"></div>
                 <div class="modal-body text-center py-4">
                     <h2>Sign up now to see more profiles</h2>
                     <div>Gain access to 1400+ Ruby on Rails developers.</div>
@@ -312,7 +324,7 @@ $db->closeConnection();
                 <div class="modal-footer">
                     <div class="w-100">
                         <div class="row">
-                            <div class="col"><a href="<?php echo path('pricing'); ?>" class="btn w-100" style="background-color: #fe7470; color: white; font-weight: bold;" onclick="window.location.href=this.href;" data-bs-dismiss="modal">
+                            <div class="col"><a href="<?php echo path('pricing'); ?>" class="btn w-100" style="background-color: #F5AF00; color: #CFCFCF;" onclick="window.location.href=this.href;" data-bs-dismiss="modal">
                                     Start hiring
                                 </a></div>
                         </div>
@@ -323,31 +335,26 @@ $db->closeConnection();
     </div>
     <!-- End of the pop-up requiring a paid account -->
     <div class="page">
-        <header class="navbar navbar-expand-md navbar-light d-print-none">
+        <header class="navbar navbar-expand-md d-print-none" style="background-color: #212121;">
             <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
                     <a href="<?php echo path('home'); ?>" style="text-decoration: none;">
-                        <p>Rails Hub</p>
+                        <p class="mt-3" style="color: #CFCFCF;">Rails Hub</p>
                     </a>
                 </h1>
-
-                <!-- Toggle button for Collapsible content -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <!-- Sign in and register buttons -->
+                <!-- Sign in and register buttons for desktop-->
                 <div class="navbar-nav flex-row order-md-last d-none d-md-flex">
                     <!-- Only show sign in and register buttons if the user is not logged in -->
                     <?php if (!isset($_SESSION['user_id'])): ?>
                         <div class="nav-item me-3">
                             <div class="btn-list">
                                 <!-- Using the config/paths.php for the URL of the sign in and register buttons -->
-                                <a href="<?php echo path('users', 'sign_in'); ?>" class="btn" target="_blank"
+                                <a href="<?php echo path('users', 'sign_in'); ?>" class="btn" style="background-color: #212121; color: #CFCFCF; font-weight: bold;" target="_blank"
                                     rel="noreferrer">
                                     Sign in
                                 </a>
                                 <a href="<?php echo path('users', 'sign_up'); ?>" class="btn"
-                                    style="background-color: #fe7470; color: white; font-weight: bold;" target="_blank"
+                                    style="background-color: #F5AF00; color: #CFCFCF; font-weight: bold;" target="_blank"
                                     rel="noreferrer">
                                     Register
                                 </a>
@@ -356,10 +363,13 @@ $db->closeConnection();
                         <!-- If the user is logged in, show the log out button -->
                     <?php else: ?>
                         <div class="nav-item me-3">
-                            <a href="<?php echo path('users', 'logout'); ?>" class="btn">Log out</a>
+                            <a href="<?php echo path('users', 'logout'); ?>" class="btn" style="background-color: #212121; color: #CFCFCF; font-weight: bold;">Log out</a>
                         </div>
                     <?php endif; ?>
                 </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" style="color: #CFCFCF;">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
         </header>
         <!-- Navigation menu collapsible hamberger for mobile -->
@@ -394,7 +404,7 @@ $db->closeConnection();
                                                     Sign in
                                                 </a>
                                                 <a href="<?php echo path('users', 'sign_up'); ?>" class="btn"
-                                                    style="background-color: #fe7470; color: white; font-weight: bold;"
+                                                    style="background-color: #F5AF00; color: #CFCFCF;
                                                     target="_blank" rel="noreferrer">
                                                     Register
                                                 </a>
@@ -420,8 +430,8 @@ $db->closeConnection();
                 <div class="container-xl">
                     <!-- Front banner card for desktop-->
                     <div class="col-12 d-none d-md-block" style="display: none;"> <!-- Added style to hide the banner -->
-                        <div class="card card-md">
-                            <div class="card-body">
+                        <div class="card card-md card-custom-style">
+                            <div class="card-body" style="border: 1px solid #CFCFCF;">
                                 <div class="row align-items-center">
                                     <div class="col">
                                         <h2 class="page-title">Hire Ruby on Rails developers.</h2>
@@ -431,7 +441,7 @@ $db->closeConnection();
                                     </div>
                                     <div class="col-auto">
                                         <a href="<?php echo path('developers', 'new'); ?>" class="btn"
-                                            style="background-color: #fe7470; color: white; font-weight: bold;">
+                                            style="background-color: #F5AF00; color: #CFCFCF;">
                                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -449,8 +459,8 @@ $db->closeConnection();
                     </div>
                     <!-- Front banner card for mobile-->
                     <div class="col-12 d-block d-md-none" style="display: none;">
-                        <div class="card card-md">
-                            <div class="card-body">
+                        <div class="card card-md card-custom-style">
+                            <div class="card-body" style="border: 1px solid #CFCFCF;">
                                 <div class="row align-items-center">
                                     <div class="col mb-3">
                                         <h2 class="page-title">Hire Ruby on Rails developers.</h2>
@@ -466,7 +476,7 @@ $db->closeConnection();
                                 <div class="row align-items-center">
                                     <div class="col-auto">
                                         <a href="<?php echo path('developers', 'new'); ?>" class="btn"
-                                            style="background-color: #fe7470; color: white; font-weight: bold;">
+                                        style="background-color: #F5AF00; color: #CFCFCF;">
                                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -492,7 +502,7 @@ $db->closeConnection();
                         <div class="col-md-3 d-none d-md-block"> <!-- Added d-none d-md-block to hide on mobile -->
                             <form action="" method="get" id="filterForm" autocomplete="off" novalidate
                                 class="sticky-top">
-                                <div class="form-label">Search profiles</div>
+                                <div class="form-label" style="color: #CFCFCF;">Search profiles</div>
                                 <div class="mb-4">
                                     <div class="alert" role="alert">
                                         <div class="d-flex">
@@ -514,7 +524,7 @@ $db->closeConnection();
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-label">Role level</div>
+                                <div class="form-label" style="color: #CFCFCF;">Role level</div>
                                 <div class="mb-4">
                                     <label class="form-check">
                                         <input type="checkbox" class="form-check-input" name="role_levels[]" value="Junior"
@@ -1275,12 +1285,12 @@ $db->closeConnection();
                                     </div>
                                 </div> -->
                                 <!-- Update the buttons -->
-                                <div class="row mt-5">
+                                <div class="btn-list">
                                     <a href="more-devs.php" class="col btn w-100">
                                         Clear
                                     </a>
                                     <button type="submit" class="col btn w-100"
-                                        style="background-color: #fe7470; color: white; font-weight: bold;">
+                                        style="background-color: #F5AF00; color: #CFCFCF;">
                                         Apply
                                     </button>
                                 </div>
@@ -1290,12 +1300,12 @@ $db->closeConnection();
                         <div class="d-md-none">
                             <div class="accordion">
                                 <div class="form-label accordion-header d-flex justify-content-between" id="mobileFilterHeader">
-                                    <span>Filters</span>
+                                    <span style="color: #CFCFCF;">Filters</span>
                                     <span class="mobile-filter-toggle-icon">🔍</span>
                                 </div>
                                 <div class="accordion-content" id="mobileFilterContent">
                                     <form action="" method="get" id="mobileFilterForm" autocomplete="off" novalidate>
-                                        <div class="form-label">Role level</div>
+                                        <div class="form-label" style="color: #CFCFCF;">Role level</div>
                                         <div class="mb-4">
                                             <label class="form-check">
                                                 <input type="checkbox" class="form-check-input" name="role_levels[]" value="Junior">
@@ -1319,7 +1329,7 @@ $db->closeConnection();
                                             </label>
                                         </div>
                                         <div class="row mt-3">
-                                            <button type="submit" class="col btn w-100" style="background-color: #fe7470; color: white; font-weight: bold;">
+                                            <button type="submit" class="col btn w-100" style="background-color: #F5AF00; color: #CFCFCF;">
                                                 Apply
                                             </button>
                                         </div>
@@ -1359,7 +1369,7 @@ $db->closeConnection();
                                         <?php foreach ($developers as $developer): ?>
                                             <div class="col-12 d-none d-md-block" style='cursor: pointer;'
                                                 onclick="window.location='<?php echo path('developers', 'hire'); ?>?id=<?php echo $developer['id']; ?>';">
-                                                <div class="card">
+                                                <div class="card card-custom-style">
                                                     <!-- Card with image -->
                                                     <div class="row row-0 mb-2">
                                                         <div class="col-3 me-3 d-flex justify-content-center align-items-center">
@@ -1385,7 +1395,7 @@ $db->closeConnection();
                                                                         <?php
                                                                         $hero = htmlspecialchars($developer['hero']);
                                                                         $words = explode(" ", $hero);
-                                                                        $truncated = array_slice($words, 0, 10);
+                                                                        $truncated = array_slice($words, 0, 8);
                                                                         echo implode(" ", $truncated);
                                                                         if (count($words) > 10) echo '...';
                                                                         ?>
@@ -1402,7 +1412,7 @@ $db->closeConnection();
                                                                         <!-- Changed text color to green -->
                                                                     </p>
                                                                 </div>
-                                                                <p><span class="badge bg-green-lt">New profile</span></p>
+                                                                <p><span class="badge" style="background-color: #212121; color: #CFCFCF; border: 1px solid #CFCFCF;">New profile</span></p>
                                                                 <p class="text-secondary">
                                                                     <!-- Only show a few words -->
                                                                     <?php
@@ -1453,7 +1463,7 @@ $db->closeConnection();
                                     <?php foreach ($developers as $developer): ?>
                                         <div class="col-12 d-md-none" style='cursor: pointer;'
                                             onclick="window.location='<?php echo path('developers', 'hire'); ?>?id=<?php echo $developer['id']; ?>';">
-                                            <div class="card">
+                                            <div class="card card-custom-style">
                                                 <!-- Card with image -->
                                                 <div class="row row-0 mb-2">
                                                     <div class="col-3 me-3 d-flex m-4">
@@ -1482,7 +1492,7 @@ $db->closeConnection();
                                                                 if (count($words) > 10) echo '...';
                                                                 ?>
                                                             </h3>
-                                                            <p><span class="badge bg-green-lt">New profile</span></p>
+                                                            <p><span class="badge" style="background-color: #212121; color: #CFCFCF; border: 1px solid #CFCFCF;">New profile</span></p>
                                                             <p class="text-secondary">
                                                                 <!-- Only show a few words -->
                                                                 <?php
