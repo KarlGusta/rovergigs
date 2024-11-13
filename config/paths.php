@@ -13,7 +13,7 @@ class PathConfig {
                 'paths' => [
                     'home' => '/',
                     'assets' => [
-                        'images' => '/Images/',
+                        'images' => '/images/',
                         'sponsor_images' => '/src/img/logo/',
                         'dist' => '/dist/'
                     ],
@@ -28,7 +28,7 @@ class PathConfig {
                     // Same structure as development, but with production paths
                     'home' => '/',
                     'assets' => [
-                        'images' => '/Images/',
+                        'images' => '/images/',
                         'sponsor_images' => '/src/img/logo/',
                         'dist' => '/dist/'
                     ],

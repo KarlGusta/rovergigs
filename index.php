@@ -1,6 +1,11 @@
 <?php
 // Include the path config. This is to make it easy to manage my URLs when I upload to production, that is cpanel
 require_once 'config/paths.php';
+
+// For meta tags reusability
+require_once 'meta-tags.php';
+$metaTags = new MetaTags();
+echo $metaTags->generateMetaTags('home'); // or 'about' or any other page ID
 ?>
 
 <!doctype html>
@@ -30,16 +35,6 @@ require_once 'config/paths.php';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <!--To Display meta image, description-->
-    <meta property="og:title" content="Rover Gigs" />
-    <meta property="og:type" content="remote jobs" />
-    <meta property="og:url" content="https://rovergigs.com" />
-    <meta property="og:image"
-        content="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0p4eq5kustxxpk2mbe2t.png" />
-    <meta property="og:description" content="A global community of remote workers." />
-    <meta property="og:site_name" content="Rover Gigs" />
-    <meta property="og:locale" content="en_US" />
 
     <title>RoverGigs - Home</title>
     <!-- Custom CSS -->

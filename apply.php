@@ -1,6 +1,11 @@
 <?php
 // Include the path config. This is to make it easy to manage my URLs when I upload to production, that is cpanel
 require_once 'config/paths.php';
+
+// For meta tags reusability
+require_once 'meta-tags.php';
+$metaTags = new MetaTags();
+echo $metaTags->generateMetaTags('apply'); // or 'about' or any other page ID
 ?>
 
 
@@ -55,6 +60,11 @@ require_once 'config/paths.php';
             /* Change background color to #212121 */
             color: #0B090A;
             /* Change text color to #CFCFCF */
+        }
+
+        .card-custom-style {
+            background-color: #FFD015 !important;
+            color: #0B090A !important;
         }
     </style>
     <!-- CSS files -->
@@ -123,7 +133,7 @@ require_once 'config/paths.php';
                                 echo "
                                 <!--Organization Description-->
                               <div class='col-12'>
-                                  <div class='card card-md' style='background-color: #FFD015; color:#0B090A;'>
+                                  <div class='card card-md card-custom-style'>
                                       <div class='card-body'>
                                           <div class='row align-items-center'>
                                               <div class='col-10'>
@@ -139,7 +149,7 @@ require_once 'config/paths.php';
       
                               <!--Job Description-->
                                 <div class='col-12'>
-                                  <div class='card card-md' style='background-color: #FFD015; color:#0B090A;'>
+                                  <div class='card card-md card-custom-style'>
                                       <div class='card-body'>
                                           <div class='row align-items-center'>
                                               <div class='col-10'>
@@ -154,8 +164,8 @@ require_once 'config/paths.php';
                         <button type='button' class='btn btn-success' id='emailCopiedToClipboardButton'
                             style='display:none;' data-bs-toggle='tooltip' data-bs-placement='right'
                             title='Email Copied to clipboard'>Email copied!</button>
-                        <button type='button' id='buttonToBeClickedToCopyEmail' class='btn btn-danger' style='background-color: #F1F2F6; color:#0B090A;' id='button1'
-                            onclick='copyContent()'>Apply for job</button>
+                        <button type='button' id='buttonToBeClickedToCopyEmail' class='btn' style='background-color: #F1F2F6; color:#0B090A;' id='button1'
+                            onclick='copyContent()'>Apply for the job</button>
                     </div>
                 </div>
             </div>
@@ -164,7 +174,7 @@ require_once 'config/paths.php';
     </div>
     <!-- Benefits -->
     <div class='col-12'>
-        <div class='card card-md' style='background-color: #FFD015; color:#0B090A;'>
+        <div class='card card-md card-custom-style'>
             <div class='card-body'>
                 <div class='row align-items-center'>
                     <div class='col-10'>
@@ -202,7 +212,7 @@ require_once 'config/paths.php';
     </div>
     <!--Share this job-->
     <div class='col-12'>
-        <div class='card card-md' style='background-color: #FFD015; color:#0B090A;'>
+        <div class='card card-md card-custom-style'>
             <div class='card-body'>
                 <div class='row align-items-center'>
                     <h4>
@@ -258,7 +268,7 @@ require_once 'config/paths.php';
                                 echo "
     <!--Organization Description-->
     <div class='col-12'>
-        <div class='card card-md'>
+        <div class='card card-md card-custom-style'>
             <div class='card-body'>
                 <div class='row align-items-center'>
                     <div class='col-10'>
@@ -283,7 +293,7 @@ require_once 'config/paths.php';
                             $row[jobDescription]
                         </div>
                         <div class='mt-3'>
-                            <a href='https://$row[applicationLinkOrEmail]' class='btn btn-danger'>Apply for the job</a>
+                            <a href='https://$row[applicationLinkOrEmail]' class='btn' style='cursor: pointer; background-color: #FFD015; color:#0B090A;'>Apply for the job</a>
                         </div>
                     </div>
                 </div>
