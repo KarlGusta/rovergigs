@@ -318,7 +318,7 @@ require_once 'config/paths.php';
                                         $companyLogoDisplayFirstTwoLetters = substr($row['companyName'], 0, 2); // Get the first two letters of the company name
                                         $companyLogoDisplay = $row['valueMemberOnly'] === 'Yes' ? $companyLogoDisplayFirstTwoLetters : $companyLogoDisplayFirstTwoLetters; // Check valueMemberOnly
                                         // $jobTypeDisplay = $row['valueMemberOnly'] === 'Yes' ? $row['jobType'] : ''; // Check valueMemberOnly                                                
-                                        $redirectUrl = $row['valueMemberOnly'] === 'Yes' ? "/rovergigs/apply.php?id=$row[jobId]" : '/rovergigs/value-membership.php'; // Redirect based on membership type
+                                        $redirectUrl = $row['valueMemberOnly'] === 'Yes' ? path('apply') . "?id=" . $row['jobId'] : path('value_membership'); // Redirect based on membership type
                                     
                                         // When the job was posted
                                         $post_date = new DateTime($row['post_date']);

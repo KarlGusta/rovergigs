@@ -17,6 +17,8 @@ class PathConfig {
                         'sponsor_images' => '/src/img/logo/',
                         'dist' => '/dist/'
                     ],
+                    'apply' => '/apply.php',
+                    'value_membership' => '/value-membership.php',
                     'post_a_job' => '/post-a-job.php'
                 ]
             ],
@@ -30,6 +32,8 @@ class PathConfig {
                         'sponsor_images' => '/src/img/logo/',
                         'dist' => '/dist/'
                     ],
+                    'apply' => '/apply.php',
+                    'value_membership' => '/value-membership.php',
                     'post_a_job' => '/post-a-job.php'
                 ]
             ]
