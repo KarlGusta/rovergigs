@@ -230,7 +230,7 @@ $db->closeConnection();
                                     Sign in
                                 </a>
                                 <a href="<?php echo path('users', 'sign_up'); ?>" class="btn"
-                                    style="background-color: #F5AF00; color: #CFCFCF; font-weight: bold;" target="_blank"
+                                    style="background-color: #F5AF00; color: #212121; font-weight: bold;" target="_blank"
                                     rel="noreferrer">
                                     Register
                                 </a>
@@ -281,7 +281,7 @@ $db->closeConnection();
                                     Sign in
                                 </a>
                                 <a href="<?php echo path('users', 'sign_up'); ?>" class="btn"
-                                    style="background-color: #F5AF00; color: #CFCFCF; font-weight: bold;" target="_blank"
+                                    style="background-color: #F5AF00; color: #212121; font-weight: bold;" target="_blank"
                                     rel="noreferrer">
                                     Register
                                 </a>
@@ -324,7 +324,7 @@ $db->closeConnection();
                                                     directly.</span></h3>
                                             <div class="mt-3 text-center">
                                                 <a href="<?php echo path('roles', 'new'); ?>" class="btn btn-lg"
-                                                    target="_blank" style="background-color: #F5AF00; color: #CFCFCF;"
+                                                    target="_blank" style="background-color: #F5AF00; color: #212121;"
                                                     rel="noopener">Get Started</a>
                                             </div>
                                         </div>
@@ -350,7 +350,7 @@ $db->closeConnection();
                                                     directly.</span></h3>
                                             <div class="mt-3 text-center">
                                                 <a href="<?php echo path('roles', 'new'); ?>" class="btn btn-lg"
-                                                    target="_blank" style="background-color: #F5AF00; color: #CFCFCF;"
+                                                    target="_blank" style="background-color: #F5AF00; color: #212121;"
                                                     rel="noopener">Get Started</a>
                                             </div>
                                         </div>
@@ -490,7 +490,7 @@ $db->closeConnection();
                         <div>
                             <div class="card-footer text-end">
                                 <a href="<?php echo path('developers', 'more'); ?>" class="btn"
-                                    style="background-color: #F5AF00; color: #CFCFCF; font-size: 16px;"style="background-color: #F5AF00; color: #CFCFCF;">See more
+                                    style="background-color: #F5AF00; color: #212121; font-size: 16px;">See more
                                     developers →
                                 </a>
                             </div>
