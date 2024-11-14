@@ -324,7 +324,7 @@ $db->closeConnection();
                                                     directly.</span></h3>
                                             <div class="mt-3 text-center">
                                                 <a href="<?php echo path('roles', 'new'); ?>" class="btn btn-lg"
-                                                    target="_blank" style="background-color: #F5AF00; color: #212121;"
+                                                    target="_blank" style="background-color: #F5AF00; color: #212121; font-weight: bold;"
                                                     rel="noopener">Get Started</a>
                                             </div>
                                         </div>
