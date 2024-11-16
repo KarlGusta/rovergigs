@@ -25,6 +25,11 @@ class MetaTags {
                 'title' => 'Rover Gigs - Apply',
                 'description' => 'Apply now on Rover Gigs.',
                 'image' => 'assets/images/apply_meta_image.png'
+            ],
+            'value-membership' => [
+                'title' => 'Rover Gigs - Value Membership',
+                'description' => 'Value membership',
+                'image' => 'assets/images/default_meta_image.png'
             ]
         ];
         
