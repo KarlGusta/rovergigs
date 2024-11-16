@@ -234,7 +234,7 @@ echo $metaTags->generateMetaTags('home'); // or 'about' or any other page ID
                                                     style="color: grey;">fast—work from anywhere, anytime. 🏆 #1
                                                     Rover Job Board.</span></h3>
                                             <div class="mt-3 text-center">
-                                                <a href="<?php echo path('post_a_job') ?>" class="btn btn-danger" style="background-color: #F1F2F6; color:#0B090A;"
+                                                <a href="<?php echo path('post_a_job') ?>" class="btn" style="background-color: #F1F2F6; color:#0B090A;"
                                                     target="_blank" rel="noopener">Post a remote job</a>
                                             </div>
                                         </div>
