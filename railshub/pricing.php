@@ -297,7 +297,7 @@ echo $metaTags->generateMetaTags('pricing'); // or 'about' or any other page ID
                                                         <li>
                                                             <!-- Download SVG icon from http://tabler-icons.io/i/check -->
                                                             <svg xmlns="http://www.w3.org/2000/svg"
-                                                                class="icon me-1 text-success" width="24" height="24"
+                                                                class="icon me-1" style="color: #F5AF00;" width="24" height="24"
                                                                 viewBox="0 0 24 24" stroke-width="2"
                                                                 stroke="currentColor" fill="none" stroke-linecap="round"
                                                                 stroke-linejoin="round">
@@ -309,7 +309,7 @@ echo $metaTags->generateMetaTags('pricing'); // or 'about' or any other page ID
                                                         <li>
                                                             <!-- Download SVG icon from http://tabler-icons.io/i/check -->
                                                             <svg xmlns="http://www.w3.org/2000/svg"
-                                                                class="icon me-1 text-success" width="24" height="24"
+                                                                class="icon me-1" style="color: #F5AF00;" width="24" height="24"
                                                                 viewBox="0 0 24 24" stroke-width="2"
                                                                 stroke="currentColor" fill="none" stroke-linecap="round"
                                                                 stroke-linejoin="round">
@@ -321,7 +321,7 @@ echo $metaTags->generateMetaTags('pricing'); // or 'about' or any other page ID
                                                         <li>
                                                             <!-- Download SVG icon from http://tabler-icons.io/i/check -->
                                                             <svg xmlns="http://www.w3.org/2000/svg"
-                                                                class="icon me-1 text-success" width="24" height="24"
+                                                                class="icon me-1" style="color: #F5AF00;" width="24" height="24"
                                                                 viewBox="0 0 24 24" stroke-width="2"
                                                                 stroke="currentColor" fill="none" stroke-linecap="round"
                                                                 stroke-linejoin="round">
@@ -337,7 +337,7 @@ echo $metaTags->generateMetaTags('pricing'); // or 'about' or any other page ID
                                                         <li>
                                                             <!-- Download SVG icon from http://tabler-icons.io/i/check -->
                                                             <svg xmlns="http://www.w3.org/2000/svg"
-                                                                class="icon me-1 text-success" width="24" height="24"
+                                                                class="icon me-1" style="color: #F5AF00;" width="24" height="24"
                                                                 viewBox="0 0 24 24" stroke-width="2"
                                                                 stroke="currentColor" fill="none" stroke-linecap="round"
                                                                 stroke-linejoin="round">
@@ -349,7 +349,7 @@ echo $metaTags->generateMetaTags('pricing'); // or 'about' or any other page ID
                                                         <li>
                                                             <!-- Download SVG icon from http://tabler-icons.io/i/check -->
                                                             <svg xmlns="http://www.w3.org/2000/svg"
-                                                                class="icon me-1 text-success" width="24" height="24"
+                                                                class="icon me-1" style="color: #F5AF00;" width="24" height="24"
                                                                 viewBox="0 0 24 24" stroke-width="2"
                                                                 stroke="currentColor" fill="none" stroke-linecap="round"
                                                                 stroke-linejoin="round">
@@ -361,7 +361,7 @@ echo $metaTags->generateMetaTags('pricing'); // or 'about' or any other page ID
                                                         <li>
                                                             <!-- Download SVG icon from http://tabler-icons.io/i/check -->
                                                             <svg xmlns="http://www.w3.org/2000/svg"
-                                                                class="icon me-1 text-success" width="24" height="24"
+                                                                class="icon me-1" style="color: #F5AF00;" width="24" height="24"
                                                                 viewBox="0 0 24 24" stroke-width="2"
                                                                 stroke="currentColor" fill="none" stroke-linecap="round"
                                                                 stroke-linejoin="round">
