@@ -25,6 +25,11 @@ class MetaTags {
                 'title' => 'Rails Hub - More Developers',
                 'description' => 'More developers on Rais Hub.',
                 'image' => 'assets/images/apply_meta_image.png'
+            ],
+            'pricing' => [
+                'title' => 'Rails Hub - Pricing',
+                'description' => 'Pricing for Rails Hub.',
+                'image' => 'assets/images/default_meta_image.png'
             ]
         ];
         
