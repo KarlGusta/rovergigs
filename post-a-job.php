@@ -125,14 +125,14 @@ require_once 'config/paths.php';
                                                     <select type="text" class="form-select" placeholder="Select a date"
                                                         id="select-tags" name="category">
                                                         <option value="Design">🎨 Design</option>
-                                                        <option value="Full-stack programming">Full-stack programming
+                                                        <option value="Full-stack programming">🌕 Full-stack programming
                                                         </option>
-                                                        <option value="Back-end programming">Back-end programming
+                                                        <option value="Back-end programming">🔙 Back-end programming
                                                         </option>
-                                                        <option value="Front-End programming">Front-End Programming
+                                                        <option value="Front-End programming">🚪 Front-End Programming
                                                         </option>
-                                                        <option value="Customer Support">Customer Support</option>
-                                                        <option value="Sales and Marketing">Sales and Marketing</option>
+                                                        <option value="Customer Support">🎗️ Customer Support</option>
+                                                        <option value="Sales and Marketing">💹 Sales and Marketing</option>
                                                         <option value="DevOps and Sysadmin">DevOps and Sysadmin</option>
                                                         <option value="Management and Finance">Management and Finance
                                                         </option>

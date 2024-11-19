@@ -30,6 +30,11 @@ class MetaTags {
                 'title' => 'Rover Gigs - Value Membership',
                 'description' => 'Value membership',
                 'image' => 'assets/images/default_meta_image.png'
+            ],
+            'post-a-job' => [
+                'title' => 'Rover Gigs - Post a Job',
+                'description' => 'Post a job on Rover Gigs.',
+                'image' => 'assets/images/default_meta_image.png'
             ]
         ];
         
