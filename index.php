@@ -142,9 +142,17 @@ echo $metaTags->generateMetaTags('home'); // or 'about' or any other page ID
             /* Reduced size for Cloudflare logo */
         }
 
-        .ibm-logo {
-            width: 70px;
+        .x-logo {
+            margin-left: 30px;
+            width: 25px;
+            height: 25px;
             /* Reduced size for IBM logo */
+        }
+
+        .product-hunt-logo {
+            width: 225px;
+            height: 70px;
+            margin-top: -20px;
         }
 
         .trusted-by-title {
@@ -244,29 +252,16 @@ echo $metaTags->generateMetaTags('home'); // or 'about' or any other page ID
                         </div>
                         <!-- Trusted By Section -->
                         <div class="col-12 text-center my-4 d-none d-md-block">
-                            <h2 class="trusted-by-title">trusted by</h2>
+                            <h2 class="trusted-by-title">Featured on</h2>
                             <div class="row justify-content-center">
-                                <div class="col-auto">
-                                    <img src="<?php echo path('assets', 'sponsor_images') ?>microsoft.png" alt="Microsoft" class="trusted-logo">
-                                </div>
-                                <div class="col-auto">
-                                    <img src="<?php echo path('assets', 'sponsor_images') ?>amazon.png" alt="Amazon" class="trusted-logo">
-                                </div>
-                                <div class="col-auto">
-                                    <img src="<?php echo path('assets', 'sponsor_images') ?>cloudflare.png" alt="Cloudflare"
-                                        class="trusted-logo cloudflare-logo">
-                                </div>
                                 <div class="col-auto">
                                     <img src="<?php echo path('assets', 'sponsor_images') ?>github.png" alt="GitHub" class="trusted-logo">
                                 </div>
                                 <div class="col-auto">
-                                    <img src="<?php echo path('assets', 'sponsor_images') ?>ibm.png" alt="IBM" class="trusted-logo ibm-logo">
+                                    <img src="<?php echo path('assets', 'sponsor_images') ?>x.png" alt="X" class="trusted-logo x-logo">
                                 </div>
                                 <div class="col-auto">
-                                    <img src="<?php echo path('assets', 'sponsor_images') ?>scale-ai.png" alt="Scale AI" class="trusted-logo">
-                                </div>
-                                <div class="col-auto">
-                                    <img src="<?php echo path('assets', 'sponsor_images') ?>shopify.png" alt="Shopify" class="trusted-logo">
+                                    <img src="<?php echo path('assets', 'sponsor_images') ?>product-hunt.png" alt="Product Hunt" class="trusted-logo product-hunt-logo">
                                 </div>
                                 <!-- Add more logos as needed -->
                             </div>
